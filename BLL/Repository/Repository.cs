@@ -8,28 +8,29 @@ namespace BLL.Repository
 {
     public class Repository<T> where T : Entity.Entity, new()
     {
-        protected SqlDbContext sqlContext;
-        protected DbSet<T> dbSet;
+        protected SqlDbContext sqlDbContext;
 
-        protected Repository(SqlDbContext sqlContext)
+        protected Repository(SqlDbContext sqlDbContext)
         {
-            this.sqlContext = sqlContext;
+            this.sqlDbContext = sqlDbContext;
         }
 
         public int Save(T entity)
         {
-            dbSet.Add(entity);
+            sqlDbContext.Set<T>().Add(entity);
+            // 获取存入对象的Id值
+            sqlDbContext.SaveChanges();
             return entity.Id;
         }
 
         public void Delete(T entity)
         {
-            dbSet.Remove(entity);
+            sqlDbContext.Set<T>().Remove(entity);
         }
 
-        public void Find(int id)
+        public T Find(int id)
         {
-            throw new NotImplementedException();
+            return sqlDbContext.Set<T>().Find(id);
         }
     }
 }

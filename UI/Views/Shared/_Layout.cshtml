@@ -1,19 +1,140 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/images/logo.ico" rel="shortcut icon" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <style>
+        a {
+            color: #337ab7
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <header>
+        <nav class="navbar bg-light navbar-expand-sm fixed-top">
+            <div class="container" style="height:40px">
+                <div>
+                    <a href="/Home/Index"><img src="~/images/logo-big.jpg" alt="一起帮Logo" /></a>
+                    <span style="font-size:18px; font-weight:600; color:#777">一起帮</span>
+                    <span style="color:#777">· 网络互助平台</span>
+                    <a id="message" href="#" style="color:lightblue; display:none"><i class="fa fa-bell" style="font-size:20px; margin-left:20px" aria-hidden="true"></i></a>
+                </div>
+
+                <ul class="navbar-nav" style="font-size:14px;">
+                    <li class="nav-item dropdown">
+                        <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#777">
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp;求助
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                            <li><a class="dropdown-item" href="#"><i class="fa fa-list" aria-hidden="true"></i> 列表</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown" style="margin-left:20px">
+                        <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#777">
+                            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;督促
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                            <li><a class="dropdown-item" href="#"><i class="fa fa-list" aria-hidden="true"></i> 我的目标</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fa fa-list" aria-hidden="true"></i> 我的督促</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown" style="margin-left:20px">
+                        <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#777">
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;文章
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                            <li><a class="dropdown-item" href="#"><i class="fa fa-list" aria-hidden="true"></i> 列表</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown" style="margin-left:20px">
+                        <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#777">
+                            <i class="fa fa-mobile" aria-hidden="true"></i>&nbsp;APP下载
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                            <li><a class="dropdown-item" href="#"><i class="fa fa-android" aria-hidden="true"></i> Android</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fa fa-apple" aria-hidden="true"></i> IOS（越狱）</a></li>
+                        </ul>
+                    </li>
+
+                    @if (ViewData[Global.Key.HasLogin] != null)
+                    {
+                        <li class="nav-item dropdown" style="margin-left:20px">
+                            <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;<vc:_nav-user></vc:_nav-user>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-lock fa" aria-hidden="true" style="margin-left:2px; font-size:17px"></i><span style="margin-left:6px">我的密码</span></a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-camera" aria-hidden="true"></i> 个人资料</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/LogOff"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown" style="margin-left:20px">
+                            <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#777">
+                                <i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;后台
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-link" aria-hidden="true"></i> 联系方式</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-link" aria-hidden="true"></i> 侧边栏</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown" style="margin-left:20px">
+                            <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#777">
+                                <i class="fa fa-user-secret" aria-hidden="true"></i>&nbsp;未登录
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                                <li><a class="dropdown-item" href="/Login/Index"><i class="fa fa-sign-in" aria-hidden="true"></i><span style="margin-left:6px">登录</span></a></li>
+                                <li><a class="dropdown-item" href="/Register/Index"><i class="fa fa-registered" aria-hidden="true"></i> 注册</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-lock fa" aria-hidden="true" style="margin-left:2px; font-size:17px"></i><span style="margin-left:6px">忘记密码</span></a></li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container" style="background-color:#eee; font-size:14px; height:30px; margin-top:55px">
+            <i class="fa fa-calendar" aria-hidden="true" style="line-height:30px"></i>
+            消息通知栏
+            <a href="#" style="line-height:30px" class="pull-right">
+                <i class="fa fa-hand-o-right" aria-hidden="true"></i>&nbsp;全部消息
+            </a>
+        </div>
+    </header>
+
+    <main class="container" style="min-height:543px; padding:50px 15px 30px">
         @RenderBody()
-    </div>
+    </main>
+
+    <footer class="container" style="margin-bottom:50px; font-size:14px">
+        <hr />
+        <div>
+            <a href="#">关于我们</a>&nbsp;|
+            <a href="#">常见问题</a>&nbsp;|
+            <a href="#">意见建议</a>&nbsp;|
+            <a href="#">历史通知</a>&nbsp;|
+            <a href="#">源栈课堂</a>&nbsp;|
+            <a href="#" style="color:#3c763d">友情捐赠</a>&nbsp;|
+            <a href="#">诚邀合伙人</a>
+        </div>
+        <div style="text-align:right">
+            <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">ICP备案查询</a>
+            <span style="margin-left:1rem">© @DateTime.UtcNow.Year - SourceStack</span>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

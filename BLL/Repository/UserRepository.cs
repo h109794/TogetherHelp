@@ -11,7 +11,11 @@ namespace BLL.Repository
     {
         public UserRepository(SqlDbContext sqlContext) : base(sqlContext)
         {
+        }
 
+        public User GetByName(string name)
+        {
+            return sqlDbContext.Users.Where(m => m.Username == name).SingleOrDefault();
         }
     }
 }

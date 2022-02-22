@@ -55,8 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BaseService.cs" />
+    <Compile Include="RegisterService.cs" />
     <Compile Include="TransactionControl.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +77,10 @@
     <ProjectReference Include="..\ServiceInterface\ServiceInterface.csproj">
       <Project>{64fbbf1d-13e4-4802-8d25-d0c1b87182fd}</Project>
       <Name>ServiceInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{C80069A5-421D-4F78-843B-96A1FEF129B1}</Project>
+      <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

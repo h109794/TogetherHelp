@@ -8,6 +8,6 @@ namespace BLL.Entity
 {
     public class Entity
     {
-        public int Id { get; }
+        public int Id { get; private set; }
     }
 }

@@ -8,6 +8,9 @@ namespace BLL.Entity
 {
     public class User : Entity
     {
-        public string Name { get; set; }
+        public User Inviter { get; set; }
+        public string InvitationCode { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

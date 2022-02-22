@@ -26,6 +26,8 @@ namespace SRV.ProductionService
             {
                 using (dbContext)
                 {
+                    // 在事务结束前统一保存更改
+                    dbContext.SaveChanges();
                     dbContext.Database.CurrentTransaction.Commit();
                 }
             }
@@ -38,6 +40,8 @@ namespace SRV.ProductionService
             {
                 using (dbContext)
                 {
+                    // 在事务结束前统一保存更改
+                    dbContext.SaveChanges();
                     dbContext.Database.CurrentTransaction.Rollback();
                 }
             }

@@ -10,6 +10,7 @@ namespace UI
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new TransactionControlFilter());
+            filters.Add(new ValidateLoginFilter());
         }
     }
 }
