@@ -16,6 +16,7 @@ namespace UI.Controllers
     {
         public ActionResult Index()
         {
+            // 如果已经登录重定向到主页
             if (ViewData[Key.HasLogin] != null)
             {
                 return RedirectToAction("Index", "Home");
@@ -40,7 +41,12 @@ namespace UI.Controllers
             if (registerService.ValidateUserIsExists(model.Username))
             {
                 ModelState.AddModelError(nameof(model.Username), "* 用户名已存在");
-            }// else nothing
+            }
+
+            if (model.Captcha.ToLower() != Session[Key.Captcha].ToString().ToLower())
+            {
+                ModelState.AddModelError(nameof(model.Captcha), "* 验证码错误");
+            }
 
             if (!ModelState.IsValid)
             {
@@ -48,11 +54,19 @@ namespace UI.Controllers
             }
 
             int id = registerService.Register(model);
-
             HttpCookie cookie = new HttpCookie(Key.LoginInfo);
             cookie.Values.Add(Key.Id, id.ToString());
             cookie.Values.Add(Key.Pwd, Utility.MD5Encrypt(model.Password));
             Response.Cookies.Add(cookie);
+            // 存放当前登录用户名
+            Response.Cookies.Add(new HttpCookie(Key.Username, model.Username));
+
+            // 跳转到未登录时的目标访问页面
+            if (Request.Cookies[Key.TargetPageURL] != null)
+            {
+                Response.Cookies[Key.TargetPageURL].Expires = DateTime.Now.AddDays(-1);
+                return Redirect(Request.Cookies[Key.TargetPageURL].Value);
+            }
 
             return RedirectToAction("Index", "Home");
         }

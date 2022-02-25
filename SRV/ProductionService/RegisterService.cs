@@ -39,7 +39,7 @@ namespace SRV.ProductionService
             User newUser = mapper.Map<User>(model);
             newUser.Password = Utility.MD5Encrypt(newUser.Password);
             newUser.Inviter = userRepository.GetByName(model.Inviter);
-            newUser.InvitationCode = "4321";
+            newUser.InvitationCode = Utility.GenerateRandomString(4);
             return userRepository.Save(newUser);
         }
     }

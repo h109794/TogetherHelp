@@ -67,13 +67,18 @@
                     {
                         <li class="nav-item dropdown" style="margin-left:20px">
                             <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;<vc:_nav-user></vc:_nav-user>
+                                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                @*防止因用户删除Cookie导致的异常*@
+                                @if (ViewData[Global.Key.Username] != null)
+                                {
+                                    @ViewData[Global.Key.Username]
+                                }
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
                                 <li><a class="dropdown-item" href="#"><i class="fa fa-lock fa" aria-hidden="true" style="margin-left:2px; font-size:17px"></i><span style="margin-left:6px">我的密码</span></a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fa fa-camera" aria-hidden="true"></i> 个人资料</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="/LogOff"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
+                                <li><a class="dropdown-item" href="~/Login/Logoff"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
                             </ul>
                         </li>
 

@@ -1,7 +1,7 @@
 ﻿@model SRV.ViewModel.LoginModel
 @{
     ViewBag.Title = "一起帮 - 登录";
-    Layout = "~/Views/Shared/_UserRight.cshtml";
+    Layout = "~/Views/Shared/_UserRightLayout.cshtml";
 }
 
 @section Header{
@@ -23,7 +23,10 @@
     <div class="form-group">
         <label><b>验证码：</b></label><br />
         @Html.TextBoxFor(m => m.Captcha, new { @class = "form-control", style = "display:inline; width:110px" })
-        <span>点击输入框显示</span><br />
+        <img id="captcha-img" src="#" style="display:none" />
+        <span>点击输入框显示</span>
+        <a href="/Shared/GenerateCaptcha" id="replace-img" style="display:none">看不清楚</a>
+        <br />
         @Html.ValidationMessageFor(m => m.Captcha)
     </div>
 
@@ -46,3 +49,5 @@
         <li style="margin-bottom:10px">赶快加入我们，赚取帮帮币吧！</li>
     </ol>
 }
+
+<script src="~/Scripts/shared/captcha.js" type="text/javascript"></script>

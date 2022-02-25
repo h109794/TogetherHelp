@@ -16,6 +16,7 @@ namespace UI.Filters
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
             filterContext.Controller.ViewData[Key.HasLogin] = filterContext.HttpContext.Request.Cookies[Key.LoginInfo];
+            filterContext.Controller.ViewData[Key.Username] = filterContext.HttpContext.Request.Cookies[Key.Username]?.Value;
         }
     }
 }
