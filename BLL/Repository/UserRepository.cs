@@ -9,9 +9,7 @@ namespace BLL.Repository
 {
     public class UserRepository : Repository<User>
     {
-        public UserRepository(SqlDbContext sqlContext) : base(sqlContext)
-        {
-        }
+        public UserRepository(SqlDbContext sqlContext) : base(sqlContext) { }
 
         public User GetByName(string name)
         {

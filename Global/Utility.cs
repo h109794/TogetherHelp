@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace Global
 {
@@ -47,7 +49,7 @@ namespace Global
         {
             private static Random random = new Random();
 
-            public static Bitmap GenerateCaptcha(out string verificationCode)
+            public static MemoryStream GenerateCaptcha(out string verificationCode)
             {
                 // 创建一个指定大小的位图
                 Bitmap bitmap = new Bitmap(50, 30);
@@ -79,7 +81,12 @@ namespace Global
                 }
 
                 verificationCode = new string(code);
-                return bitmap;
+                // 将图片以内存流的方式返回
+                MemoryStream memoryStream = new MemoryStream();
+                bitmap.Save(memoryStream, ImageFormat.Jpeg);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+
+                return memoryStream;
             }
 
             private static Point GenerateRandomPoint()

@@ -17,10 +17,12 @@ namespace SRV.ProductionService
         {
             config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<RegisterModel, User>()
+                cfg.CreateMap<RegisterModel, User>().ReverseMap()
                     .ForMember(dest => dest.Inviter, opt => opt.Ignore())
                     .ForMember(dest => dest.InvitationCode, opt => opt.Ignore());
                 cfg.CreateMap<User, LoginModel>();
+                cfg.CreateMap<Article, ArticleModel>();
+                cfg.CreateMap<Keyword, KeywordModel>();
             });
         }
 

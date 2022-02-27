@@ -1,8 +1,6 @@
 ﻿using Global;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -14,14 +12,10 @@ namespace UI.Controllers
     {
         public ActionResult GenerateCaptcha()
         {
-            Bitmap captcha = Utility.Captcha.GenerateCaptcha(out string code);
+            MemoryStream captchaStream = Utility.Captcha.GenerateCaptcha(out string code);
             Session.Add(Key.Captcha, code);
 
-            MemoryStream memoryStream = new MemoryStream();
-            captcha.Save(memoryStream, ImageFormat.Jpeg);
-            memoryStream.Seek(0, SeekOrigin.Begin);
-
-            return File(memoryStream, "image/jpge");
+            return File(captchaStream, "image/jpge");
         }
     }
 }

@@ -1,1 +1,67 @@
-﻿<span style="font-size:100px; text-align:center">文章列表页</span>
+﻿@model List<SRV.ViewModel.ArticleModel>
+@{
+    Layout = "~/Views/Shared/Layout/_ContentLayout.cshtml";
+    ViewBag.Title = "一起帮 - 文章列表";
+    string showPreviousPage;
+    string showNextPage;
+    string paginationClass;
+}
+
+@foreach (var article in Model)
+{
+    <div>
+        <div>
+            <small style="color:#777"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;@(article.PublishTime)</small>
+            <span style="float:right; font-size:14px">
+                作者：<a href="#" style="margin-right:14px">@(article.Author.Username)</a>
+                <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;修改</a>
+            </span>
+        </div>
+        <p style="margin-top:10px; font-size:18px"><a href="#">@(article.Title)</a></p>
+        <p style="font-size:14px">@(article.Abstract)<a href="#">……</a></p>
+        <div style="margin-top:10px">
+            <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;<b style="font-size:14px">关键字：</b>
+            @foreach (var keyword in article.Keywords)
+            {
+                <span style="font-size: 12px; font-weight: bold; border: 1px solid; border-radius: 20px; background-color: gray; color: white; padding: 0px 7px; margin-right: 5px">
+                    @keyword.Text
+                </span>
+            }
+
+        </div>
+        <div style="text-align:right; font-size:14px">
+            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;评论：@(article.Comments.Count)</a>
+            <a href="#" style="margin-left:14px; color:#2b542c"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;赞：@(article.Agree)</a>
+            <a href="#" style="margin-left:14px; color:#777"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>&nbsp;踩：@(article.DisAgree)</a>
+        </div>
+        <hr />
+    </div>
+}
+
+<nav aria-label="Page navigation example" style="margin-top:50px">
+    <ul class="pagination">
+        @{showPreviousPage = ViewBag.PageIndex == 1 ? "none" : ""; }
+        <li class="page-item" style="display:@(showPreviousPage)">
+            <a class="page-link" href="@(ViewBag.PageIndex - 1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        @for (int i = 0; i < ViewBag.PageCount; i++)
+        {
+            paginationClass = (i + 1) == ViewBag.PageIndex ? "page-item active" : "page-item";
+            <li class="@paginationClass"><a class="page-link" href="@(i + 1)">@(i + 1)</a></li>
+        }
+
+        @{showNextPage = ViewBag.PageIndex == ViewBag.PageCount ? "none" : "";}
+        <li class="page-item" style="display:@(showNextPage)">
+            <a class="page-link" href="@(ViewBag.PageIndex + 1)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+@section Keywords{
+    @Html.Partial("_Keywords")
+}
