@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticleRepository.cs" />
+    <Compile Include="KeywordRepository.cs" />
     <Compile Include="Migrations\202202220310142_CreateDatabase.cs" />
     <Compile Include="Migrations\202202220310142_CreateDatabase.designer.cs">
       <DependentUpon>202202220310142_CreateDatabase.cs</DependentUpon>
@@ -63,6 +64,10 @@
     <Compile Include="Migrations\202202261342286_AmendContentPropertyName.cs" />
     <Compile Include="Migrations\202202261342286_AmendContentPropertyName.designer.cs">
       <DependentUpon>202202261342286_AmendContentPropertyName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203010651421_UpdateArticleModel.cs" />
+    <Compile Include="Migrations\202203010651421_UpdateArticleModel.designer.cs">
+      <DependentUpon>202203010651421_UpdateArticleModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository.cs" />
@@ -89,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202261342286_AmendContentPropertyName.resx">
       <DependentUpon>202202261342286_AmendContentPropertyName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203010651421_UpdateArticleModel.resx">
+      <DependentUpon>202203010651421_UpdateArticleModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

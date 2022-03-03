@@ -42,5 +42,15 @@ namespace SRV.ProductionService
             newUser.InvitationCode = Utility.GenerateRandomString(4);
             return userRepository.Save(newUser);
         }
+
+        internal User Find(int id)
+        {
+            return userRepository.Find(id);
+        }
+
+        public RegisterModel GetUserById(int id)
+        {
+            return mapper.Map<RegisterModel>(userRepository.Find(id));
+        }
     }
 }

@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-9">
+        @RenderBody()
+    </div>
+
+    <div class="col-3">
+        @RenderSection("Keywords", false)
+    </div>
+</div>

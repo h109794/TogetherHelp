@@ -21,7 +21,7 @@ namespace SRV.ProductionService
                     .ForMember(dest => dest.Inviter, opt => opt.Ignore())
                     .ForMember(dest => dest.InvitationCode, opt => opt.Ignore());
                 cfg.CreateMap<User, LoginModel>();
-                cfg.CreateMap<Article, ArticleModel>();
+                cfg.CreateMap<Article, ArticleModel>().ReverseMap();
                 cfg.CreateMap<Keyword, KeywordModel>();
             });
         }

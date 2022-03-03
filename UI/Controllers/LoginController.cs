@@ -50,13 +50,13 @@ namespace UI.Controllers
                 return View(model);
             }
 
-            HttpCookie cookie = new HttpCookie(Key.LoginInfo);
-            cookie.Values.Add(Key.Id, loginModel.Id.ToString());
-            cookie.Values.Add(Key.Pwd, loginModel.Password);
-            cookie.Expires = model.RememberMe is true ? DateTime.Now.AddDays(14) : default;
-            Response.Cookies.Add(cookie);
-            // 存放当前登录用户名
-            Response.Cookies.Add(new HttpCookie(Key.Username, model.Username));
+            HttpCookie loginCookie = new HttpCookie(Key.LoginInfo);
+            HttpCookie usernameCookie = new HttpCookie(Key.Username, model.Username);
+            loginCookie.Values.Add(Key.Id, loginModel.Id.ToString());
+            loginCookie.Values.Add(Key.Pwd, loginModel.Password);
+            usernameCookie.Expires = loginCookie.Expires = model.RememberMe is true ? DateTime.Now.AddDays(14) : default;
+            Response.Cookies.Add(loginCookie);
+            Response.Cookies.Add(usernameCookie);
 
             // 跳转到未登录时的目标访问页面
             if (Request.Cookies[Key.TargetPageURL] != null)

@@ -15,7 +15,7 @@ namespace BLL.Repository
         public List<Article> GetArticles(int pageIndex, int articleSize)
         {
             return sqlDbContext.Articles.Include(a => a.Author).Include(a => a.Keywords)
-                        .OrderBy(a => a.Id).Skip((pageIndex - 1) * articleSize).Take(articleSize).ToList();
+                        .OrderByDescending(a => a.Id).Skip((pageIndex - 1) * articleSize).Take(articleSize).ToList();
         }
 
         public int GetArticlesCount()

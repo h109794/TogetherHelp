@@ -1,0 +1,54 @@
+﻿@model SRV.ViewModel.ArticleModel
+@{
+    Layout = "~/Views/Shared/Layout/_InformationLayout.cshtml";
+    ViewBag.Title = "一起帮 - 文章发布";
+}
+
+@using (Html.BeginForm())
+{
+    <h2><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 文章发布</h2>
+    <hr />
+    <div style="font-size:14px">
+        <p>
+            <label><b>标题：</b></label>
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "最大长度64字符" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </p>
+        <p>
+            <label><b>内容：</b></label>
+            <span id="editor"></span>
+            @Html.TextBoxFor(m => m.Body, new { hidden = string.Empty })
+            @Html.ValidationMessageFor(m => m.Body)
+        </p>
+        <p>
+            <label><b>摘要：</b></label>
+            @Html.TextAreaFor(m => m.Abstract, new { @class = "form-control", placeholder = "未填写会截取正文前256字符作为摘要" })
+            @Html.ValidationMessageFor(m => m.Abstract)
+        </p>
+        <p>
+            <div>
+                <label><b>关键字：</b></label>
+                @Html.Partial("_SelectKeywords")
+                @Html.TextBoxFor(m => m.KeywordsReceiver, new { hidden = string.Empty })
+            </div>
+        </p>
+
+        <button type="submit" id="submit" class="btn btn-outline-primary">发布</button>
+    </div>
+}
+
+@section Keywords{
+    @Html.Partial("_SidebarKeywords")
+}
+
+<script type="text/javascript" src="~/Scripts/shared/wangEditor.min.js"></script>
+<script>
+    const E = window.wangEditor;
+    const editor = new E(document.getElementById("editor"));
+    editor.config.focus = false;
+    editor.config.zIndex = 0;
+    editor.config.onchange = function (html) {
+        document.getElementById("Body").value = html;
+    }
+    editor.create();
+</script>

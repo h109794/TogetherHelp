@@ -169,6 +169,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CookieHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -258,10 +259,12 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\shared\captcha.js" />
+    <Content Include="Scripts\shared\wangEditor.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\shared\wangEditor.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -286,8 +289,11 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Shared\Layout\_UserRightLayout.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
-    <Content Include="Views\Shared\_Keywords.cshtml" />
+    <Content Include="Views\Shared\_SidebarKeywords.cshtml" />
     <Content Include="Views\Shared\Layout\_ContentLayout.cshtml" />
+    <Content Include="Views\Article\Publish.cshtml" />
+    <Content Include="Views\Shared\Layout\_InformationLayout.cshtml" />
+    <Content Include="Views\Shared\_SelectKeywords.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

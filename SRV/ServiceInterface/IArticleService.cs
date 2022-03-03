@@ -10,5 +10,6 @@ namespace SRV.ServiceInterface
     public interface IArticleService
     {
         List<ArticleModel> GetArticles(int pageIndex, int articleSize);
+        void Publish(ArticleModel article, int userId);
     }
 }

@@ -11,6 +11,11 @@
         a {
             color: #337ab7
         }
+
+        .field-validation-error {
+            color: #b94a48;
+            font-size: 14px
+        }
     </style>
 </head>
 <body>
@@ -50,6 +55,11 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
                             <li><a class="dropdown-item" href="~/Article/Index/1"><i class="fa fa-list" aria-hidden="true"></i> 列表</a></li>
+                            @if (ViewData[Global.Key.HasLogin] != null)
+                            {
+                                <li><a class="dropdown-item" href="~/Article/Publish"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 发布</a></li>
+                            }
+
                         </ul>
                     </li>
 
