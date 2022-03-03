@@ -1,5 +1,6 @@
 ﻿using Global;
 using SRV.ProductionService;
+using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace UI.Controllers
     [ModelValidationFilter]
     public class ArticleController : Controller
     {
-        private readonly ArticleService articleService;
+        private readonly IArticleService articleService;
 
         public ArticleController()
         {
