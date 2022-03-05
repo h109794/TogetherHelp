@@ -18,6 +18,12 @@ namespace BLL.Repository
                         .OrderByDescending(a => a.Id).Skip((pageIndex - 1) * articleSize).Take(articleSize).ToList();
         }
 
+        public Article FindById(int id)
+        {
+            return sqlDbContext.Articles.Where(a => a.Id == id).Include(a => a.Author)
+                        .Include(a => a.Keywords).Include(a => a.Comments).SingleOrDefault();
+        }
+
         public int GetArticlesCount()
         {
             return sqlDbContext.Articles.Count();

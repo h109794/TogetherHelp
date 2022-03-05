@@ -7,6 +7,7 @@
     <link href="~/images/logo.ico" rel="shortcut icon" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Shared/userdefind.css" rel="stylesheet" />
     <style>
         a {
             color: #337ab7
@@ -54,7 +55,7 @@
                             <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;文章
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
-                            <li><a class="dropdown-item" href="~/Article/Index/1"><i class="fa fa-list" aria-hidden="true"></i> 列表</a></li>
+                            <li><a class="dropdown-item" href="~/Article/Page/1"><i class="fa fa-list" aria-hidden="true"></i> 列表</a></li>
                             @if (ViewData[Global.Key.HasLogin] != null)
                             {
                                 <li><a class="dropdown-item" href="~/Article/Publish"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 发布</a></li>
@@ -84,7 +85,7 @@
                                 }
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
-                                <li><a class="dropdown-item" href="~/Password/Index"><i class="fa fa-key" aria-hidden="true"></i><span style="margin-left:5px">我的密码</span></a></li>
+                                <li><a class="dropdown-item" href="~/Password/Index"><i class="fa fa-key" aria-hidden="true"></i><span style="margin-left:5px">修改密码</span></a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fa fa-camera" aria-hidden="true"></i> 个人资料</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="~/Login/Logoff"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>

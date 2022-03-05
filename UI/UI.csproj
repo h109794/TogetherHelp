@@ -184,6 +184,7 @@
     <Content Include="Content\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Content\Shared\userdefind.css" />
     <Content Include="images\logo-big.jpg" />
     <Content Include="images\logo.ico" />
     <Content Include="favicon.ico" />
@@ -296,6 +297,8 @@
     <Content Include="Views\Shared\Layout\_InformationLayout.cshtml" />
     <Content Include="Views\Shared\_SelectKeywords.cshtml" />
     <Content Include="Views\Password\Index.cshtml" />
+    <Content Include="Views\Article\Single.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

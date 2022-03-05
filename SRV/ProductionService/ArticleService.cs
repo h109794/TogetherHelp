@@ -29,6 +29,12 @@ namespace SRV.ProductionService
             return articleModels;
         }
 
+        public ArticleModel FindById(int id)
+        {
+            Article article = articleRepository.FindById(id); ;
+            return mapper.Map<ArticleModel>(article);
+        }
+
         public int GetArticlesCount()
         {
             return articleRepository.GetArticlesCount();
@@ -45,9 +51,10 @@ namespace SRV.ProductionService
 
                 foreach (var k in article.KeywordsReceiver.Split(','))
                 {
+                    if (string.IsNullOrWhiteSpace(k)) continue;
+
                     // 判断关键字是否已存在
                     Keyword keyword = keywordRepository.GetByText(k);
-
                     if (keyword is null)
                     {
                         newArticle.Keywords.Add(new Keyword() { Text = k, UseCount = 1 });

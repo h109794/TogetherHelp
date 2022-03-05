@@ -1,10 +1,10 @@
-﻿using Global;
-using SRV.ProductionService;
+﻿using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using UI.Filters;
@@ -36,6 +36,17 @@ namespace UI.Controllers
             return View(articles);
         }
 
+        public ActionResult Single(int id)
+        {
+            ArticleModel article = articleService.FindById(id);
+
+            if (article is null)
+            {
+                return Redirect("~/Shared/Error");
+            }
+            return View(article);
+        }
+
         [NeedLoginFilter]
         public ActionResult Publish()
         {
@@ -46,6 +57,13 @@ namespace UI.Controllers
         [NeedLoginFilter]
         public ActionResult Publish(ArticleModel newArticle)
         {
+            // 防止用户添加关键字后再删光导致Receiver内有','使文章正常发布(匹配只有','的情况)
+            if (Regex.IsMatch(newArticle.KeywordsReceiver, "^,+$"))
+            {
+                ModelState.AddModelError(nameof(newArticle.KeywordsReceiver), "* 关键字不能为空");
+                return View();
+            }
+
             articleService.Publish(newArticle, CookieHelper.GetCurrentUserId());
             return RedirectToAction("Index");
         }

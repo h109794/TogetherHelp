@@ -10,6 +10,7 @@ namespace SRV.ViewModel
 {
     public class ArticleModel
     {
+        public int Id { get; set; }
         [Required(ErrorMessage = "* 标题不能为空")]
         [MaxLength(64, ErrorMessage = "* 标题长度不能超过64位")]
         public string Title { get; set; }
@@ -25,6 +26,7 @@ namespace SRV.ViewModel
         public List<KeywordModel> Keywords { get; set; }
         public List<CommentModel> Comments { get; set; }
         // 用于接收前台传来的关键字文本，在后台解析成集合属性
+        [Required(ErrorMessage = "* 关键不能为空")]
         public string KeywordsReceiver { get; set; }
     }
 }

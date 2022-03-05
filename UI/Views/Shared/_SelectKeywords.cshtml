@@ -37,7 +37,7 @@
 
     levelOneKeyword.addEventListener("change", selectLevelOneKeyword);
     levelTwoKeyword.addEventListener("change", selectLevelTwoKeyword);
-    document.getElementById("user-defined-keyword").addEventListener("keyup", showUserDefinedKeyword);
+    document.getElementById("user-defined-keyword").addEventListener("keydown", showUserDefinedKeyword);
 
     function selectLevelOneKeyword() {
         // 每次一级关键字选项改变，先清空二级关键字下拉选项(保留一个空白占位选项)
@@ -99,19 +99,19 @@
         }
         remove.setAttribute("class", "fa fa-times");
         remove.setAttribute("aria-hidden", "true");
-        remove.addEventListener("click", function () { lable.remove() })
+        remove.addEventListener("click", function () {
+            // 移除传递数组中的关键字
+            keywordsReceiver.value = keywordsReceiver.value.replace(this.parentElement.textContent.replace(' ', ''), '');
+            lable.remove();
+        })
 
         lable.appendChild(text);
         lable.appendChild(remove);
-        lable.setAttribute("style", "font-size:12px; font-weight:bold; border:1px solid; border-radius:20px; background-color:gray; color:white; padding:0px 7px; margin-right:5px");
+        lable.className = "keyword";
         document.getElementById("show-keyword").insertBefore(lable, showKeywordBox.firstElementChild);
 
         // 保存关键字返回给Action，要确保父页面保存文本的元素id是"KeywordsReceiver"
-        var KeywordsReceiver = document.getElementById("KeywordsReceiver");
-        if (KeywordsReceiver.value === '') {
-            KeywordsReceiver.value = selectedKeyword;
-        } else {
-            KeywordsReceiver.value = KeywordsReceiver.value + ',' + selectedKeyword;
-        }
+        var keywordsReceiver = document.getElementById("KeywordsReceiver");
+        keywordsReceiver.value = keywordsReceiver.value + ',' + selectedKeyword;
     }
 </script>

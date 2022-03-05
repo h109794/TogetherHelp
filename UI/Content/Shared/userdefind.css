@@ -1,0 +1,10 @@
+﻿.keyword {
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid;
+    border-radius: 20px;
+    background-color: gray;
+    color: white;
+    padding: 0px 7px;
+    margin-right: 5px;
+}

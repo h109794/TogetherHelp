@@ -34,7 +34,7 @@ namespace UI.Controllers
             {
                 ModelState.AddModelError(nameof(pwdModel.OriginalPwd), "* 原密码错误");
                 return View();
-            }// else Password changed successfully
+            }// else password changed successfully
 
             return Redirect("~/Login/Logoff");
         }

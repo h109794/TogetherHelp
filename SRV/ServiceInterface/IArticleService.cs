@@ -12,5 +12,6 @@ namespace SRV.ServiceInterface
         List<ArticleModel> GetArticles(int pageIndex, int articleSize);
         int GetArticlesCount();
         void Publish(ArticleModel article, int userId);
+        ArticleModel FindById(int id);
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model SRV.ViewModel.ArticleModel
 @{
     Layout = "~/Views/Shared/Layout/_InformationLayout.cshtml";
-    ViewBag.Title = "一起帮 - 文章发布";
+    ViewBag.Title = "文章发布 - 一起帮";
 }
 
 @using (Html.BeginForm())
@@ -30,6 +30,7 @@
                 <label><b>关键字：</b></label>
                 @Html.Partial("_SelectKeywords")
                 @Html.TextBoxFor(m => m.KeywordsReceiver, new { hidden = string.Empty })
+                @Html.ValidationMessageFor(m => m.KeywordsReceiver)
             </div>
         </p>
 
