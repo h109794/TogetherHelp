@@ -12,7 +12,7 @@ namespace UI.Helper
         public static int GetCurrentUserId()
         {
             var registerService = new RegisterService();
-            var userInfo = HttpContext.Current.Request.Cookies[Key.LoginInfo].Values;
+            var userInfo = HttpContext.Current.Request.Cookies[Key.LoginInfo];
 
             if (userInfo is null)
             {
@@ -29,7 +29,7 @@ namespace UI.Helper
             else if (userInfo[Key.Pwd] != registerService.GetUserById(id).Password)
             {
                 throw new ArgumentException("Id and password dono't match.");
-            }
+            }// else return
 
             return Convert.ToInt32(userInfo[Key.Id]);
         }

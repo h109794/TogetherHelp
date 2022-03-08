@@ -29,7 +29,7 @@ namespace BLL.Repository
 
             modelBuilder.Entity<Keyword>().Property(k => k.Text).IsRequired().HasMaxLength(32);
             modelBuilder.Entity<Keyword>().HasIndex(k => k.Text).IsUnique();
-            modelBuilder.Entity<Keyword>().HasMany(k => k.BelongArticle).WithMany(a => a.Keywords);
+            modelBuilder.Entity<Keyword>().HasMany(k => k.BelongTo).WithMany(a => a.Keywords);
 
             base.OnModelCreating(modelBuilder);
         }

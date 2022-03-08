@@ -19,5 +19,7 @@ namespace Global
         public const string Username = "username";
         public const string TargetPageURL = "TargetPageURL";
         public const string Captcha = "captcha";
+        public const string CommentContent = "commentContent";
+        public const string UrlReferrer = "urlReferrer";
     }
 }

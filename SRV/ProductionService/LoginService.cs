@@ -16,13 +16,13 @@ namespace SRV.ProductionService
 
         public LoginService()
         {
-            userRepository = new UserRepository(dbContext);
+            userRepository = new UserRepository(DbContext);
         }
 
         public LoginModel Authenticate(string username)
         {
             User user = userRepository.GetByName(username);
-            return mapper.Map<LoginModel>(user);
+            return Mapper.Map<LoginModel>(user);
         }
     }
 }

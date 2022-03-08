@@ -19,7 +19,7 @@ namespace SRV.ProductionService
 
         public RegisterService()
         {
-            userRepository = new UserRepository(dbContext);
+            userRepository = new UserRepository(DbContext);
         }
 
         public bool ValidateUserIsExists(string inviterName)
@@ -36,7 +36,7 @@ namespace SRV.ProductionService
 
         public int Register(RegisterModel model)
         {
-            User newUser = mapper.Map<User>(model);
+            User newUser = Mapper.Map<User>(model);
             newUser.Password = Utility.MD5Encrypt(newUser.Password);
             newUser.Inviter = userRepository.GetByName(model.Inviter);
             newUser.InvitationCode = Utility.GenerateRandomString(4);
@@ -50,7 +50,7 @@ namespace SRV.ProductionService
 
         public RegisterModel GetUserById(int id)
         {
-            return mapper.Map<RegisterModel>(userRepository.Find(id));
+            return Mapper.Map<RegisterModel>(userRepository.Find(id));
         }
     }
 }

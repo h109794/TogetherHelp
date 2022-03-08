@@ -10,7 +10,8 @@ namespace SRV.ViewModel
     {
         public RegisterModel User { get; set; }
         public DateTime PublishTime { get; set; }
-        public CommentModel Belong { get; set; }
+        public List<CommentModel> Replys { get; set; }
+        public string ReplyUsername { get; set; }
         public string Content { get; set; }
         public int Agree { get; set; }
         public int DisAgree { get; set; }

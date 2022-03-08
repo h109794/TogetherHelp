@@ -10,6 +10,7 @@ namespace BLL.Entity
     [Table("comment")]
     public class Comment : Content
     {
-        public Comment Belong { get; set; }
+        public List<Comment> Replys { get; set; }
+        public string ReplyUsername { get; set; }
     }
 }

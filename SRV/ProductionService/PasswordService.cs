@@ -17,7 +17,7 @@ namespace SRV.ProductionService
 
         public PasswordService()
         {
-            userRepository = new UserRepository(dbContext);
+            userRepository = new UserRepository(DbContext);
         }
 
         public bool ChangePassword(int userId, ChangePasswordModel pwdModel)

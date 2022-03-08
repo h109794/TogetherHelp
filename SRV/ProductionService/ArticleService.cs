@@ -17,14 +17,14 @@ namespace SRV.ProductionService
 
         public ArticleService()
         {
-            articleRepository = new ArticleRepository(dbContext);
+            articleRepository = new ArticleRepository(DbContext);
         }
 
         public List<ArticleModel> GetArticles(int pageIndex, int articleSize)
         {
             List<Article> articles = articleRepository.GetArticles(pageIndex, articleSize);
             List<ArticleModel> articleModels = new List<ArticleModel>();
-            mapper.Map(articles, articleModels);
+            Mapper.Map(articles, articleModels);
 
             return articleModels;
         }
@@ -32,7 +32,7 @@ namespace SRV.ProductionService
         public ArticleModel FindById(int id)
         {
             Article article = articleRepository.FindById(id); ;
-            return mapper.Map<ArticleModel>(article);
+            return Mapper.Map<ArticleModel>(article);
         }
 
         public int GetArticlesCount()
@@ -43,11 +43,11 @@ namespace SRV.ProductionService
         public void Publish(ArticleModel article, int userId)
         {
             Article newArticle = new Article();
-            mapper.Map(article, newArticle);
+            Mapper.Map(article, newArticle);
 
             if (article.KeywordsReceiver != null)
             {
-                KeywordRepository keywordRepository = new KeywordRepository(dbContext);
+                KeywordRepository keywordRepository = new KeywordRepository(DbContext);
 
                 foreach (var k in article.KeywordsReceiver.Split(','))
                 {

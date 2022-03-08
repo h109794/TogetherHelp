@@ -69,6 +69,10 @@
     <Compile Include="Migrations\202203010651421_UpdateArticleModel.designer.cs">
       <DependentUpon>202203010651421_UpdateArticleModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203060343501_AmendCommentEntityStruct.cs" />
+    <Compile Include="Migrations\202203060343501_AmendCommentEntityStruct.designer.cs">
+      <DependentUpon>202203060343501_AmendCommentEntityStruct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SqlDbContext.cs" />
@@ -97,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203010651421_UpdateArticleModel.resx">
       <DependentUpon>202203010651421_UpdateArticleModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203060343501_AmendCommentEntityStruct.resx">
+      <DependentUpon>202203060343501_AmendCommentEntityStruct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

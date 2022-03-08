@@ -22,8 +22,8 @@
     </div>
     <div class="form-group">
         <label><b>验证码：</b></label><br />
-        @Html.TextBoxFor(m => m.Captcha, new { @class = "form-control", style = "display:inline; width:110px" })
-        <img id="captcha-img" src="#" style="display:none" />
+        @Html.TextBoxFor(m => m.Captcha, new { @class = "form-control align-middle", style = "display:inline; width:110px" })
+        <img id="captcha-img" style="display:none" />
         <span>点击输入框显示</span>
         <a href="/Shared/GenerateCaptcha" id="replace-img" style="display:none">看不清楚</a>
         <br />

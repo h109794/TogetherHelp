@@ -1,0 +1,14 @@
+﻿@model SRV.ViewModel.CommentModel
+@{
+    Layout = null;
+}
+
+<span><i class="fa fa-user-circle" aria-hidden="true"></i><a href="#"> @Model.User.Username</a></span>
+<span style="float:right; font-size:13px; color:#777">@Model.PublishTime</span>
+
+<div style="margin-left:1rem">@Model.Content</div>
+<div style="text-align:right">
+    <a href="#" style="color:#2b542c"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> @Model.Agree</a>
+    <a href="#" style="margin-left:1rem; color:#777"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> @Model.DisAgree</a>
+</div>
+<hr />

@@ -23,11 +23,14 @@ namespace SRV.ProductionService
                 cfg.CreateMap<User, LoginModel>();
                 cfg.CreateMap<Article, ArticleModel>().ReverseMap();
                 cfg.CreateMap<Keyword, KeywordModel>();
+                cfg.CreateMap<Comment, CommentModel>()
+                    .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.Author))
+                    .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.Body));
             });
         }
 
         // 每个Action使用同一个DbContext
-        protected SqlDbContext dbContext
+        protected SqlDbContext DbContext
         {
             get
             {
@@ -40,6 +43,6 @@ namespace SRV.ProductionService
             }
         }
 
-        protected IMapper mapper { get { return config.CreateMapper(); } }
+        protected IMapper Mapper { get { return config.CreateMapper(); } }
     }
 }

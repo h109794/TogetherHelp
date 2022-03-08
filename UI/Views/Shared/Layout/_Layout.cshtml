@@ -10,12 +10,12 @@
     <link href="~/Content/Shared/userdefind.css" rel="stylesheet" />
     <style>
         a {
-            color: #337ab7
+            color: #337ab7;
         }
 
         .field-validation-error {
             color: #b94a48;
-            font-size: 14px
+            font-size: 14px;
         }
     </style>
 </head>
@@ -27,7 +27,6 @@
                     <a href="/Home/Index"><img src="~/images/logo-big.jpg" alt="一起帮Logo" /></a>
                     <span style="font-size:18px; font-weight:600; color:#777">一起帮</span>
                     <span style="color:#777">· 网络互助平台</span>
-                    <a id="message" href="#" style="color:lightblue; display:none"><i class="fa fa-bell" style="font-size:20px; margin-left:20px" aria-hidden="true"></i></a>
                 </div>
 
                 <ul class="navbar-nav" style="font-size:14px;">
@@ -60,16 +59,6 @@
                             {
                                 <li><a class="dropdown-item" href="~/Article/Publish"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 发布</a></li>
                             }
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown" style="margin-left:20px">
-                        <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#777">
-                            <i class="fa fa-mobile" aria-hidden="true"></i>&nbsp;APP下载
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-android" aria-hidden="true"></i> Android</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-apple" aria-hidden="true"></i> IOS（越狱）</a></li>
                         </ul>
                     </li>
 
@@ -139,13 +128,12 @@
             <a href="#">常见问题</a>&nbsp;|
             <a href="#">意见建议</a>&nbsp;|
             <a href="#">历史通知</a>&nbsp;|
-            <a href="#">源栈课堂</a>&nbsp;|
             <a href="#" style="color:#3c763d">友情捐赠</a>&nbsp;|
             <a href="#">诚邀合伙人</a>
         </div>
         <div style="text-align:right">
             <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">ICP备案查询</a>
-            <span style="margin-left:1rem">© @DateTime.UtcNow.Year - SourceStack</span>
+            <span style="margin-left:1rem">© @DateTime.Now.Year - SourceStack</span>
         </div>
     </footer>
 

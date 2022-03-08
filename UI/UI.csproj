@@ -299,6 +299,8 @@
     <Content Include="Views\Password\Index.cshtml" />
     <Content Include="Views\Article\Single.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\_Comments.cshtml" />
+    <Content Include="Views\Shared\PublishComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

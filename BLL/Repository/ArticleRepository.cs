@@ -14,14 +14,14 @@ namespace BLL.Repository
 
         public List<Article> GetArticles(int pageIndex, int articleSize)
         {
-            return sqlDbContext.Articles.Include(a => a.Author).Include(a => a.Keywords)
+            return sqlDbContext.Articles.Include(a => a.Author).Include(a => a.Keywords).Include(a => a.Comments)
                         .OrderByDescending(a => a.Id).Skip((pageIndex - 1) * articleSize).Take(articleSize).ToList();
         }
 
         public Article FindById(int id)
         {
             return sqlDbContext.Articles.Where(a => a.Id == id).Include(a => a.Author)
-                        .Include(a => a.Keywords).Include(a => a.Comments).SingleOrDefault();
+                        .Include(a => a.Keywords).Include(a => a.Comments.Select(c => c.Author)).SingleOrDefault();
         }
 
         public int GetArticlesCount()

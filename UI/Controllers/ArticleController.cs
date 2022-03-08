@@ -24,7 +24,7 @@ namespace UI.Controllers
 
         public ActionResult Index(int? id)
         {
-            const int articleSize = 2;
+            const int articleSize = 5;
             int pageIndex = (id is null) ? 1 : (int)id;
             List<ArticleModel> articles = articleService.GetArticles(pageIndex, articleSize);
 

@@ -3,8 +3,6 @@ using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UI.Filters;
@@ -21,6 +19,9 @@ namespace UI.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            // 记录原页面，登录后返回。避免外部域名访问UrlReferrer为空引发的异常
+            string urlReferrer = (Request.UrlReferrer is null) ? null : Request.UrlReferrer.ToString();
+            Response.Cookies.Add(new HttpCookie(Key.UrlReferrer, urlReferrer));
 
             return View();
         }
@@ -65,7 +66,11 @@ namespace UI.Controllers
                 return Redirect(Request.Cookies[Key.TargetPageURL].Value);
             }
 
-            return RedirectToAction("Index", "Home");
+            if (string.IsNullOrEmpty(Request.Cookies[Key.UrlReferrer].Value))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else { return Redirect(Request.Cookies[Key.UrlReferrer].Value); }
         }
 
         public ActionResult Logoff()

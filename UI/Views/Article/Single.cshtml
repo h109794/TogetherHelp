@@ -30,16 +30,9 @@
     <a href="#" style="margin-left:1rem; color:#777"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 踩：@Model.DisAgree</a>
 </div>
 
+<a name="comment-area"></a>
 <div style="margin-top:1rem">
-    @using (Html.BeginForm())
-    {
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="写下你的评论……">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary">发布</button>
-            </div>
-        </div>
-    }
+    @Html.EditorFor(m => m.Comments, "_Comments")
 </div>
 
 @section Keywords{
