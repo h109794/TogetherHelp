@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SRV.ViewModel
 {
     public class CommentModel
     {
+        public int Id { get; private set; }
         public RegisterModel User { get; set; }
         public DateTime PublishTime { get; set; }
         public List<CommentModel> Replys { get; set; }

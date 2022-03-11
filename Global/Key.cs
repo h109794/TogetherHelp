@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Global
+﻿namespace Global
 {
     public static class Key
     {
@@ -19,7 +13,10 @@ namespace Global
         public const string Username = "username";
         public const string TargetPageURL = "TargetPageURL";
         public const string Captcha = "captcha";
-        public const string CommentContent = "commentContent";
         public const string UrlReferrer = "urlReferrer";
+        public const string CommentContent = "commentContent";
+        public const string ReplyUsername = "replyUsername";
+        public const string ReplyCommentId = "replyCommentId";
+        public const string ReplyMainCommentId = "replyMainCommentId";
     }
 }

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SRV.ViewModel
 {
     public class LoginModel
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
         [Required(ErrorMessage = "* 用户名不能为空")]
         [MaxLength(32, ErrorMessage = "* 用户名长度不能超过32位")]
         public string Username { get; set; }

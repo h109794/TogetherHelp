@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace SRV.ViewModel
 {
     public class ArticleModel
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
         [Required(ErrorMessage = "* 标题不能为空")]
         [MaxLength(64, ErrorMessage = "* 标题长度不能超过64位")]
         public string Title { get; set; }

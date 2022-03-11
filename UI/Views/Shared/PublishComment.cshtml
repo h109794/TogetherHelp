@@ -1,14 +1,35 @@
 ﻿@model SRV.ViewModel.CommentModel
 @{
     Layout = null;
+    bool isReply = (Model.ReplyUsername is null) ? false : true;
+    string commentDivClass = isReply ? "reply-comment" : "main-comment";
+    string commentDivStyle = isReply ? "margin-left:1rem" : string.Empty;
 }
 
-<span><i class="fa fa-user-circle" aria-hidden="true"></i><a href="#"> @Model.User.Username</a></span>
-<span style="float:right; font-size:13px; color:#777">@Model.PublishTime</span>
+<div class="@commentDivClass" style="@commentDivStyle">
+    @Html.Hidden("Comments_id", Model.Id)
+    @if (isReply)
+    {<hr style="margin-top:0" />}
+    <span>
+        <i class="fa fa-user-circle" aria-hidden="true"></i>
+        <a href="#">@Model.User.Username</a>
+        @if (isReply)
+        {
+            <span style="color:#8590a6; margin:0 0.5rem 0 0.5rem">回复</span>
+            <a href="#">@Model.ReplyUsername</a>
+        }
+        <span style="float:right; font-size:13px; color:#777">@Model.PublishTime</span>
+    </span>
 
-<div style="margin-left:1rem">@Model.Content</div>
-<div style="text-align:right">
-    <a href="#" style="color:#2b542c"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> @Model.Agree</a>
-    <a href="#" style="margin-left:1rem; color:#777"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> @Model.DisAgree</a>
+    <div style="margin-left:1rem">@Model.Content</div>
+    <div style="text-align:right">
+        <a href="#" style="margin-right:1rem"><i class="fa fa-reply" aria-hidden="true" style="display:none"> 回复</i></a>
+        <a href="#" style="color:#2b542c"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> @Model.Agree</a>
+        <a href="#" style="margin-left:1rem; color:#777"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> @Model.DisAgree</a>
+    </div>
 </div>
-<hr />
+@if (!isReply)
+{
+    <div style="margin:1rem 0 1rem 1rem; border:0; border-left:1px solid rgba(0,0,0,.1)"></div>
+    <hr />
+}

@@ -42,14 +42,5 @@
     @Html.Partial("_SidebarKeywords")
 }
 
-<script type="text/javascript" src="~/Scripts/shared/wangEditor.min.js"></script>
-<script>
-    const E = window.wangEditor;
-    const editor = new E(document.getElementById("editor"));
-    editor.config.focus = false;
-    editor.config.zIndex = 0;
-    editor.config.onchange = function (html) {
-        document.getElementById("Body").value = html;
-    }
-    editor.create();
-</script>
+<script src="~/Scripts/shared/wangEditor.min.js" type="text/javascript"></script>
+<script src="~/Scripts/shared/textEditor.js" type="text/javascript"></script>

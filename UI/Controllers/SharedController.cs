@@ -2,10 +2,7 @@
 using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
-using System;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using UI.Filters;
 using UI.Helper;
@@ -31,7 +28,8 @@ namespace UI.Controllers
                 articleId = int.Parse(Request.UrlReferrer.Segments[3]);
             }
             ICommentService commentService = new CommentService();
-            CommentModel comment = commentService.Publish(articleId, CookieHelper.GetCurrentUserId(), Request.Form[Key.CommentContent]);
+            CommentModel comment = commentService.Publish(articleId, CookieHelper.GetCurrentUserId(), Request.Form[Key.CommentContent],
+                Request.Form[Key.ReplyUsername], Request.Form[Key.ReplyMainCommentId], Request.Form[Key.ReplyCommentId]);
 
             return View(comment);
         }

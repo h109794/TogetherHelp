@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticleRepository.cs" />
+    <Compile Include="CommentRepository.cs" />
     <Compile Include="KeywordRepository.cs" />
     <Compile Include="Migrations\202202220310142_CreateDatabase.cs" />
     <Compile Include="Migrations\202202220310142_CreateDatabase.designer.cs">

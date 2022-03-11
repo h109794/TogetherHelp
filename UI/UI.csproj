@@ -261,6 +261,10 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\shared\captcha.js" />
+    <Content Include="Scripts\shared\commentPublish.js" />
+    <Content Include="Scripts\shared\commentReply.js" />
+    <Content Include="Scripts\shared\keywordSelection.js" />
+    <Content Include="Scripts\shared\textEditor.js" />
     <Content Include="Scripts\shared\wangEditor.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />

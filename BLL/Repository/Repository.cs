@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-
-namespace BLL.Repository
+﻿namespace BLL.Repository
 {
     public class Repository<T> where T : Entity.Entity, new()
     {
@@ -28,7 +22,7 @@ namespace BLL.Repository
             sqlDbContext.Set<T>().Remove(entity);
         }
 
-        public T Find(int id)
+        public virtual T Find(int id)
         {
             return sqlDbContext.Set<T>().Find(id);
         }
