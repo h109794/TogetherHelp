@@ -2,7 +2,6 @@
 using BLL.Entity;
 using BLL.Repository;
 using Global;
-using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System.Web;
 
@@ -17,15 +16,17 @@ namespace SRV.ProductionService
         {
             config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<RegisterModel, User>().ReverseMap()
+                cfg.CreateMap<RegisterModel, User>()
                     .ForMember(dest => dest.Inviter, opt => opt.Ignore())
-                    .ForMember(dest => dest.InvitationCode, opt => opt.Ignore());
+                    .ForMember(dest => dest.InvitationCode, opt => opt.Ignore())
+                    .ReverseMap();
                 cfg.CreateMap<User, LoginModel>();
                 cfg.CreateMap<Article, ArticleModel>().ReverseMap();
                 cfg.CreateMap<Keyword, KeywordModel>();
                 cfg.CreateMap<Comment, CommentModel>()
                     .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.Author))
                     .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.Body));
+                cfg.CreateMap<PersonalData, PersonalDataModel>().ReverseMap();
             });
         }
 

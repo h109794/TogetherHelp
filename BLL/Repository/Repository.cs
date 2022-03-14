@@ -1,6 +1,6 @@
 ﻿namespace BLL.Repository
 {
-    public class Repository<T> where T : Entity.Entity, new()
+    public class Repository<T> where T : Entity.BaseEntity, new()
     {
         protected SqlDbContext sqlDbContext;
 

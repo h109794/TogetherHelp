@@ -2,11 +2,6 @@
 using BLL.Repository;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SRV.ProductionService
 {
@@ -14,10 +9,7 @@ namespace SRV.ProductionService
     {
         private readonly UserRepository userRepository;
 
-        public LoginService()
-        {
-            userRepository = new UserRepository(DbContext);
-        }
+        public LoginService() => userRepository = new UserRepository(DbContext);
 
         public LoginModel Authenticate(string username)
         {

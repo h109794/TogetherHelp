@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Entity
 {
     [Table("keyword")]
-    public class Keyword : Entity
+    public class Keyword : BaseEntity
     {
         public string Text { get; set; }
         public int UseCount { get; set; }

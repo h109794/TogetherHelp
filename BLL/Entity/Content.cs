@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Entity
 {
     [Table("content")]
-    public class Content : Entity
+    public class Content : BaseEntity
     {
         public User Author { get; set; }
         public string Body { get; set; }

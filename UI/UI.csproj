@@ -161,6 +161,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PasswordController.cs" />
+    <Compile Include="Controllers\PersonalDataController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Filters\ModelValidationFilterAttribute.cs" />
@@ -264,6 +265,7 @@
     <Content Include="Scripts\shared\commentPublish.js" />
     <Content Include="Scripts\shared\commentReply.js" />
     <Content Include="Scripts\shared\keywordSelection.js" />
+    <Content Include="Scripts\shared\personalDataGender.js" />
     <Content Include="Scripts\shared\textEditor.js" />
     <Content Include="Scripts\shared\wangEditor.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
@@ -305,6 +307,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_Comments.cshtml" />
     <Content Include="Views\Shared\PublishComment.cshtml" />
+    <Content Include="Views\PersonalData\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

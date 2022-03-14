@@ -1,15 +1,8 @@
-﻿using AutoMapper;
-using BLL.Entity;
+﻿using BLL.Entity;
 using BLL.Repository;
 using Global;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.ModelBinding;
 
 namespace SRV.ProductionService
 {
@@ -17,10 +10,7 @@ namespace SRV.ProductionService
     {
         private readonly UserRepository userRepository;
 
-        public RegisterService()
-        {
-            userRepository = new UserRepository(DbContext);
-        }
+        public RegisterService() => userRepository = new UserRepository(DbContext);
 
         public bool ValidateUserIsExists(string inviterName)
         {
@@ -40,6 +30,7 @@ namespace SRV.ProductionService
             newUser.Password = Utility.MD5Encrypt(newUser.Password);
             newUser.Inviter = userRepository.GetByName(model.Inviter);
             newUser.InvitationCode = Utility.GenerateRandomString(4);
+            newUser.PersonalData = new PersonalData();
             return userRepository.Save(newUser);
         }
 

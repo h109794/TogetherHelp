@@ -68,6 +68,7 @@
     <Compile Include="CommentModel.cs" />
     <Compile Include="KeywordModel.cs" />
     <Compile Include="LoginModel.cs" />
+    <Compile Include="PersonalDataModel.cs" />
     <Compile Include="RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

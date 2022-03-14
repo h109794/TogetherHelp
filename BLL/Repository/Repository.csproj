@@ -74,6 +74,10 @@
     <Compile Include="Migrations\202203060343501_AmendCommentEntityStruct.designer.cs">
       <DependentUpon>202203060343501_AmendCommentEntityStruct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203130844132_CreatePersonalDataObjectRealtion.cs" />
+    <Compile Include="Migrations\202203130844132_CreatePersonalDataObjectRealtion.designer.cs">
+      <DependentUpon>202203130844132_CreatePersonalDataObjectRealtion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SqlDbContext.cs" />
@@ -105,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203060343501_AmendCommentEntityStruct.resx">
       <DependentUpon>202203060343501_AmendCommentEntityStruct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203130844132_CreatePersonalDataObjectRealtion.resx">
+      <DependentUpon>202203130844132_CreatePersonalDataObjectRealtion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,10 +1,5 @@
 ﻿using BLL.Entity;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Repository
 {
@@ -19,6 +14,7 @@ namespace BLL.Repository
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Keyword> Keywords { get; set; }
+        public DbSet<PersonalData> PersonalDatas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -26,6 +22,7 @@ namespace BLL.Repository
             modelBuilder.Entity<User>().Property(u => u.Username).IsRequired().HasMaxLength(32);
             modelBuilder.Entity<User>().Property(u => u.Password).IsRequired();
             modelBuilder.Entity<User>().HasIndex(u => u.Username).IsUnique();
+            modelBuilder.Entity<User>().HasRequired(u => u.PersonalData).WithRequiredPrincipal(p => p.User);
 
             modelBuilder.Entity<Keyword>().Property(k => k.Text).IsRequired().HasMaxLength(32);
             modelBuilder.Entity<Keyword>().HasIndex(k => k.Text).IsUnique();

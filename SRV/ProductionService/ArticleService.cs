@@ -4,10 +4,7 @@ using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace SRV.ProductionService
 {
@@ -15,10 +12,7 @@ namespace SRV.ProductionService
     {
         private readonly ArticleRepository articleRepository;
 
-        public ArticleService()
-        {
-            articleRepository = new ArticleRepository(DbContext);
-        }
+        public ArticleService() => articleRepository = new ArticleRepository(DbContext);
 
         public List<ArticleModel> GetArticles(int pageIndex, int articleSize)
         {

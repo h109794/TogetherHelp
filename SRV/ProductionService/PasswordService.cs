@@ -3,11 +3,6 @@ using BLL.Repository;
 using Global;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SRV.ProductionService
 {
@@ -15,10 +10,7 @@ namespace SRV.ProductionService
     {
         private readonly UserRepository userRepository;
 
-        public PasswordService()
-        {
-            userRepository = new UserRepository(DbContext);
-        }
+        public PasswordService() => userRepository = new UserRepository(DbContext);
 
         public bool ChangePassword(int userId, ChangePasswordModel pwdModel)
         {

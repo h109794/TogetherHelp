@@ -10,7 +10,7 @@
 
 @using (Html.BeginForm())
 {
-    <div class="form-group" style="margin-top:10px">
+    <div class="form-group">
         <label><b>原密码：</b></label>
         @Html.PasswordFor(m => m.OriginalPwd, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.OriginalPwd)
@@ -20,16 +20,15 @@
         @Html.PasswordFor(m => m.NewPwd, new { @class = "form-control", placeholder = "不少于4个字符" })
         @Html.ValidationMessageFor(m => m.NewPwd)
     </div>
-    <div class="form-group" style="margin-top:10px">
+    <div class="form-group">
         <label><b>确认密码：</b></label>
-        @Html.PasswordFor(m => m.ConfirmNewPwd, new { @class = "form-control" })
+        @Html.PasswordFor(m => m.ConfirmNewPwd, new { @class = "form-control", placeholder = "和新密码相同" })
         @Html.ValidationMessageFor(m => m.ConfirmNewPwd)
     </div>
-
     <button type="submit" class="btn btn-outline-primary">提交</button>
 }
 
-@section    Description{
+@section Description{
     <ol>
         <li style="margin-bottom:10px">为保护账号安全，请先输入原密码进行身份验证。</li>
     </ol>
