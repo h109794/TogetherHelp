@@ -20,11 +20,16 @@ namespace SRV.ProductionService
                     .ForMember(dest => dest.Inviter, opt => opt.Ignore())
                     .ForMember(dest => dest.InvitationCode, opt => opt.Ignore())
                     .ReverseMap();
-                cfg.CreateMap<User, LoginModel>();
-                cfg.CreateMap<Article, ArticleModel>().ReverseMap();
+                cfg.CreateMap<User, LoginModel>()
+                    .ForMember(dest => dest.Nickname, opt => opt.MapFrom(src => src.PersonalData.Nickname));
+                cfg.CreateMap<Article, ArticleModel>()
+                    .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.PersonalData.Nickname))
+                    .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.PersonalData.Nickname))
+                    .ReverseMap();
                 cfg.CreateMap<Keyword, KeywordModel>();
                 cfg.CreateMap<Comment, CommentModel>()
-                    .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.Author))
+                    .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Author.PersonalData.Nickname))
+                    .ForMember(dest => dest.ReplyUsername, opt => opt.MapFrom(src => src.ReplyUser.PersonalData.Nickname))
                     .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.Body));
                 cfg.CreateMap<PersonalData, PersonalDataModel>().ReverseMap();
             });

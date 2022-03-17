@@ -43,7 +43,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown ml-3">
+                    <li class="nav-item dropdown ml-4">
                         <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-eye" aria-hidden="true"></i> 督促
                         </a>
@@ -53,7 +53,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown ml-3">
+                    <li class="nav-item dropdown ml-4">
                         <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;文章
                         </a>
@@ -68,24 +68,25 @@
 
                     @if (ViewData[Global.Key.HasLogin] != null)
                     {
-                        <li class="nav-item dropdown ml-3">
+                        <li class="nav-item dropdown ml-4">
                             <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#337ab7">
                                 <i class="fa fa-user-circle" aria-hidden="true"></i>
                                 @*防止因用户删除Cookie导致的异常*@
-                                @if (ViewData[Global.Key.Username] != null)
+                                @if (ViewData[Global.Key.Nickname] != null)
                                 {
-                                    @ViewData[Global.Key.Username]
+                                    @HttpUtility.UrlDecode(ViewData[Global.Key.Nickname].ToString())
                                 }
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
                                 <li><a class="dropdown-item" href="~/PersonalData/Index"><i class="fa fa-camera" aria-hidden="true"></i> 个人资料</a></li>
                                 <li><a class="dropdown-item" href="~/Password/Index"><i class="fa fa-key" aria-hidden="true"></i><span style="margin-left:5px">修改密码</span></a></li>
+                                <li><a class="dropdown-item" href="~/Email/Index"><i class="fa fa-envelope" aria-hidden="true"></i><span style="margin-left:6px">绑定邮箱</span></a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="~/Login/Logoff"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
                             </ul>
                         </li>
 
-                        <li class="nav-item dropdown ml-3">
+                        <li class="nav-item dropdown ml-4">
                             <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i> 后台
                             </a>
@@ -97,7 +98,7 @@
                     }
                     else
                     {
-                        <li class="nav-item dropdown ml-3">
+                        <li class="nav-item dropdown ml-4">
                             <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-user-secret" aria-hidden="true"></i> 未登录
                             </a>

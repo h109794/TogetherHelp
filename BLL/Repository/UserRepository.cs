@@ -1,5 +1,6 @@
 ﻿using BLL.Entity;
 using System.Linq;
+using System.Data.Entity;
 
 namespace BLL.Repository
 {
@@ -7,14 +8,19 @@ namespace BLL.Repository
     {
         public UserRepository(SqlDbContext sqlContext) : base(sqlContext) { }
 
-        public User GetByName(string name)
+        public User GetByUsername(string username)
         {
-            return sqlDbContext.Users.Where(m => m.Username == name).SingleOrDefault();
+            return sqlDbContext.Users.Where(m => m.Username == username).Include(m => m.PersonalData).SingleOrDefault();
         }
 
-        public PersonalData GetPersonalData(int id)
+        public User GetByNickname(string nicknama)
         {
-            return sqlDbContext.PersonalDatas.Find(id);
+            return sqlDbContext.Users.Where(m => m.PersonalData.Nickname == nicknama).SingleOrDefault();
+        }
+
+        public override User Find(int id)
+        {
+            return sqlDbContext.Users.Where(m => m.Id == id).Include(m => m.PersonalData).SingleOrDefault();
         }
 
         public void SavePersonalData(PersonalData newPersonalData)

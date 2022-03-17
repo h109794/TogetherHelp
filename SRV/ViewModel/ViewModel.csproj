@@ -66,6 +66,7 @@
     <Compile Include="ArticleModel.cs" />
     <Compile Include="ChangePasswordModel.cs" />
     <Compile Include="CommentModel.cs" />
+    <Compile Include="EmailModel.cs" />
     <Compile Include="KeywordModel.cs" />
     <Compile Include="LoginModel.cs" />
     <Compile Include="PersonalDataModel.cs" />

@@ -17,15 +17,12 @@ namespace SRV.ProductionService
         public List<ArticleModel> GetArticles(int pageIndex, int articleSize)
         {
             List<Article> articles = articleRepository.GetArticles(pageIndex, articleSize);
-            List<ArticleModel> articleModels = new List<ArticleModel>();
-            Mapper.Map(articles, articleModels);
-
-            return articleModels;
+            return Mapper.Map<List<ArticleModel>>(articles);
         }
 
         public ArticleModel FindById(int id)
         {
-            Article article = articleRepository.FindById(id); ;
+            Article article = articleRepository.FindById(id);
             return Mapper.Map<ArticleModel>(article);
         }
 

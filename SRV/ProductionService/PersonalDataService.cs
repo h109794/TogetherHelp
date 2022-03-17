@@ -14,19 +14,27 @@ namespace SRV.ProductionService
 
         public PersonalDataModel Get(int userId)
         {
-            PersonalData personalData = userRepository.GetPersonalData(userId);
-            PersonalDataModel personalDataModel = Mapper.Map<PersonalDataModel>(personalData);
+            User user = userRepository.Find(userId);
+            PersonalDataModel personalDataModel = Mapper.Map<PersonalDataModel>(user.PersonalData);
 
-            personalDataModel.Birthday = personalData.Birthday is null ? default :
-                ((DateTime)personalData.Birthday).ToString("yyyy-MM-dd");
+            personalDataModel.Username = user.Username;
+            personalDataModel.Birthday = user.PersonalData.Birthday is null ? default :
+                ((DateTime)user.PersonalData.Birthday).ToString("yyyy-MM-dd");
 
             return personalDataModel;
+        }
+
+        public bool ValidateNicknameExists(int userId, string nickname)
+        {
+            User user = userRepository.GetByNickname(nickname);
+            return (user != null && user.Id != userId);
         }
 
         public void Save(int userId, PersonalDataModel personalData)
         {
             PersonalData newPersonalData = Mapper.Map<PersonalData>(personalData);
-            newPersonalData.User = userRepository.Find(userId);
+            User user = userRepository.Find(userId);
+            newPersonalData.User = user;
             userRepository.SavePersonalData(newPersonalData);
         }
     }

@@ -1,13 +1,14 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SRV.ViewModel
 {
     public class PersonalDataModel
     {
+        public string Username { get; set; }
         // true:man false:woman
         public bool? Gender { get; set; }
-        [MaxLength(32, ErrorMessage = "* 用户名长度不能超过32位")]
+        [Required(ErrorMessage = "* 昵称不能为空")]
+        [StringLength(16, MinimumLength = 2, ErrorMessage = "* 昵称长度限制为2-16个字符")]
         public string Nickname { get; set; }
         public string Birthday { get; set; }
         [MaxLength(256, ErrorMessage = "* 个人简介不能超过256位")]

@@ -78,6 +78,10 @@
     <Compile Include="Migrations\202203130844132_CreatePersonalDataObjectRealtion.designer.cs">
       <DependentUpon>202203130844132_CreatePersonalDataObjectRealtion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203161240143_AmendCommentModelAndAddPersonalDataNicknameUniqueConstraint.cs" />
+    <Compile Include="Migrations\202203161240143_AmendCommentModelAndAddPersonalDataNicknameUniqueConstraint.designer.cs">
+      <DependentUpon>202203161240143_AmendCommentModelAndAddPersonalDataNicknameUniqueConstraint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SqlDbContext.cs" />
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203130844132_CreatePersonalDataObjectRealtion.resx">
       <DependentUpon>202203130844132_CreatePersonalDataObjectRealtion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203161240143_AmendCommentModelAndAddPersonalDataNicknameUniqueConstraint.resx">
+      <DependentUpon>202203161240143_AmendCommentModelAndAddPersonalDataNicknameUniqueConstraint.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

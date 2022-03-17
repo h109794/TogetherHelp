@@ -13,7 +13,7 @@ namespace SRV.ProductionService
 
         public LoginModel Authenticate(string username)
         {
-            User user = userRepository.GetByName(username);
+            User user = userRepository.GetByUsername(username);
             return Mapper.Map<LoginModel>(user);
         }
     }

@@ -3,8 +3,6 @@ using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UI.Filters;
@@ -59,7 +57,7 @@ namespace UI.Controllers
             cookie.Values.Add(Key.Pwd, Utility.MD5Encrypt(model.Password));
             Response.Cookies.Add(cookie);
             // 存放当前登录用户名
-            Response.Cookies.Add(new HttpCookie(Key.Username, model.Username));
+            Response.Cookies.Add(new HttpCookie(Key.Nickname, model.Username));
 
             // 跳转到未登录时的目标访问页面
             if (Request.Cookies[Key.TargetPageURL] != null)

@@ -1,0 +1,37 @@
+﻿@model SRV.ViewModel.EmailModel
+@{
+    ViewBag.Title = "邮箱 - 一起帮";
+    Layout = "~/Views/Shared/Layout/_UserRightLayout.cshtml";
+}
+
+@section Header{
+    <i class="fa fa-envelope" aria-hidden="true"></i> 绑定邮箱
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label><b>邮箱地址:</b></label>
+        <div class="input-group mb-3">
+            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">
+                    <span style="font-size:14px">发送</span>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label><b>验证码：</b></label>
+        @Html.TextBoxFor(m => m.VerificationCode, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-outline-primary">提交</button>
+}
+
+@section Description{
+    <ol>
+        <li class="mb-2">Email可用于找回密码、接收消息。</li>
+        <li>Email发送可能出现故障，如果长时间未收到验证邮件，请尝试再次发送。</li>
+    </ol>
+}

@@ -21,7 +21,7 @@
         if (xhr.readyState === xhr.DONE) {
             if (xhr.status === 200) {
                 var newComment = document.createElement("div");
-                newComment.setAttribute("margin-bottom", "1rem");
+                newComment.className = "mb-3";
                 newComment.innerHTML = xhr.responseText;
                 document.getElementById("comments").appendChild(newComment);
                 document.getElementById("comment-count").textContent++;

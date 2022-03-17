@@ -1,8 +1,4 @@
 ﻿using Global;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace UI.Filters
@@ -16,7 +12,7 @@ namespace UI.Filters
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
             filterContext.Controller.ViewData[Key.HasLogin] = filterContext.HttpContext.Request.Cookies[Key.LoginInfo];
-            filterContext.Controller.ViewData[Key.Username] = filterContext.HttpContext.Request.Cookies[Key.Username]?.Value;
+            filterContext.Controller.ViewData[Key.Nickname] = filterContext.HttpContext.Request.Cookies[Key.Nickname]?.Value;
         }
     }
 }

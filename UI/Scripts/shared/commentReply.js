@@ -54,7 +54,7 @@ document.getElementById("comments").addEventListener("click", function (e) {
         var replyButton = document.createElement("button");
         var replyUsername = replyBoxDiv.parentElement.getElementsByTagName('a')[0].textContent;
         var replyCommentId = replyBoxDiv.parentElement.firstElementChild.value;
-        var replyMainCommentId = (replyBoxDiv.parentElement.className !== "reply-comment") ?
+        var replyMainCommentId = (replyBoxDiv.parentElement.className !== "reply-comment ml-3") ?
             replyCommentId : replyBoxDiv.parentElement.parentElement.previousElementSibling.firstElementChild.value;
 
         replyBox.className = "input-group input-group-sm mb-3";
@@ -92,10 +92,10 @@ document.getElementById("comments").addEventListener("click", function (e) {
                         replyBoxButton.style.display = "none";
                         // 把返回的HTML文档转换成Node节点
                         var newReplyComment = new DOMParser().parseFromString(xhr.responseText, 'text/html').body.childNodes[0];
-                        if (newReplyComment.className === "main-comment") {
-                            replyBoxDiv.parentElement.nextElementSibling.appendChild(newReplyComment);
+                        if (replyBoxDiv.parentElement.className === "main-comment") {
+                            replyBoxDiv.parentElement.parentElement.getElementsByClassName("mt-3 mr-0 mb-0 ml-3")[0].appendChild(newReplyComment);
                         } else {
-                            replyBoxDiv.parentElement.parentElement.appendChild(newReplyComment);
+                            replyBoxDiv.parentElement.parentElement.parentElement.getElementsByClassName("mt-3 mr-0 mb-0 ml-3")[0].appendChild(newReplyComment);
                         }
                         // 绑定回复按钮显隐事件
                         newReplyComment.addEventListener("mouseenter", function () {

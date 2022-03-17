@@ -40,19 +40,17 @@ namespace UI.Controllers
             {
                 ModelState.AddModelError(nameof(model.Password), "* 用户名或密码错误");
             }// else nothing
-
             if (model.Captcha.ToLower() != Session[Key.Captcha].ToString().ToLower())
             {
                 ModelState.AddModelError(nameof(model.Captcha), "* 验证码错误");
             }
-
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
             HttpCookie loginCookie = new HttpCookie(Key.LoginInfo);
-            HttpCookie usernameCookie = new HttpCookie(Key.Username, model.Username);
+            HttpCookie usernameCookie = new HttpCookie(Key.Nickname, HttpUtility.UrlEncode(loginModel.Nickname));
             loginCookie.Values.Add(Key.Id, loginModel.Id.ToString());
             loginCookie.Values.Add(Key.Pwd, loginModel.Password);
             usernameCookie.Expires = loginCookie.Expires = model.RememberMe is true ? DateTime.Now.AddDays(14) : default;
@@ -76,7 +74,7 @@ namespace UI.Controllers
         public ActionResult Logoff()
         {
             Response.Cookies[Key.LoginInfo].Expires = DateTime.Now.AddDays(-1);
-            Response.Cookies[Key.Username].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies[Key.Nickname].Expires = DateTime.Now.AddDays(-1);
 
             return Redirect(Request.UrlReferrer.ToString() + "?logoff");
         }

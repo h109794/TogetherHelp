@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Global;
 
 namespace UI.Filters
@@ -15,7 +11,7 @@ namespace UI.Filters
 
             if (filterContext.HttpContext.Request.HttpMethod == Key.Post && !modelState.IsValid)
             {
-                filterContext.Controller.TempData[Key.ErrorMessages] = modelState;
+                filterContext.Controller.TempData.Add(Key.ErrorMessages, modelState);
                 filterContext.Result = new RedirectResult(filterContext.HttpContext.Request.Url.ToString());
                 return;
             }

@@ -16,7 +16,7 @@ namespace SRV.ViewModel
         public string Body { get; set; }
         [MaxLength(256, ErrorMessage = "* 摘要长度不能超过256位")]
         public string Abstract { get; set; }
-        public RegisterModel Author { get; set; }
+        public string AuthorName { get; set; }
         public DateTime PublishTime { get; set; }
         public int Agree { get; set; }
         public int DisAgree { get; set; }

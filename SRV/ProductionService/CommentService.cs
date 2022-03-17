@@ -3,7 +3,6 @@ using BLL.Repository;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
-using System.Collections.Generic;
 
 namespace SRV.ProductionService
 {
@@ -20,12 +19,13 @@ namespace SRV.ProductionService
             ArticleRepository articleRepository = new ArticleRepository(DbContext);
             CommentRepository commentRepository = new CommentRepository(DbContext);
 
+            User replyUser = userRepository.GetByNickname(replyUsername);
             Comment comment = new Comment()
             {
                 Author = userRepository.Find(userId),
                 Body = commentContent,
                 PublishTime = DateTime.Now,
-                ReplyUsername = (replyUsername is null) ? null : replyUsername,
+                ReplyUser = (replyUser is null) ? null : replyUser,
             };
             articleRepository.Find(articleId).Comments.Add(comment);
 
@@ -34,9 +34,9 @@ namespace SRV.ProductionService
                 Comment replyToComment = commentRepository.Find(id);
 
                 // 判断被回复评论和其用户Id是否匹配，避免数据库污染
-                if (replyMainCommentId == replyCommentId && replyToComment.Author.Username != replyUsername)
+                if (replyMainCommentId == replyCommentId && replyToComment.Author.PersonalData.Nickname != replyUsername)
                 { throw new ArgumentException(); }
-                else if (commentRepository.Find(int.Parse(replyCommentId)).Author.Username != replyUsername)
+                else if (commentRepository.Find(int.Parse(replyCommentId)).Author.PersonalData.Nickname != replyUsername)
                 { throw new ArgumentException(); }
                 else { replyToComment.Replys.Add(comment); }
             }// else nothing

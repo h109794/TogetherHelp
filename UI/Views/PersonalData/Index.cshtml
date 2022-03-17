@@ -10,19 +10,22 @@
 
 @using (Html.BeginForm())
 {
-    <div class="mb-3 text-center">
+    <div class="mb-4 text-center">
         <input type="file" accept="image/png, image/jpeg" hidden />
         <i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
     </div>
     <div class="mb-3">
-        <label><b>性别：</b></label><br />
+        <label><b>用户名：</b></label><span style="color:#777">@Model.Username</span>
+    </div>
+    <div class="mb-3">
+        <label><b>性别：</b></label>
         <label>@Html.RadioButtonFor(m => m.Gender, true, new { @class = "align-middle" }) 男</label>
         <label class="ml-3">@Html.RadioButtonFor(m => m.Gender, false, new { @class = "align-middle" }) 女</label>
         <label class="ml-3">@Html.RadioButtonFor(m => m.Gender, "", new { @class = "align-middle" }) 保密</label>
     </div>
     <div class="form-group">
         <label><b>昵称：</b></label>
-        @Html.TextBoxFor(m => m.Nickname, new { @class = "form-control", placeholder = "不超过32个字符" })
+        @Html.TextBoxFor(m => m.Nickname, new { @class = "form-control", placeholder = "2-16个字符" })
         @Html.ValidationMessageFor(m => m.Nickname)
     </div>
     <div class="form-group">
@@ -40,11 +43,11 @@
 
 @section Description{
     <ol>
-
-        <li style="margin-bottom:10px">头像仅接受jpeg/png格式，大小不超过256KB。</li>
-        <li style="margin-bottom:10px">头像图片的建议宽度为300像素左右，过宽或过窄可能造成失真。</li>
-        <li style="margin-bottom:10px">未设置昵将默认使用用户名。</li>
-        <li style="margin-bottom:10px">个人简介不超过256个字符。</li>
+        <li class="mb-3">头像仅接受jpeg/png格式，大小不超过256KB。</li>
+        <li class="mb-3">头像图片的建议宽度为300像素左右，过宽或过窄可能造成失真。</li>
+        <li class="mb-3">昵称长度为2-16个字符。</li>
+        <li class="mb-3">未设置昵将默认使用用户名。</li>
+        <li>个人简介不超过256个字符。</li>
     </ol>
 }
 
