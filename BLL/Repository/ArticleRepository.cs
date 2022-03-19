@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace BLL.Repository
 {
-    public class ArticleRepository : Repository<Article>
+    public class ArticleRepository : BaseRepository<Article>
     {
         public ArticleRepository(SqlDbContext sqlDbContext) : base(sqlDbContext) { }
 

@@ -4,46 +4,15 @@ using System.Text;
 using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Net.Mail;
 
 namespace Global
 {
     public static class Utility
     {
-        public static string MD5Encrypt(string encryptedStr)
-        {
-            byte[] bytes = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(encryptedStr));
-            StringBuilder sb = new StringBuilder();
-
-            foreach (var b in bytes)
-            {
-                sb.Append(b.ToString("X2"));
-            }
-
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// 生成四位随机字符串
-        /// </summary>
-        /// <returns></returns>
-        public static string GenerateRandomString(int length)
-        {
-            Random random = new Random();
-            char[] creatChar = new char[length];
-            string str = "qwertyuiopasdfghjklzxcvbnm789456123MNBVCXZLKJHGFDSAPOIUYTREWQ";
-            char[] randomChar = str.ToCharArray();
-
-            for (int i = 0; i < length; i++)
-            {
-                creatChar[i] = randomChar[random.Next(randomChar.Length)];
-            }
-
-            return new string(creatChar);
-        }
-
         public class Captcha
         {
-            private static Random random = new Random();
+            private static readonly Random random = new Random();
 
             public static MemoryStream GenerateCaptcha(out string verificationCode)
             {
@@ -87,15 +56,86 @@ namespace Global
 
             private static Point GenerateRandomPoint()
             {
-                Point point = new Point();
-                point.X = random.Next(50);
-                point.Y = random.Next(30);
+                Point point = new Point()
+                {
+                    X = random.Next(50),
+                    Y = random.Next(30)
+                };
                 return point;
             }
 
             private static Color GenerateRandomColor()
             {
                 return Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
+            }
+        }
+
+        public static string MD5Encrypt(string encryptedStr)
+        {
+            byte[] bytes = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(encryptedStr));
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var b in bytes)
+            {
+                sb.Append(b.ToString("X2"));
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 生成指定位数随机字符串
+        /// </summary>
+        /// <returns></returns>
+        public static string GenerateRandomString(int length)
+        {
+            Random random = new Random();
+            char[] creatChar = new char[length];
+            string str = "qwertyuiopasdfghjklzxcvbnm789456123MNBVCXZLKJHGFDSAPOIUYTREWQ";
+            char[] randomChar = str.ToCharArray();
+
+            for (int i = 0; i < length; i++)
+            {
+                creatChar[i] = randomChar[random.Next(randomChar.Length)];
+            }
+
+            return new string(creatChar);
+        }
+
+        public static void SendEmail(string mailTo, string mailSubject, string mailContent)
+        {
+            // 设置发件邮箱信息
+            string smtpServer = "smtp.qq.com";
+            string mailForm = "ylhework@foxmail.com";
+            string authorizationCode = "bbdltwdwbsanbdcf";
+
+            // 设置发送邮件
+            MailMessage mailMessage = new MailMessage(mailForm, mailTo)// 发件人和收件人
+            {
+                Subject = mailSubject,
+                Body = mailContent,
+                BodyEncoding = Encoding.UTF8,
+                IsBodyHtml = true,
+                Priority = MailPriority.Normal,
+            };
+
+            // 邮件服务设置
+            SmtpClient smtpClient = new SmtpClient(smtpServer)// 指定smtp服务器
+            {
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                EnableSsl = true,
+                UseDefaultCredentials = false,
+                Credentials = new System.Net.NetworkCredential(mailForm, authorizationCode)
+            };
+
+            try
+            {
+                smtpClient.Send(mailMessage);
+            }
+            finally
+            {
+                smtpClient.Dispose();
+                mailMessage.Dispose();
             }
         }
     }

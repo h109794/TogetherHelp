@@ -32,6 +32,7 @@ namespace SRV.ProductionService
                     .ForMember(dest => dest.ReplyUsername, opt => opt.MapFrom(src => src.ReplyUser.PersonalData.Nickname))
                     .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.Body));
                 cfg.CreateMap<PersonalData, PersonalDataModel>().ReverseMap();
+                cfg.CreateMap<Contact, EmailModel>();
             });
         }
 

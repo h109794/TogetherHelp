@@ -10,5 +10,6 @@ namespace BLL.Entity
         public string Username { get; set; }
         public string Password { get; set; }
         public PersonalData PersonalData { get; set; }
+        public Contact Contact { get; set; }
     }
 }

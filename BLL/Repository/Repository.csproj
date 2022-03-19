@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="ArticleRepository.cs" />
     <Compile Include="CommentRepository.cs" />
+    <Compile Include="ContactRepository.cs" />
     <Compile Include="KeywordRepository.cs" />
     <Compile Include="Migrations\202202220310142_CreateDatabase.cs" />
     <Compile Include="Migrations\202202220310142_CreateDatabase.designer.cs">
@@ -82,8 +83,12 @@
     <Compile Include="Migrations\202203161240143_AmendCommentModelAndAddPersonalDataNicknameUniqueConstraint.designer.cs">
       <DependentUpon>202203161240143_AmendCommentModelAndAddPersonalDataNicknameUniqueConstraint.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203180212588_AddContactEmailModel.cs" />
+    <Compile Include="Migrations\202203180212588_AddContactEmailModel.designer.cs">
+      <DependentUpon>202203180212588_AddContactEmailModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Repository.cs" />
+    <Compile Include="BaseRepository.cs" />
     <Compile Include="SqlDbContext.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203161240143_AmendCommentModelAndAddPersonalDataNicknameUniqueConstraint.resx">
       <DependentUpon>202203161240143_AmendCommentModelAndAddPersonalDataNicknameUniqueConstraint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203180212588_AddContactEmailModel.resx">
+      <DependentUpon>202203180212588_AddContactEmailModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

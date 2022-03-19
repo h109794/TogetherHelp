@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace BLL.Repository
 {
-    public class CommentRepository : Repository<Comment>
+    public class CommentRepository : BaseRepository<Comment>
     {
         public CommentRepository(SqlDbContext sqlDbContext) : base(sqlDbContext) { }
 

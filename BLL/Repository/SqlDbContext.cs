@@ -15,6 +15,7 @@ namespace BLL.Repository
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Keyword> Keywords { get; set; }
         public DbSet<PersonalData> PersonalDatas { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -23,6 +24,7 @@ namespace BLL.Repository
             modelBuilder.Entity<User>().Property(u => u.Password).IsRequired();
             modelBuilder.Entity<User>().HasIndex(u => u.Username).IsUnique();
             modelBuilder.Entity<User>().HasRequired(u => u.PersonalData).WithRequiredPrincipal(p => p.User);
+            modelBuilder.Entity<User>().HasOptional(u => u.Contact).WithRequired(c => c.User);
 
             modelBuilder.Entity<Keyword>().Property(k => k.Text).IsRequired().HasMaxLength(32);
             modelBuilder.Entity<Keyword>().HasIndex(k => k.Text).IsUnique();

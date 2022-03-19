@@ -18,5 +18,6 @@
         public const string ReplyUsername = "replyUsername";
         public const string ReplyCommentId = "replyCommentId";
         public const string ReplyMainCommentId = "replyMainCommentId";
+        public const string EmailAddress = "emailAddress";
     }
 }

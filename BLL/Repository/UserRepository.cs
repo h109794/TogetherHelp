@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace BLL.Repository
 {
-    public class UserRepository : Repository<User>
+    public class UserRepository : BaseRepository<User>
     {
         public UserRepository(SqlDbContext sqlContext) : base(sqlContext) { }
 

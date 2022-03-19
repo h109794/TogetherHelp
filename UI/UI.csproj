@@ -262,6 +262,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\shared\bindEmailScript.js" />
     <Content Include="Scripts\shared\captcha.js" />
     <Content Include="Scripts\shared\commentPublish.js" />
     <Content Include="Scripts\shared\commentReply.js" />

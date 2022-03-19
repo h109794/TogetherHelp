@@ -1,13 +1,9 @@
 ﻿using BLL.Entity;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Repository
 {
-    public class KeywordRepository : Repository<Keyword>
+    public class KeywordRepository : BaseRepository<Keyword>
     {
         public KeywordRepository(SqlDbContext sqlDbContext) : base(sqlDbContext) { }
 
