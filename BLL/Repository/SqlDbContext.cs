@@ -33,6 +33,9 @@ namespace BLL.Repository
             modelBuilder.Entity<PersonalData>().Property(p => p.Nickname).HasMaxLength(16);
             modelBuilder.Entity<PersonalData>().HasIndex(p => p.Nickname).IsUnique();
 
+            modelBuilder.Entity<Contact>().Property(c => c.EmailAddress).HasMaxLength(64);
+            modelBuilder.Entity<Contact>().HasIndex(c => c.EmailAddress).IsUnique();
+
             base.OnModelCreating(modelBuilder);
         }
     }

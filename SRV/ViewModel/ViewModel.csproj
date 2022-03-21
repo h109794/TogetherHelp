@@ -72,6 +72,7 @@
     <Compile Include="PersonalDataModel.cs" />
     <Compile Include="RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResetPasswordModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

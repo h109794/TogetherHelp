@@ -15,10 +15,7 @@ namespace UI.Controllers
     {
         private readonly IArticleService articleService;
 
-        public ArticleController()
-        {
-            articleService = new ArticleService();
-        }
+        public ArticleController() => articleService = new ArticleService();
 
         public ActionResult Index(int? id)
         {
@@ -40,7 +37,7 @@ namespace UI.Controllers
 
             if (article is null)
             {
-                return Redirect("~/Shared/Error");
+                return Redirect("~/shared/error");
             }
             return View(article);
         }

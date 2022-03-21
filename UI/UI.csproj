@@ -262,7 +262,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\shared\bindEmailScript.js" />
+    <Content Include="Scripts\shared\email.js" />
     <Content Include="Scripts\shared\captcha.js" />
     <Content Include="Scripts\shared\commentPublish.js" />
     <Content Include="Scripts\shared\commentReply.js" />
@@ -304,13 +304,15 @@
     <Content Include="Views\Article\Publish.cshtml" />
     <Content Include="Views\Shared\Layout\_InformationLayout.cshtml" />
     <Content Include="Views\Shared\_SelectKeywords.cshtml" />
-    <Content Include="Views\Password\Index.cshtml" />
+    <Content Include="Views\Password\Change.cshtml" />
     <Content Include="Views\Article\Single.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_Comments.cshtml" />
     <Content Include="Views\Shared\PublishComment.cshtml" />
     <Content Include="Views\PersonalData\Index.cshtml" />
     <Content Include="Views\Email\Index.cshtml" />
+    <Content Include="Views\Password\Verify.cshtml" />
+    <Content Include="Views\Password\Reset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

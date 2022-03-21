@@ -2,15 +2,10 @@
 var verificationBox = document.getElementById("VerificationCode");
 var sendButton = document.getElementById("send");
 var emailIcon = sendButton.getElementsByClassName("fa fa-envelope-o")[0];
-var bindingButton = document.getElementById("bind");
+var submitButton = document.getElementById("submit");
 var changeButton = document.getElementById("change");
 var bindingDiv = document.getElementById("binding-div");
 var countDown = 0;
-
-if (emailAddressBox.disabled === true) {
-    sendButton.disabled = true;
-    bindingButton.disabled = true;
-}
 
 // 更换邮箱，开放绑定框
 if (changeButton !== null) {
@@ -38,9 +33,9 @@ emailAddressBox.addEventListener("keyup", function () {
 });
 verificationBox.addEventListener("keyup", function () {
     if (verificationBox.value.length === 6) {
-        bindingButton.disabled = false;
+        submitButton.disabled = false;
     } else {
-        bindingButton.disabled = true;
+        submitButton.disabled = true;
     }
 });
 
@@ -58,14 +53,17 @@ sendButton.addEventListener("click", function () {
     sendButton.disabled = true;
     xhr.onreadystatechange = function () {
         if (xhr.readyState === xhr.DONE) {
-            if (xhr.status === 200 && xhr.response === 'false') {
-                alert("该邮箱已注册。");
-                sendButton.disabled = false;
-            } else if (xhr.status !== 200) {
-                alert("邮件发送失败，请检查邮箱地址并尝试再次发送。");
-                sendButton.disabled = false;
-            } else {
-                sendBtnCountDown();
+            if (xhr.status === 200) {
+                var request = JSON.parse(xhr.response).email;
+                if (request === "activation") {
+                    alert("该邮箱已注册。");
+                } else if (request === "none") {
+                    alert("该邮箱未注册。");
+                } else if (request === "succeed") {
+                    sendBtnCountDown();
+                } else {
+                    alert("邮件发送失败，请检查邮箱地址并尝试再次发送。");
+                }
             }
         }
     }

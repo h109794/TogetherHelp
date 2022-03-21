@@ -1,0 +1,30 @@
+﻿@model SRV.ViewModel.ResetPasswordModel
+@{
+    ViewBag.Title = "重置密码 - 一起帮";
+    Layout = "~/Views/Shared/Layout/_UserRightLayout.cshtml";
+}
+
+@section Header{
+    <i class="fa fa-unlock" aria-hidden="true"></i> 重置密码
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label><b>新密码：</b></label>
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "不少于四个字符" })
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    <div class="form-group">
+        <label><b>确认密码：</b></label>
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "和新密码相同" })
+        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+    </div>
+    <button type="submit" class="btn btn-outline-primary btn-block">提交</button>
+}
+
+@section Description{
+    <ul>
+        <li>新密码不能与原密码相同。</li>
+    </ul>
+}

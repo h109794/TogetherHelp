@@ -87,6 +87,10 @@
     <Compile Include="Migrations\202203180212588_AddContactEmailModel.designer.cs">
       <DependentUpon>202203180212588_AddContactEmailModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203191232158_AddContactEmailUniqueConstraint.cs" />
+    <Compile Include="Migrations\202203191232158_AddContactEmailUniqueConstraint.designer.cs">
+      <DependentUpon>202203191232158_AddContactEmailUniqueConstraint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="SqlDbContext.cs" />
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203180212588_AddContactEmailModel.resx">
       <DependentUpon>202203180212588_AddContactEmailModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203191232158_AddContactEmailUniqueConstraint.resx">
+      <DependentUpon>202203191232158_AddContactEmailUniqueConstraint.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

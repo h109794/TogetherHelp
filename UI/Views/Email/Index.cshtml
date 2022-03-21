@@ -13,7 +13,7 @@
 @using (Html.BeginForm())
 {
     <div class="form-group">
-        <label><b>邮箱地址:</b></label>
+        <label><b>邮箱地址：</b></label>
         @if (hasEmail)
         {
             @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control is-valid", disabled = string.Empty })
@@ -37,7 +37,7 @@
             </div>
         </div>
         @Html.ValidationMessageFor(m => m.VerificationCode)
-        <button id="bind" type="submit" class="btn btn-outline-primary mt-3 btn-block" disabled>提交</button>
+        <button id="submit" type="submit" class="btn btn-outline-primary mt-3 btn-block" disabled>提交</button>
     </div>
 
     if (hasEmail)
@@ -47,10 +47,10 @@
 }
 
 @section Description{
-    <ol>
+    <ul>
         <li class="mb-2">Email可用于找回密码、接收消息。</li>
         <li>如果长时间未收到验证邮件，请检查邮箱地址是否正确并尝试再次发送。</li>
-    </ol>
+    </ul>
 }
 
-<script src="~/Scripts/shared/bindEmailScript.js" type="text/javascript"></script>
+<script src="~/Scripts/shared/email.js" type="text/javascript"></script>

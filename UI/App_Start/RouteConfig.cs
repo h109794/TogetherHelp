@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace UI
@@ -15,14 +11,14 @@ namespace UI
 
             routes.MapRoute(
                 name: "ArticleList",
-                url: "Article/Page/{id}",
+                url: "article/page/{id}",
                 defaults: new { controller = "Article", action = "Index", id = UrlParameter.Optional },
                 constraints: new { id = @"\d*" }
             );
 
             routes.MapRoute(
                 name: "ArticleSingle",
-                url: "Article/{id}",
+                url: "article/{id}",
                 defaults: new { Controller = "Article", action = "Single" },
                 constraints: new { id = @"\d*" }
             );

@@ -29,10 +29,15 @@ namespace SRV.ProductionService
             else { contact.EmailAddress = emailAddress; }
         }
 
-        public bool ValidateEmailActivation(int id, string emailAddress)
+        public bool ValidateEmailExists(string emailAddress)
         {
-            string email = contactRepository.Get(id)?.EmailAddress;
-            return email == emailAddress;
+            return !(contactRepository.GetByEmail(emailAddress) is null);
+        }
+
+        public string GetEmailUserNickname(string emailAddress)
+        {
+            int id = contactRepository.GetByEmail(emailAddress).Id;
+            return new UserRepository(DbContext).Find(id).PersonalData.Nickname;
         }
     }
 }

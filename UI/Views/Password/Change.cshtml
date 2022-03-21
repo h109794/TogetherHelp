@@ -25,11 +25,11 @@
         @Html.PasswordFor(m => m.ConfirmNewPwd, new { @class = "form-control", placeholder = "和新密码相同" })
         @Html.ValidationMessageFor(m => m.ConfirmNewPwd)
     </div>
-    <button type="submit" class="btn btn-outline-primary btn-block">提交</button>
+    <button type="submit" class="btn btn-outline-primary btn-block">确认修改</button>
 }
 
 @section Description{
-    <ol>
+    <ul>
         <li>为保护账号安全，请先输入原密码进行身份验证。</li>
-    </ol>
+    </ul>
 }

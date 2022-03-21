@@ -5,22 +5,22 @@
 }
 
 @section Header{
-    <i class="fa fa-registered" aria-hidden="true"></i>&nbsp;注册
+    <i class="fa fa-registered" aria-hidden="true"></i> 注册
 }
 
 @using (Html.BeginForm())
 {
     <div style="background:rgb(232, 240, 254); border:2px dashed #eee; border-radius:4px 5px; padding:10px">
         <div class="text-right" style="font-size:14px">
-            <a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp;为什么需要邀请</a>
+            <a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i> 为什么需要邀请</a>
         </div>
         <div class="form-group">
-            <label><b>邀请人：（*必填，<a href="#">没有邀请人</a>）</b></label>
+            <label><b>邀请人：（必填，<a href="#">没有邀请人</a>）</b></label>
             @Html.TextBoxFor(m => m.Inviter, new { @class = "form-control", placeholder = "邀请人昵称" })
             @Html.ValidationMessageFor(m => m.Inviter)
         </div>
         <div class="form-group">
-            <label><b>邀请码：（*必填）</b></label>
+            <label><b>邀请码：（必填）</b></label>
             @Html.TextBoxFor(m => m.InvitationCode, new { @class = "form-control", placeholder = "4位字符" })
             @Html.ValidationMessageFor(m => m.InvitationCode)
         </div>
@@ -43,10 +43,10 @@
     </div>
     <div class="form-group">
         <label><b>验证码：</b></label><br />
-        @Html.TextBoxFor(m => m.Captcha, new { @class = "form-control align-middle d-inline", style = "width:110px" })
-        <img id="captcha-img" style="display:none" />
+        @Html.TextBoxFor(m => m.Captcha, new { @class = "form-control align-middle d-inline w-25" })
+        <img id="captcha-img" class="d-none" />
         <span>点击输入框显示</span>
-        <a href="/Shared/GenerateCaptcha" id="replace-img" style="display:none">看不清楚</a>
+        <a href="/Shared/GenerateCaptcha" id="replace-img" class="d-none">看不清楚</a>
         <br />
         @Html.ValidationMessageFor(m => m.Captcha)
     </div>
@@ -55,18 +55,18 @@
     <div>
         <button type="submit" class="btn btn-primary btn-sm">提交</button>
         <button type="reset" class="btn btn-secondary btn-sm">重置</button>
-        <a href="/Login/Index" class="float-right"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;登录</a>
+        <a href="/login" class="float-right"><i class="fa fa-sign-in" aria-hidden="true"></i> 登录</a>
     </div>
 }
 
 @section Description{
-    <ol>
+    <ul>
         <li class="mb-2">我们希望通过一起帮<b style="color:#337ab7">直接解决</b>大家在<span style="color:#337ab7">电脑操作/软件使用/编程学习</span>等方面的<b style="color:#337ab7">具体问题</b>。</li>
         <li class="mb-2">随着网络远程技术的发展<span style="color:#6c757d!important">（如QQ桌面共享）</span>，当我们再遇到上述问题时，能<span style="color:#337ab7">直接远程给予帮助</span>。</li>
         <li class="mb-2">你也可以在熟悉的领域去<span style="color:#337ab7">帮助别人</span>，由此形成我们这个“你帮我我帮他他帮你，大家一起帮”的网上互助社区平台。</li>
         <li class="mb-2">为此我们还引入了<span style="color:rgba(203,180,26,1)">帮帮币</span>概念，以记录和衡量社区成员的收获和贡献。</li>
         <li>赶快加入我们，赚取帮帮币吧！</li>
-    </ol>
+    </ul>
 }
 
 <script src="~/Scripts/shared/captcha.js" type="text/javascript"></script>

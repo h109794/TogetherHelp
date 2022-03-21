@@ -5,12 +5,12 @@ document.getElementById("replace-img").addEventListener("click", replaceImage)
 
 function showCaptcha() {
     var image = document.getElementById("captcha-img");
-    if (image.style.display === 'none') {
+    if (image.className === "d-none") {
         image.setAttribute("src", "/Shared/GenerateCaptcha");
-        image.style.display = '';
+        image.className = '';
         // 隐藏生成验证码提示语
-        image.nextElementSibling.style.display = "none";
-        document.getElementById("replace-img").style.display = '';
+        image.nextElementSibling.className = "d-none";
+        document.getElementById("replace-img").className = '';
     }
 }
 
