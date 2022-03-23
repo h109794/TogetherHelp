@@ -4,19 +4,19 @@ var replyComments = document.getElementsByClassName("reply-comment");
 
 for (let i = 0; i < mainComments.length; i++) {
     mainComments[i].addEventListener("mouseenter", function () {
-        this.getElementsByClassName("fa fa-reply")[0].style.display = '';
+        this.getElementsByClassName("fa fa-reply d-none")[0].className = "fa fa-reply";
     });
     mainComments[i].addEventListener("mouseleave", function () {
-        this.getElementsByClassName("fa fa-reply")[0].style.display = 'none';
+        this.getElementsByClassName("fa fa-reply")[0].className = "fa fa-reply d-none";
     });
 }
 
 for (let i = 0; i < replyComments.length; i++) {
     replyComments[i].addEventListener("mouseenter", function () {
-        this.getElementsByClassName("fa fa-reply")[0].style.display = '';
+        this.getElementsByClassName("fa fa-reply d-none")[0].className = "fa fa-reply";
     });
     replyComments[i].addEventListener("mouseleave", function () {
-        this.getElementsByClassName("fa fa-reply")[0].style.display = 'none';
+        this.getElementsByClassName("fa fa-reply")[0].className = "fa fa-reply d-none";
     });
 }
 

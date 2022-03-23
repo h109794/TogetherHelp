@@ -8,3 +8,27 @@
     padding: 0px 7px;
     margin-right: 5px;
 }
+
+.fs-13 {
+    font-size: 13px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.clr-777 {
+    color: #777;
+}
+
+.clr-2b542c {
+    color: #2b542c;
+}
+
+.left-hr {
+    border-left: 1px solid rgba(0,0,0,.1);
+}

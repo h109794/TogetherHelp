@@ -5,9 +5,7 @@ namespace UI.Filters
 {
     public class ValidateLoginFilter : IActionFilter
     {
-        public void OnActionExecuted(ActionExecutedContext filterContext)
-        {
-        }
+        public void OnActionExecuted(ActionExecutedContext filterContext) { }
 
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {

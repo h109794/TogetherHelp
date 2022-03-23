@@ -6,9 +6,7 @@ namespace UI.Filters
 {
     public class NeedLoginFilterAttribute : FilterAttribute, IActionFilter
     {
-        public void OnActionExecuted(ActionExecutedContext filterContext)
-        {
-        }
+        public void OnActionExecuted(ActionExecutedContext filterContext) { }
 
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {

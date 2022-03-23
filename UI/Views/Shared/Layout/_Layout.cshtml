@@ -29,16 +29,16 @@
             <div class="container" style="height:40px">
                 <div>
                     <a href="/"><img src="~/images/logo-big.jpg" alt="一起帮Logo" /></a>
-                    <span style="font-size:18px; font-weight:600; color:#777">一起帮</span>
-                    <span style="color:#777">· 网络互助平台</span>
+                    <span class="fs-18 clr-777" style="font-weight:600">一起帮</span>
+                    <span class="clr-777">· 网络互助平台</span>
                 </div>
 
-                <ul class="navbar-nav" style="font-size:14px;">
+                <ul class="navbar-nav fs-14">
                     <li class="nav-item dropdown">
                         <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-question-circle" aria-hidden="true"></i> 求助
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                        <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
                             <li><a class="dropdown-item" href="#"><i class="fa fa-list" aria-hidden="true"></i> 列表</a></li>
                         </ul>
                     </li>
@@ -47,7 +47,7 @@
                         <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-eye" aria-hidden="true"></i> 督促
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                        <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
                             <li><a class="dropdown-item" href="#"><i class="fa fa-list" aria-hidden="true"></i> 我的目标</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fa fa-list" aria-hidden="true"></i> 我的督促</a></li>
                         </ul>
@@ -57,7 +57,7 @@
                         <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-file-text-o" aria-hidden="true"></i> 文章
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                        <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
                             <li><a class="dropdown-item" href="~/article/page/1"><i class="fa fa-list" aria-hidden="true"></i> 列表</a></li>
                             @if (ViewData[Global.Key.HasLogin] != null)
                             {
@@ -77,7 +77,7 @@
                                     @HttpUtility.UrlDecode(ViewData[Global.Key.Nickname].ToString())
                                 }
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                            <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
                                 <li><a class="dropdown-item" href="~/personaldata"><i class="fa fa-camera" aria-hidden="true"></i> 个人资料</a></li>
                                 <li><a class="dropdown-item" href="~/password/change"><i class="fa fa-key" aria-hidden="true"></i><span style="margin-left:5px">修改密码</span></a></li>
                                 <li><a class="dropdown-item" href="~/email"><i class="fa fa-envelope" aria-hidden="true"></i><span style="margin-left:6px">绑定邮箱</span></a></li>
@@ -90,7 +90,7 @@
                             <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i> 后台
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                            <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
                                 <li><a class="dropdown-item" href="#"><i class="fa fa-link" aria-hidden="true"></i> 联系方式</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fa fa-link" aria-hidden="true"></i> 侧边栏</a></li>
                             </ul>
@@ -102,7 +102,7 @@
                             <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-user-secret" aria-hidden="true"></i> 未登录
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="font-size:14px">
+                            <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
                                 <li><a class="dropdown-item" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><span style="margin-left:6px">登录</span></a></li>
                                 <li><a class="dropdown-item" href="/register"><i class="fa fa-registered" aria-hidden="true"></i> 注册</a></li>
                                 <li><a class="dropdown-item" href="/password/verify"><i class="fa fa-lock fa" aria-hidden="true" style="margin-left:2px; font-size:17px"></i><span style="margin-left:6px">忘记密码</span></a></li>
@@ -113,9 +113,9 @@
             </div>
         </nav>
 
-        <div class="container" style="background-color:#eee; font-size:14px; height:30px; margin-top:55px">
+        <div class="container fs-14" style="background-color:#eee; height:30px; margin-top:55px">
             <i class="fa fa-calendar" aria-hidden="true" style="line-height:30px"></i>
-            消息通知栏
+            未实现的消息通知，考虑移除。
             <a href="#" class="pull-right" style="line-height:30px">
                 <i class="fa fa-hand-o-right" aria-hidden="true"></i> 全部消息
             </a>
@@ -126,7 +126,7 @@
         @RenderBody()
     </main>
 
-    <footer class="container" style="margin-bottom:50px; font-size:14px">
+    <footer class="container fs-14" style="margin-bottom:50px">
         <hr />
         <div>
             <a href="#">关于我们</a> |

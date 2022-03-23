@@ -35,9 +35,12 @@ namespace UI.Controllers
         {
             ArticleModel article = articleService.FindById(id);
 
+            // 没有对应文章返回404页面
             if (article is null)
             {
-                return Redirect("~/shared/error");
+                Response.StatusCode = 404;
+                Response.WriteFile("~/Views/Shared/NotFound.html");
+                return new EmptyResult();
             }
             return View(article);
         }

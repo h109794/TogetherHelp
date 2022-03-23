@@ -1,0 +1,39 @@
+﻿.error-page {
+    display: block;
+}
+
+.error-page-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 180px;
+}
+
+.error-page-text {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 384px;
+}
+
+.error-page-title {
+    font-size: 100px;
+    font-synthesis: style;
+    font-weight: 600;
+    color: #646464;
+}
+
+.error-page-subtitle {
+    font-size: 18px;
+}
+
+.error-page-image-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.error-page-image {
+    max-height: 250px;
+    max-width: 250px;
+}

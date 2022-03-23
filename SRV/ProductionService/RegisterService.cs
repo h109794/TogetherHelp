@@ -31,6 +31,7 @@ namespace SRV.ProductionService
             newUser.Inviter = userRepository.GetByNickname(model.Inviter);
             newUser.InvitationCode = Utility.GenerateRandomString(4);
             newUser.PersonalData = new PersonalData() { Nickname = newUser.Username };
+
             return userRepository.Save(newUser);
         }
 

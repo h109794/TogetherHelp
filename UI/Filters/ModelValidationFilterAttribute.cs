@@ -26,8 +26,6 @@ namespace UI.Filters
             }
         }
 
-        public void OnActionExecuted(ActionExecutedContext filterContext)
-        {
-        }
+        public void OnActionExecuted(ActionExecutedContext filterContext) { }
     }
 }

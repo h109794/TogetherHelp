@@ -186,7 +186,9 @@
     <Content Include="Content\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Content\Shared\error-page.css" />
     <Content Include="Content\Shared\userdefind.css" />
+    <Content Include="images\not-found.jpg" />
     <Content Include="images\logo-big.jpg" />
     <Content Include="images\logo.ico" />
     <Content Include="favicon.ico" />
@@ -266,6 +268,7 @@
     <Content Include="Scripts\shared\captcha.js" />
     <Content Include="Scripts\shared\commentPublish.js" />
     <Content Include="Scripts\shared\commentReply.js" />
+    <Content Include="Scripts\shared\errorPage.js" />
     <Content Include="Scripts\shared\keywordSelection.js" />
     <Content Include="Scripts\shared\personalDataGender.js" />
     <Content Include="Scripts\shared\textEditor.js" />
@@ -306,13 +309,14 @@
     <Content Include="Views\Shared\_SelectKeywords.cshtml" />
     <Content Include="Views\Password\Change.cshtml" />
     <Content Include="Views\Article\Single.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_Comments.cshtml" />
     <Content Include="Views\Shared\PublishComment.cshtml" />
     <Content Include="Views\PersonalData\Index.cshtml" />
     <Content Include="Views\Email\Index.cshtml" />
     <Content Include="Views\Password\Verify.cshtml" />
     <Content Include="Views\Password\Reset.cshtml" />
+    <Content Include="Views\Shared\NotFound.html" />
+    <Content Include="Views\Shared\Error.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
