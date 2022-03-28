@@ -14,7 +14,7 @@
         <a href="#">@Model.Username</a>
         @if (isReply)
         {
-            <span style="color:#8590a6; margin:0 0.5rem 0 0.5rem">回复</span>
+            <span class="reply">回复</span>
             <a href="#">@Model.ReplyUsername</a>
         }
         <span class="float-right fs-13 clr-777">@Model.PublishTime</span>
@@ -22,9 +22,13 @@
 
     <div class="ml-3">@Model.Content</div>
     <div class="text-right">
-        <a href="#" class="mr-3"><i class="fa fa-reply" aria-hidden="true" style="display:none"> 回复</i></a>
-        <a href="#" class="clr-2b542c"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> @Model.Agree</a>
-        <a href="#" class="ml-3 clr-777"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> @Model.DisAgree</a>
+        <a href="#" class="mr-3"><i class="fa fa-reply d-none" aria-hidden="true"> 回复</i></a>
+        <a href="#" name="agree" class="clr-2b542c">
+            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="evaluation-count">0</span>
+        </a>
+        <a href="#" name="disagree" class="ml-3 clr-777">
+            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="evaluation-count">0</span>
+        </a>
     </div>
 </div>
 @if (!isReply)

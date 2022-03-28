@@ -58,6 +58,7 @@
     <Compile Include="ArticleService.cs" />
     <Compile Include="CommentService.cs" />
     <Compile Include="ContactService.cs" />
+    <Compile Include="EvaluationService.cs" />
     <Compile Include="LoginService.cs" />
     <Compile Include="PasswordService.cs" />
     <Compile Include="PersonalDataService.cs" />

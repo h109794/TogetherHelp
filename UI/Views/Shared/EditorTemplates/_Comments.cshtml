@@ -1,8 +1,12 @@
 ﻿@model List<SRV.ViewModel.CommentModel>
+@{
+    string agreeIconClass;
+    string disagreeIconClass;
+}
 
-<p style="font-size:1.2rem">
+<p class="fs-1-2r">
     <i class="fa fa-comments-o" aria-hidden="true"></i>
-    评论（<span id="comment-count">@Model.Count</span><span style="font-size:1.1rem"> 条</span>）
+    评论（<span id="comment-count">@Model.Count</span><span class="fs-1-1r"> 条</span>）
 </p>
 
 <div class="input-group mb-3">
@@ -29,8 +33,14 @@
                 <div class="ml-3">@comment.Content</div>
                 <div class="text-right">
                     <a href="#" class="mr-3"><i class="fa fa-reply d-none" aria-hidden="true"> 回复</i></a>
-                    <a href="#" class="clr-2b542c"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> @comment.Agree</a>
-                    <a href="#" class="ml-3 clr-777"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> @comment.DisAgree</a>
+                    <a href="#" name="agree" class="clr-2b542c">
+                        @{agreeIconClass = comment.AgreeUserIds.Contains(ViewBag.CurrentUserId) ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up";}
+                        <i class="@agreeIconClass" aria-hidden="true"></i> <span class="evaluation-count">@(comment.AgreeUserIds.Count)</span>
+                    </a>
+                    <a href="#" name="disagree" class="ml-3 clr-777">
+                        @{disagreeIconClass = comment.DisagreeUserIds.Contains(ViewBag.CurrentUserId) ? "fa fa-thumbs-down" : "fa fa-thumbs-o-down";}
+                        <i class="@disagreeIconClass" aria-hidden="true"></i> <span class="evaluation-count">@(comment.DisagreeUserIds.Count)</span>
+                    </a>
                 </div>
             </div>
 
@@ -43,15 +53,21 @@
                         <span>
                             <i class="fa fa-user-circle" aria-hidden="true"></i>
                             <a href="#">@reply.Username</a>
-                            <span style="color:#8590a6; margin:0 0.5rem 0 0.5rem">回复</span>
+                            <span class="reply">回复</span>
                             <a href="#">@reply.ReplyUsername</a>
                             <span class="float-right fs-13 clr-777">@reply.PublishTime</span>
                         </span>
                         <div class="ml-3">@reply.Content</div>
                         <div class="text-right">
                             <a href="#" class="mr-3"><i class="fa fa-reply d-none" aria-hidden="true"> 回复</i></a>
-                            <a href="#" class="clr-2b542c"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> @reply.Agree</a>
-                            <a href="#" class="ml-3 clr-777"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> @reply.DisAgree</a>
+                            <a href="#" name="agree" class="clr-2b542c">
+                                @{agreeIconClass = reply.AgreeUserIds.Contains(ViewBag.CurrentUserId) ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up";}
+                                <i class="@agreeIconClass" aria-hidden="true"></i> <span class="evaluation-count">@(reply.AgreeUserIds.Count)</span>
+                            </a>
+                            <a href="#" name="disagree" class="ml-3 clr-777">
+                                @{disagreeIconClass = reply.DisagreeUserIds.Contains(ViewBag.CurrentUserId) ? "fa fa-thumbs-down" : "fa fa-thumbs-o-down";}
+                                <i class="@disagreeIconClass" aria-hidden="true"></i> <span class="evaluation-count">@(reply.DisagreeUserIds.Count)</span>
+                            </a>
                         </div>
                     </div>
                 }

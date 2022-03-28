@@ -19,5 +19,8 @@
         public const string ReplyCommentId = "replyCommentId";
         public const string ReplyMainCommentId = "replyMainCommentId";
         public const string EmailAddress = "emailAddress";
+        public const string ContentId = "contentId";
+        public const string IsAgree = "isAgree";
+        public const string IsArticle = "isArticle";
     }
 }

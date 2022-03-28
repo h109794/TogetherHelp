@@ -32,7 +32,7 @@ document.getElementById("comments").addEventListener("click", function (e) {
         e.preventDefault();
         if (document.cookie.indexOf("loginInfo") === -1) {
             if (confirm("登录用户才能发布评论，单击确定跳转到登录页面。")) {
-                location.href = "/Login";
+                location.href = "/login";
             }
             return;
         }
@@ -41,7 +41,7 @@ document.getElementById("comments").addEventListener("click", function (e) {
         var replyBoxDiv = replyBoxButton.parentElement.parentElement;
         replyBoxButton.textContent = " 取消回复";
         // 再次点击折叠回复框
-        if (replyBoxDiv.lastChild.className === "input-group input-group-sm mb-3") {
+        if (replyBoxDiv.lastChild.className === "input-group input-group-sm mt-1 mb-3 pl-3") {
             replyBoxDiv.lastChild.remove();
             replyBoxButton.textContent = " 回复";
             return;
@@ -57,9 +57,7 @@ document.getElementById("comments").addEventListener("click", function (e) {
         var replyMainCommentId = (replyBoxDiv.parentElement.className !== "reply-comment ml-3") ?
             replyCommentId : replyBoxDiv.parentElement.parentElement.previousElementSibling.firstElementChild.value;
 
-        replyBox.className = "input-group input-group-sm mb-3";
-        replyBox.style.paddingLeft = "1rem";
-        replyBox.style.marginTop = "0.3rem";
+        replyBox.className = "input-group input-group-sm mt-1 mb-3 pl-3";
         replyInputBox.className = "form-control";
         replyInputBox.placeholder = `回复 ${replyUsername}`;
         replyButtonDiv.className = "input-group-append";
@@ -89,7 +87,7 @@ document.getElementById("comments").addEventListener("click", function (e) {
                         // 回复完成收起评论框
                         replyBoxDiv.lastChild.remove();
                         replyBoxButton.textContent = " 回复";
-                        replyBoxButton.style.display = "none";
+                        replyBoxButton.className += " d-none";
                         // 把返回的HTML文档转换成Node节点
                         var newReplyComment = new DOMParser().parseFromString(xhr.responseText, 'text/html').body.childNodes[0];
                         if (replyBoxDiv.parentElement.className === "main-comment") {
@@ -99,11 +97,15 @@ document.getElementById("comments").addEventListener("click", function (e) {
                         }
                         // 绑定回复按钮显隐事件
                         newReplyComment.addEventListener("mouseenter", function () {
-                            this.getElementsByClassName("fa fa-reply")[0].style.display = '';
+                            this.querySelector(".fa.fa-reply.d-none").className = "fa fa-reply";
                         });
                         newReplyComment.addEventListener("mouseleave", function () {
-                            this.getElementsByClassName("fa fa-reply")[0].style.display = 'none';
+                            this.querySelector(".fa.fa-reply").className += " d-none";
+                            // 回复新发布的评论会有问题
                         });
+                        // 绑定赞踩按钮评价事件
+                        newReplyComment.querySelector("[name=agree]").addEventListener("click", evaluate);
+                        newReplyComment.querySelector("[name=disagree]").addEventListener("click", evaluate);
                     } else {
                         alert("回复评论失败");
                     }

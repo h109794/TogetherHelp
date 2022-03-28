@@ -264,11 +264,14 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\shared\articleSingleEval.js" />
     <Content Include="Scripts\shared\email.js" />
     <Content Include="Scripts\shared\captcha.js" />
     <Content Include="Scripts\shared\commentPublish.js" />
     <Content Include="Scripts\shared\commentReply.js" />
     <Content Include="Scripts\shared\errorPage.js" />
+    <Content Include="Scripts\shared\evalRequest.js" />
+    <Content Include="Scripts\shared\articleListEval.js" />
     <Content Include="Scripts\shared\keywordSelection.js" />
     <Content Include="Scripts\shared\personalDataGender.js" />
     <Content Include="Scripts\shared\textEditor.js" />

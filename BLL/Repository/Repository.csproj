@@ -54,6 +54,7 @@
     <Compile Include="ArticleRepository.cs" />
     <Compile Include="CommentRepository.cs" />
     <Compile Include="ContactRepository.cs" />
+    <Compile Include="EvaluationRepository.cs" />
     <Compile Include="KeywordRepository.cs" />
     <Compile Include="Migrations\202202220310142_CreateDatabase.cs" />
     <Compile Include="Migrations\202202220310142_CreateDatabase.designer.cs">
@@ -90,6 +91,10 @@
     <Compile Include="Migrations\202203191232158_AddContactEmailUniqueConstraint.cs" />
     <Compile Include="Migrations\202203191232158_AddContactEmailUniqueConstraint.designer.cs">
       <DependentUpon>202203191232158_AddContactEmailUniqueConstraint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203240651336_AddEvaluationModel.cs" />
+    <Compile Include="Migrations\202203240651336_AddEvaluationModel.designer.cs">
+      <DependentUpon>202203240651336_AddEvaluationModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="BaseRepository.cs" />
@@ -134,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203191232158_AddContactEmailUniqueConstraint.resx">
       <DependentUpon>202203191232158_AddContactEmailUniqueConstraint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203240651336_AddEvaluationModel.resx">
+      <DependentUpon>202203240651336_AddEvaluationModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

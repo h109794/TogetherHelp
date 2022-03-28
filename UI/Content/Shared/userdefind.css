@@ -1,15 +1,4 @@
-﻿.keyword {
-    font-size: 12px;
-    font-weight: bold;
-    border: 1px solid;
-    border-radius: 20px;
-    background-color: gray;
-    color: white;
-    padding: 0px 7px;
-    margin-right: 5px;
-}
-
-.fs-13 {
+﻿.fs-13 {
     font-size: 13px;
 }
 
@@ -19,6 +8,14 @@
 
 .fs-18 {
     font-size: 18px;
+}
+
+.fs-1-1r {
+    font-size: 1.1rem;
+}
+
+.fs-1-2r {
+    font-size: 1.2rem;
 }
 
 .clr-777 {
@@ -31,4 +28,24 @@
 
 .left-hr {
     border-left: 1px solid rgba(0,0,0,.1);
+}
+
+.mt-2r {
+    margin-top: 2rem;
+}
+
+.keyword {
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid;
+    border-radius: 20px;
+    background-color: gray;
+    color: white;
+    padding: 0px 7px;
+    margin-right: 5px;
+}
+
+.reply {
+    color: #8590a6;
+    margin: 0 0.5rem 0 0.5rem;
 }

@@ -1,4 +1,5 @@
-﻿using SRV.ProductionService;
+﻿using Global;
+using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
@@ -19,14 +20,29 @@ namespace UI.Controllers
 
         public ActionResult Index(int? id)
         {
+            if (id < 1)
+            {
+                Response.StatusCode = 404;
+                Response.WriteFile("~/Views/Shared/NotFound.html");
+                return new EmptyResult();
+            }
+
             const int articleSize = 5;
             int pageIndex = (id is null) ? 1 : (int)id;
             List<ArticleModel> articles = articleService.GetArticles(pageIndex, articleSize);
+
+            if (articles.Count == 0)
+            {
+                Response.StatusCode = 404;
+                Response.WriteFile("~/Views/Shared/NotFound.html");
+                return new EmptyResult();
+            }
 
             // 避免无法整除导致末尾页码丢失
             int pageCount = (int)Math.Ceiling((double)articleService.GetArticlesCount() / articleSize);
             ViewBag.PageIndex = pageIndex;
             ViewBag.PageCount = pageCount;
+            ViewBag.CurrentUserId = (ViewData[Key.HasLogin] is null) ? 0 : CookieHelper.GetCurrentUserId();
 
             return View(articles);
         }
@@ -42,6 +58,8 @@ namespace UI.Controllers
                 Response.WriteFile("~/Views/Shared/NotFound.html");
                 return new EmptyResult();
             }
+            
+            ViewBag.CurrentUserId = (ViewData[Key.HasLogin] is null) ? 0 : CookieHelper.GetCurrentUserId();
             return View(article);
         }
 

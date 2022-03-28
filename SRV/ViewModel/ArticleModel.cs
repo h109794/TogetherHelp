@@ -18,8 +18,8 @@ namespace SRV.ViewModel
         public string Abstract { get; set; }
         public string AuthorName { get; set; }
         public DateTime PublishTime { get; set; }
-        public int Agree { get; set; }
-        public int DisAgree { get; set; }
+        public List<int> AgreeUserIds { get; set; }
+        public List<int> DisagreeUserIds { get; set; }
         public List<KeywordModel> Keywords { get; set; }
         public List<CommentModel> Comments { get; set; }
         // 用于接收前台传来的关键字文本，在后台解析成集合属性

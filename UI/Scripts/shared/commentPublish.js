@@ -1,7 +1,7 @@
 ﻿document.getElementById("publish").addEventListener("click", function () {
     if (document.cookie.indexOf("loginInfo") === -1) {
         if (confirm("登录用户才能发布评论，单击确定跳转到登录页面。")) {
-            location.href = "/Login";
+            location.href = "/login";
         }
         return;
     }
@@ -27,12 +27,15 @@
                 document.getElementById("comment-count").textContent++;
                 commentContent.value = '';
                 // 绑定回复按钮显隐事件
-                newComment.addEventListener("mouseenter", function () {
-                    this.getElementsByClassName("fa fa-reply")[0].style.display = '';
+                newComment.firstElementChild.addEventListener("mouseenter", function () {
+                    this.querySelector(".fa.fa-reply.d-none").className = "fa fa-reply";
                 });
-                newComment.addEventListener("mouseleave", function () {
-                    this.getElementsByClassName("fa fa-reply")[0].style.display = 'none';
+                newComment.firstElementChild.addEventListener("mouseleave", function () {
+                    this.querySelector(".fa.fa-reply").className += " d-none";
                 });
+                // 绑定赞踩按钮评价事件
+                newComment.querySelector("[name=agree]").addEventListener("click", evaluate);
+                newComment.querySelector("[name=disagree]").addEventListener("click", evaluate);
             } else {
                 alert("评论发布失败");
             }

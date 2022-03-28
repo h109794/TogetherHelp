@@ -33,5 +33,22 @@ namespace UI.Controllers
 
             return View(comment);
         }
+
+        [NeedLoginFilter]
+        public ActionResult Evaluate()
+        {
+            IEvaluationService evaluationService = new EvaluationService();
+
+            if (!int.TryParse(Request.Form[Key.ContentId], out int contentId))
+            {
+                if (!int.TryParse(Request.UrlReferrer.Segments[2], out contentId))
+                    contentId = int.Parse(Request.UrlReferrer.Segments[3]);
+            }
+            bool isAgree = bool.Parse(Request.Form[Key.IsAgree]);
+            bool isArticle = bool.Parse(Request.Form[Key.IsArticle]);
+            string jsonValue = evaluationService.Evaluate(contentId, CookieHelper.GetCurrentUserId(), isAgree, isArticle);
+
+            return Json(jsonValue);
+        }
     }
 }

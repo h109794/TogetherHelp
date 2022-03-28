@@ -16,6 +16,7 @@ namespace BLL.Repository
         public DbSet<Keyword> Keywords { get; set; }
         public DbSet<PersonalData> PersonalDatas { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Evaluation> Evaluations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

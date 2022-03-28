@@ -3,6 +3,7 @@ using BLL.Entity;
 using BLL.Repository;
 using Global;
 using SRV.ViewModel;
+using System.Linq;
 using System.Web;
 
 namespace SRV.ProductionService
@@ -24,12 +25,15 @@ namespace SRV.ProductionService
                     .ForMember(dest => dest.Nickname, opt => opt.MapFrom(src => src.PersonalData.Nickname));
                 cfg.CreateMap<Article, ArticleModel>()
                     .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.PersonalData.Nickname))
-                    .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.PersonalData.Nickname))
+                    .ForMember(dest => dest.AgreeUserIds, opt => opt.MapFrom(src => src.Evaluations.Where(e => e.IsAgree == true).Select(e => e.UserId)))
+                    .ForMember(dest => dest.DisagreeUserIds, opt => opt.MapFrom(src => src.Evaluations.Where(e => e.IsAgree == false).Select(e => e.UserId)))
                     .ReverseMap();
                 cfg.CreateMap<Keyword, KeywordModel>();
                 cfg.CreateMap<Comment, CommentModel>()
                     .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Author.PersonalData.Nickname))
                     .ForMember(dest => dest.ReplyUsername, opt => opt.MapFrom(src => src.ReplyUser.PersonalData.Nickname))
+                    .ForMember(dest => dest.AgreeUserIds, opt => opt.MapFrom(src => src.Evaluations.Where(e => e.IsAgree == true).Select(e => e.UserId)))
+                    .ForMember(dest => dest.DisagreeUserIds, opt => opt.MapFrom(src => src.Evaluations.Where(e => e.IsAgree == false).Select(e => e.UserId)))
                     .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.Body));
                 cfg.CreateMap<PersonalData, PersonalDataModel>().ReverseMap();
                 cfg.CreateMap<Contact, EmailModel>();

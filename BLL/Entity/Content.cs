@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BLL.Entity
@@ -8,8 +9,7 @@ namespace BLL.Entity
     {
         public User Author { get; set; }
         public string Body { get; set; }
-        public int Agree { get; set; }
-        public int DisAgree { get; set; }
         public DateTime PublishTime { get; set; }
+        public List<Evaluation> Evaluations { get; set; }
     }
 }

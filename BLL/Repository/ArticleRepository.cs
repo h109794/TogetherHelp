@@ -11,20 +11,27 @@ namespace BLL.Repository
 
         public List<Article> GetArticles(int pageIndex, int articleSize)
         {
-            return sqlDbContext.Articles.Include(a => a.Author.PersonalData).Include(a => a.Keywords).Include(a => a.Comments)
+            return sqlDbContext.Articles.Include(a => a.Author.PersonalData)
+                        .Include(a => a.Keywords).Include(a => a.Comments).Include(a => a.Evaluations)
                         .OrderByDescending(a => a.Id).Skip((pageIndex - 1) * articleSize).Take(articleSize).ToList();
         }
 
         public Article FindById(int id)
         {
-            return sqlDbContext.Articles.Where(a => a.Id == id).Include(a => a.Author.PersonalData)
+            return sqlDbContext.Articles.Where(a => a.Id == id).Include(a => a.Author.PersonalData).Include(a => a.Evaluations)
                         .Include(a => a.Keywords).Include(a => a.Comments.Select(c => c.Author).Select(u => u.PersonalData))
-                        .Include(a => a.Comments.Select(c => c.ReplyUser).Select(u => u.PersonalData)).SingleOrDefault();
+                        .Include(a => a.Comments.Select(c => c.ReplyUser).Select(u => u.PersonalData))
+                        .Include(a => a.Comments.Select(c => c.Evaluations)).SingleOrDefault();
         }
 
         public int GetArticlesCount()
         {
             return sqlDbContext.Articles.Count();
+        }
+
+        public Article GetArticleIncludeEvaluation(int id)
+        {
+            return sqlDbContext.Articles.Where(a => a.Id == id).Include(a => a.Evaluations).Single();
         }
     }
 }

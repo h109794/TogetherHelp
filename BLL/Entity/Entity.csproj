@@ -47,6 +47,7 @@
     <Compile Include="Contact.cs" />
     <Compile Include="Content.cs" />
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="Evaluation.cs" />
     <Compile Include="Keyword.cs" />
     <Compile Include="PersonalData.cs" />
     <Compile Include="User.cs" />
