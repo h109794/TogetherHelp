@@ -7,6 +7,8 @@ namespace BLL.Entity
     [Table("content")]
     public class Content : BaseEntity
     {
+        public Content() => Evaluations = new List<Evaluation>();
+
         public User Author { get; set; }
         public string Body { get; set; }
         public DateTime PublishTime { get; set; }

@@ -1,6 +1,5 @@
 ﻿@model SRV.ViewModel.CommentModel
 @{
-    Layout = null;
     bool isReply = (Model.ReplyUsername is null) ? false : true;
     string commentDivClass = isReply ? "reply-comment ml-3" : "main-comment";
 }

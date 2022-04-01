@@ -13,8 +13,9 @@
         return;
     }
 
+    var articleId = document.URL.slice(document.URL.lastIndexOf('/') + 1);
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/Shared/PublishComment");
+    xhr.open("POST", `/Shared/PublishComment?articleId=${articleId}`);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send(`commentContent=${commentContent.value}`);
     xhr.onreadystatechange = function () {

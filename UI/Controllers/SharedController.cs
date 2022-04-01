@@ -20,30 +20,21 @@ namespace UI.Controllers
         }
 
         [NeedLoginFilter]
-        public ActionResult PublishComment()
+        public ActionResult PublishComment(int articleId)
         {
-            // 匹配不同route从segments中获取contentId
-            if (!int.TryParse(Request.UrlReferrer.Segments[2], out int articleId))
-            {
-                articleId = int.Parse(Request.UrlReferrer.Segments[3]);
-            }
             ICommentService commentService = new CommentService();
-            CommentModel comment = commentService.Publish(articleId, CookieHelper.GetCurrentUserId(), Request.Form[Key.CommentContent],
-                Request.Form[Key.ReplyUsername], Request.Form[Key.ReplyMainCommentId], Request.Form[Key.ReplyCommentId]);
+            CommentModel comment = commentService.Publish(articleId, CookieHelper.GetCurrentUserId(),
+                                        Request.Form[Key.CommentContent], Request.Form[Key.ReplyUsername],
+                                        Request.Form[Key.ReplyMainCommentId], Request.Form[Key.ReplyCommentId]);
 
-            return View(comment);
+            return PartialView(comment);
         }
 
         [NeedLoginFilter]
-        public ActionResult Evaluate()
+        public ActionResult Evaluate(int contentId)
         {
             IEvaluationService evaluationService = new EvaluationService();
 
-            if (!int.TryParse(Request.Form[Key.ContentId], out int contentId))
-            {
-                if (!int.TryParse(Request.UrlReferrer.Segments[2], out contentId))
-                    contentId = int.Parse(Request.UrlReferrer.Segments[3]);
-            }
             bool isAgree = bool.Parse(Request.Form[Key.IsAgree]);
             bool isArticle = bool.Parse(Request.Form[Key.IsArticle]);
             string jsonValue = evaluationService.Evaluate(contentId, CookieHelper.GetCurrentUserId(), isAgree, isArticle);

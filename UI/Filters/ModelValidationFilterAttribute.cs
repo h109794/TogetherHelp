@@ -7,21 +7,23 @@ namespace UI.Filters
     {
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var modelState = filterContext.Controller.ViewData.ModelState;
-
-            if (filterContext.HttpContext.Request.HttpMethod == Key.Post && !modelState.IsValid)
+            if (filterContext.HttpContext.Request.HttpMethod == Method.Post)
             {
-                filterContext.Controller.TempData.Add(Key.ErrorMessages, modelState);
-                filterContext.Result = new RedirectResult(filterContext.HttpContext.Request.Url.ToString());
-                return;
+                var modelState = filterContext.Controller.ViewData.ModelState;
+                if (!modelState.IsValid)
+                {
+                    filterContext.Controller.TempData.Add(Key.ErrorMessages, modelState);
+                    filterContext.Result = new RedirectResult(filterContext.HttpContext.Request.Url.ToString());
+                    return;
+                }
             }
 
-            if (filterContext.HttpContext.Request.HttpMethod == Key.Get)
+            if (filterContext.HttpContext.Request.HttpMethod == Method.Get)
             {
                 var errorMessages = filterContext.Controller.TempData[Key.ErrorMessages];
                 if (errorMessages != null)
                 {
-                    modelState.Merge(errorMessages as ModelStateDictionary);
+                    filterContext.Controller.ViewData.ModelState.Merge(errorMessages as ModelStateDictionary);
                 }
             }
         }

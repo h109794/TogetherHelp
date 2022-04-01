@@ -18,7 +18,7 @@ namespace SRV.ProductionService
             Evaluation evaluation = content.Evaluations.Find(e => e.UserId == userId);
             if (evaluation is null)
             {
-                Evaluation newEvaluation = new Evaluation() { UserId = userId, IsAgree = isAgree };
+                Evaluation newEvaluation = new Evaluation { UserId = userId, IsAgree = isAgree };
                 content.Evaluations.Add(newEvaluation);
                 return "insert";
             }

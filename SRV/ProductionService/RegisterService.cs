@@ -17,9 +17,9 @@ namespace SRV.ProductionService
             return !(userRepository.GetByUsername(inviterName) is null);
         }
 
-        public bool ValidateInviterIsExists(string inviterName, out string invitationCode)
+        public bool ValidateInviterIsExists(string inviterNickname, out string invitationCode)
         {
-            User inviter = userRepository.GetByNickname(inviterName);
+            User inviter = userRepository.GetByNickname(inviterNickname);
             invitationCode = inviter?.InvitationCode;
             return !(inviter is null);
         }
@@ -30,7 +30,7 @@ namespace SRV.ProductionService
             newUser.Password = Utility.MD5Encrypt(newUser.Password);
             newUser.Inviter = userRepository.GetByNickname(model.Inviter);
             newUser.InvitationCode = Utility.GenerateRandomString(4);
-            newUser.PersonalData = new PersonalData() { Nickname = newUser.Username };
+            newUser.PersonalData = new PersonalData { Nickname = newUser.Username };
 
             return userRepository.Save(newUser);
         }

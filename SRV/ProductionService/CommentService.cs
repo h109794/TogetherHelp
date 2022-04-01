@@ -20,7 +20,7 @@ namespace SRV.ProductionService
             CommentRepository commentRepository = new CommentRepository(DbContext);
 
             User replyUser = userRepository.GetByNickname(replyUsername);
-            Comment comment = new Comment()
+            Comment comment = new Comment
             {
                 Author = userRepository.Find(userId),
                 Body = commentContent,

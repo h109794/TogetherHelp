@@ -27,9 +27,8 @@ namespace UI.Helper
             else if (userInfo[Key.Pwd] != registerService.GetUserById(id).Password)
             {
                 throw new ArgumentException("Id and password dono't match.");
-            }// else return
-
-            return Convert.ToInt32(userInfo[Key.Id]);
+            }
+            else { return Convert.ToInt32(userInfo[Key.Id]); }
         }
     }
 }

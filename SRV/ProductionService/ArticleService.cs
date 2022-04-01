@@ -48,7 +48,7 @@ namespace SRV.ProductionService
                     Keyword keyword = keywordRepository.GetByText(k);
                     if (keyword is null)
                     {
-                        newArticle.Keywords.Add(new Keyword() { Text = k, UseCount = 1 });
+                        newArticle.Keywords.Add(new Keyword { Text = k, UseCount = 1 });
                     }
                     else
                     {

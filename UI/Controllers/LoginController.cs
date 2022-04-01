@@ -32,7 +32,7 @@ namespace UI.Controllers
             ILoginService loginService = new LoginService();
             LoginModel loginModel = loginService.Authenticate(model.Username);
 
-            if (loginModel.Username is null)
+            if (loginModel is null)
             {
                 ModelState.AddModelError(nameof(model.Username), "* 用户名不存在");
             }

@@ -31,7 +31,7 @@ namespace BLL.Repository
             modelBuilder.Entity<Keyword>().HasIndex(k => k.Text).IsUnique();
             modelBuilder.Entity<Keyword>().HasMany(k => k.BelongTo).WithMany(a => a.Keywords);
 
-            modelBuilder.Entity<PersonalData>().Property(p => p.Nickname).HasMaxLength(16);
+            modelBuilder.Entity<PersonalData>().Property(p => p.Nickname).HasMaxLength(32);
             modelBuilder.Entity<PersonalData>().HasIndex(p => p.Nickname).IsUnique();
 
             modelBuilder.Entity<Contact>().Property(c => c.EmailAddress).HasMaxLength(64);

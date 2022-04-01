@@ -24,6 +24,13 @@ namespace UI
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Shared/user-defined").Include(
+                      "~/Content/Shared/color.css",
+                      "~/Content/Shared/combination.css",
+                      "~/Content/Shared/font-size.css",
+                      "~/Content/Shared/height.css",
+                      "~/Content/Shared/margin.css"));
         }
     }
 }

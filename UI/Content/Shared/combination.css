@@ -1,0 +1,42 @@
+﻿.main-size {
+    min-height: 34.3rem;
+    padding: 3rem 1rem 2rem;
+}
+
+.notification-bar {
+    background-color: #eee;
+    height: 1.5rem;
+    margin-top: 3.5rem;
+}
+
+.invitation-background {
+    background: rgb(232, 240, 254);
+    border: 2px dashed #eee;
+    border-radius: 4px 5px;
+    padding: 10px;
+}
+
+.sidebar-keywords {
+    border: 1px dashed lightgray;
+    border-radius: 4px 5px;
+}
+
+.keyword {
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid;
+    border-radius: 20px;
+    background-color: gray;
+    color: white;
+    padding: 0px 7px;
+    margin-right: 5px;
+}
+
+.reply {
+    color: #8590a6;
+    margin: 0 0.5rem 0 0.5rem;
+}
+
+.left-hr {
+    border-left: 1px solid rgba(0,0,0,.1);
+}

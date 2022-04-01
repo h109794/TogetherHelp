@@ -7,7 +7,7 @@
     <link href="~/images/logo.ico" rel="shortcut icon" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/Shared/userdefind.css" rel="stylesheet" />
+    @Styles.Render("~/Content/Shared/user-defined")
     <style>
         a {
             color: #337ab7;
@@ -26,10 +26,10 @@
 <body>
     <header>
         <nav class="navbar bg-light navbar-expand-sm fixed-top">
-            <div class="container" style="height:40px">
+            <div class="container h-2-5r">
                 <div>
                     <a href="/"><img src="~/images/logo-big.jpg" alt="一起帮Logo" /></a>
-                    <span class="fs-18 clr-777" style="font-weight:600">一起帮</span>
+                    <span class="fs-18 clr-777 font-weight-bolder">一起帮</span>
                     <span class="clr-777">· 网络互助平台</span>
                 </div>
 
@@ -69,7 +69,7 @@
                     @if (ViewData[Global.Key.HasLogin] != null)
                     {
                         <li class="nav-item dropdown ml-4">
-                            <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#337ab7">
+                            <a class="dropdown-toggle clr-337ab7" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-user-circle" aria-hidden="true"></i>
                                 @*防止因用户删除Cookie导致的异常*@
                                 @if (ViewData[Global.Key.Nickname] != null)
@@ -79,8 +79,8 @@
                             </a>
                             <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
                                 <li><a class="dropdown-item" href="~/personaldata"><i class="fa fa-camera" aria-hidden="true"></i> 个人资料</a></li>
-                                <li><a class="dropdown-item" href="~/password/change"><i class="fa fa-key" aria-hidden="true"></i><span style="margin-left:5px">修改密码</span></a></li>
-                                <li><a class="dropdown-item" href="~/email"><i class="fa fa-envelope" aria-hidden="true"></i><span style="margin-left:6px">绑定邮箱</span></a></li>
+                                <li><a class="dropdown-item" href="~/password/change"><i class="fa fa-key" aria-hidden="true"></i><span class="ml-6px">修改密码</span></a></li>
+                                <li><a class="dropdown-item" href="~/email"><i class="fa fa-envelope" aria-hidden="true"></i><span class="ml-6px">绑定邮箱</span></a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="~/login/logoff"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
                             </ul>
@@ -103,9 +103,9 @@
                                 <i class="fa fa-user-secret" aria-hidden="true"></i> 未登录
                             </a>
                             <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><span style="margin-left:6px">登录</span></a></li>
+                                <li><a class="dropdown-item" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><span class="ml-6px">登录</span></a></li>
                                 <li><a class="dropdown-item" href="/register"><i class="fa fa-registered" aria-hidden="true"></i> 注册</a></li>
-                                <li><a class="dropdown-item" href="/password/verify"><i class="fa fa-lock fa" aria-hidden="true" style="margin-left:2px; font-size:17px"></i><span style="margin-left:6px">忘记密码</span></a></li>
+                                <li><a class="dropdown-item" href="/password/verify"><i class="fa fa-lock fa fs-17 ml-2px" aria-hidden="true"></i><span class="ml-6px">忘记密码</span></a></li>
                             </ul>
                         </li>
                     }
@@ -113,27 +113,26 @@
             </div>
         </nav>
 
-        <div class="container fs-14" style="background-color:#eee; height:30px; margin-top:55px">
-            <i class="fa fa-calendar" aria-hidden="true" style="line-height:30px"></i>
-            未实现的消息通知，考虑移除。
-            <a href="#" class="pull-right" style="line-height:30px">
-                <i class="fa fa-hand-o-right" aria-hidden="true"></i> 全部消息
+        <div class="container fs-14 notification-bar">
+            <i class="fa fa-calendar align-middle" aria-hidden="true"> 未实现的消息通知。</i>
+            <a href="#" class="float-right">
+                <i class="fa fa-hand-o-right align-middle" aria-hidden="true"> 全部消息</i>
             </a>
         </div>
     </header>
 
-    <main class="container" style="min-height:543px; padding:50px 15px 30px">
+    <main class="container main-size">
         @RenderBody()
     </main>
 
-    <footer class="container fs-14" style="margin-bottom:50px">
+    <footer class="container fs-14 mb-50px">
         <hr />
         <div>
             <a href="#">关于我们</a> |
             <a href="#">常见问题</a> |
             <a href="#">意见建议</a> |
             <a href="#">历史通知</a> |
-            <a href="#" style="color:#3c763d">友情捐赠</a> |
+            <a href="#" class="clr-3c763d">友情捐赠</a> |
             <a href="#">诚邀合伙人</a>
         </div>
         <div class="text-right">

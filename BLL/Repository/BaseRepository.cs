@@ -1,4 +1,6 @@
-﻿namespace BLL.Repository
+﻿using System.Data.Entity.Validation;
+
+namespace BLL.Repository
 {
     public class BaseRepository<T> where T : Entity.BaseEntity, new()
     {
@@ -12,8 +14,16 @@
         public int Save(T entity)
         {
             sqlDbContext.Set<T>().Add(entity);
-            // 获取存入对象的Id值
-            sqlDbContext.SaveChanges();
+
+            try
+            {
+                // 获取存入对象的Id值
+                sqlDbContext.SaveChanges();
+            }
+            catch (DbEntityValidationException)
+            {
+                throw;
+            }
             return entity.Id;
         }
 

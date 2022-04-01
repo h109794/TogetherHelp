@@ -52,6 +52,7 @@ document.getElementById("comments").addEventListener("click", function (e) {
         var replyInputBox = document.createElement("input");
         var replyButtonDiv = document.createElement("div");
         var replyButton = document.createElement("button");
+        var articleId = document.URL.slice(document.URL.lastIndexOf('/') + 1);
         var replyUsername = replyBoxDiv.parentElement.getElementsByTagName('a')[0].textContent;
         var replyCommentId = replyBoxDiv.parentElement.firstElementChild.value;
         var replyMainCommentId = (replyBoxDiv.parentElement.className !== "reply-comment ml-3") ?
@@ -77,7 +78,7 @@ document.getElementById("comments").addEventListener("click", function (e) {
                 return;
             }
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/Shared/PublishComment");
+            xhr.open("POST", `/Shared/PublishComment?articleId=${articleId}`);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.send(`commentContent=${replyInputBox.value}&replyUsername=${replyUsername}` +
                 `&replyMainCommentId=${replyMainCommentId}&replyCommentId=${replyCommentId}`);

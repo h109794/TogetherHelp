@@ -23,7 +23,7 @@ namespace SRV.ProductionService
 
             if (contact is null)
             {
-                contact = new Contact() { Id = id, EmailAddress = emailAddress };
+                contact = new Contact { Id = id, EmailAddress = emailAddress };
                 contactRepository.Save(contact);
             }
             else { contact.EmailAddress = emailAddress; }

@@ -56,7 +56,7 @@ namespace Global
 
             private static Point GenerateRandomPoint()
             {
-                Point point = new Point()
+                Point point = new Point
                 {
                     X = random.Next(50),
                     Y = random.Next(30)
