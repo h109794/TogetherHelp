@@ -8,7 +8,7 @@ namespace BLL.Entity
     {
         public Comment() => Replys = new List<Comment>();
 
-        public List<Comment> Replys { get; set; }
         public User ReplyUser { get; set; }
+        public List<Comment> Replys { get; set; }
     }
 }

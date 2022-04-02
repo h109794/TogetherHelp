@@ -3,12 +3,11 @@ using System.Data.Entity;
 
 namespace BLL.Repository
 {
-    public class SqlDbContext : DbContext
+    class SqlDbContext : DbContext
     {
-        private const string connctionStr = @"Data Source=(localdb)\MSSQLLocalDB;
-                                              Initial Catalog=togetherhelp_debug";
+        private static SqlDbContext uniqueInstance;
 
-        public SqlDbContext() : base(connctionStr) { }
+        private SqlDbContext() : base("togetherhelp_demo") { }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Article> Articles { get; set; }
@@ -17,6 +16,15 @@ namespace BLL.Repository
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Evaluation> Evaluations { get; set; }
         public DbSet<PersonalData> PersonalDatas { get; set; }
+
+        internal static SqlDbContext GetInstance()
+        {
+            if (uniqueInstance is null)
+            {
+                uniqueInstance = new SqlDbContext();
+            }
+            return uniqueInstance;
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
