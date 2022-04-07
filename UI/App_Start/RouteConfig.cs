@@ -28,6 +28,13 @@ namespace UI
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            // 处理不存在的url
+            routes.MapRoute(
+                name: "NotFound",
+                url: "{*url}",
+                defaults: new { controller = "Shared", action = "Error" }
+            );
         }
     }
 }

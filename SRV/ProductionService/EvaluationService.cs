@@ -11,7 +11,7 @@ namespace SRV.ProductionService
             Content content;
             if (isArticle)
             {
-                content = new ArticleRepository(DbContext).GetArticleIncludeEvaluation(contentId);
+                content = new ArticleRepository(DbContext).GetArticleAndEvaluation(contentId);
             }
             else { content = new CommentRepository(DbContext).Find(contentId); }
 

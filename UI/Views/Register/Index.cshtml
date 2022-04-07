@@ -15,7 +15,24 @@
             <a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i> 为什么需要邀请</a>
         </div>
         <div class="form-group">
-            <label><b>邀请人：（必填，<a href="#">没有邀请人</a>）</b></label>
+            <label><b>邀请人：（必填，<a href="#" data-toggle="modal" data-target="#exampleModal">没有邀请人</a>）</b></label>
+            <!-- 系统邀请模态框 -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">使用系统邀请</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>邀请人：管理员</p>
+                            <p>邀请码：1234</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @Html.TextBoxFor(m => m.Inviter, new { @class = "form-control", placeholder = "邀请人昵称" })
             @Html.ValidationMessageFor(m => m.Inviter)
         </div>
@@ -28,7 +45,7 @@
 
     <div class="form-group mt-3">
         <label><b>用户名：</b></label>
-        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "登录用户名，可修改，不能重复" })
+        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "不超过32个字符" })
         @Html.ValidationMessageFor(m => m.Username)
     </div>
     <div class="form-group">
@@ -50,7 +67,6 @@
         <br />
         @Html.ValidationMessageFor(m => m.Captcha)
     </div>
-
 
     <div>
         <button type="submit" class="btn btn-primary btn-sm">提交</button>

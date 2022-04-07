@@ -24,12 +24,22 @@ namespace BLL.Repository
                         .Include(a => a.Comments.Select(c => c.Evaluations)).SingleOrDefault();
         }
 
+        public Article GetPreviousArticle(int id)
+        {
+            return sqlDbContext.Articles.Where(a => a.Id < id).OrderByDescending(a => a.Id).FirstOrDefault();
+        }
+
+        public Article GetNextArticle(int id)
+        {
+            return sqlDbContext.Articles.Where(a => a.Id > id).OrderBy(a => a.Id).FirstOrDefault();
+        }
+
         public int GetArticlesCount()
         {
             return sqlDbContext.Articles.Count();
         }
 
-        public Article GetArticleIncludeEvaluation(int id)
+        public Article GetArticleAndEvaluation(int id)
         {
             return sqlDbContext.Articles.Where(a => a.Id == id).Include(a => a.Evaluations).Single();
         }

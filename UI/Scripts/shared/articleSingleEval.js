@@ -22,7 +22,9 @@ function evaluate() {
     }
 
     var isAgree = (this.id === "agree" || this.name === "agree") ? true : false;
-    var articleId = (this.id !== '') ? '' : this.parentElement.parentElement.firstElementChild.value;
+    var articleId = (this.id !== '') ?
+        document.URL.slice(document.URL.lastIndexOf('/') + 1) :
+        this.parentElement.parentElement.firstElementChild.value;
     var isArticle = (this.id !== '') ? true : false;
 
     requestEvaluate(this, isAgree, articleId, isArticle);

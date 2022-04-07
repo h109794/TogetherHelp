@@ -31,15 +31,21 @@ namespace UI.Controllers
         }
 
         [NeedLoginFilter]
-        public ActionResult Evaluate(int contentId)
+        public ActionResult Evaluate()
         {
             IEvaluationService evaluationService = new EvaluationService();
 
+            int contentId = int.Parse(Request.Form[Key.ContentId]);
             bool isAgree = bool.Parse(Request.Form[Key.IsAgree]);
             bool isArticle = bool.Parse(Request.Form[Key.IsArticle]);
             string jsonValue = evaluationService.Evaluate(contentId, CookieHelper.GetCurrentUserId(), isAgree, isArticle);
 
             return Json(jsonValue);
+        }
+
+        public ActionResult NotFound()
+        {
+            return View();
         }
     }
 }

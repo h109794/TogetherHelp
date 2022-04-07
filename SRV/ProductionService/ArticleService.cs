@@ -23,7 +23,15 @@ namespace SRV.ProductionService
         public ArticleModel FindById(int id)
         {
             Article article = articleRepository.FindById(id);
-            return Mapper.Map<ArticleModel>(article);
+            ArticleModel articleModel = Mapper.Map<ArticleModel>(article);
+
+            if (articleModel != null)
+            {
+                // 文章列表页是按发布时间倒序呈现，因此用户视角上下篇与与数据库内排序相反
+                articleModel.PreviousArticle = Mapper.Map<ArticleModel>(articleRepository.GetNextArticle(article.Id));
+                articleModel.NextArticle = Mapper.Map<ArticleModel>(articleRepository.GetPreviousArticle(article.Id));
+            }
+            return articleModel;
         }
 
         public int GetArticlesCount()

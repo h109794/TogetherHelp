@@ -22,6 +22,8 @@ namespace SRV.ViewModel
         public List<int> DisagreeUserIds { get; set; }
         public List<KeywordModel> Keywords { get; set; }
         public List<CommentModel> Comments { get; set; }
+        public ArticleModel PreviousArticle { get; set; }
+        public ArticleModel NextArticle { get; set; }
         // 用于接收前台传来的关键字文本，在后台解析成集合属性
         [Required(ErrorMessage = "* 关键不能为空")]
         public string KeywordsReceiver { get; set; }

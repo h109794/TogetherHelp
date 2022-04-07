@@ -1,7 +1,6 @@
 ﻿function requestEvaluate(evaluationBtn, isAgree, contentId, isArticle) {
-    var articleId = document.URL.slice(document.URL.lastIndexOf('/') + 1);
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", `/Shared/Evaluate?contentId=${articleId}`);
+    xhr.open("POST", "/Shared/Evaluate");
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send(`isAgree=${isAgree}&contentId=${contentId}&isArticle=${isArticle}`);
     xhr.onreadystatechange = function myfunction() {

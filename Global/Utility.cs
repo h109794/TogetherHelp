@@ -120,7 +120,7 @@ namespace Global
             };
 
             // 邮件服务设置
-            SmtpClient smtpClient = new SmtpClient(smtpServer)// 指定smtp服务器
+            SmtpClient smtpClient = new SmtpClient(smtpServer, 587)// 指定smtp服务器
             {
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 EnableSsl = true,

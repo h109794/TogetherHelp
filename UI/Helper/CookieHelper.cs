@@ -5,9 +5,9 @@ using System.Web;
 
 namespace UI.Helper
 {
-    public class CookieHelper
+    class CookieHelper
     {
-        public static int GetCurrentUserId()
+        internal static int GetCurrentUserId()
         {
             var registerService = new RegisterService();
             var userInfo = HttpContext.Current.Request.Cookies[Key.LoginInfo];

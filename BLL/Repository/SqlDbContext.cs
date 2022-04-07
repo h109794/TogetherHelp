@@ -5,9 +5,13 @@ namespace BLL.Repository
 {
     public class SqlDbContext : DbContext
     {
+#if DEBUG
         private const string connctionStr = @"Data Source=(localdb)\MSSQLLocalDB;
                                               Initial Catalog=togetherhelp_debug";
-
+#else   
+        private const string connctionStr = @"Server=iZfhgum0r8viw2Z\SQLEXPRESS;
+                                              Database=togetherhelp;Integrated Security=true";
+#endif
         public SqlDbContext() : base(connctionStr) { }
 
         public DbSet<User> Users { get; set; }

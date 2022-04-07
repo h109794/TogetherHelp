@@ -44,5 +44,30 @@
     @Html.Partial("_SidebarKeywords")
 }
 
+@section ArticleNavigation{
+    <div class="mt-3 p-3 sidebar-border article-nav-position">
+        <div class="mb-3 wrap-indentation">
+            @if (Model.PreviousArticle != null)
+            {
+                <i class="fa fa-arrow-up" aria-hidden="true"> 上一篇：</i><a href="~/article/@Model.PreviousArticle.Id">@Model.PreviousArticle.Title</a>
+            }
+            else
+            {
+                <i class="fa fa-arrow-up" aria-hidden="true"> 第一篇：</i><span class="clr-3c763d">往上没有了呢 ｡◕‿◕｡</span>
+            }
+        </div>
+        <div class="wrap-indentation">
+            @if (Model.NextArticle != null)
+            {
+                <i class="fa fa-arrow-down" aria-hidden="true"> 下一篇：</i><a href="~/article/@Model.NextArticle.Id">@Model.NextArticle.Title</a>
+            }
+            else
+            {
+                <i class="fa fa-arrow-down" aria-hidden="true"> 最末篇：</i><span class="clr-3c763d">往下没有了呢 ｡◕‿◕｡</span>
+            }
+        </div>
+    </div>
+}
+
 <script src="~/Scripts/shared/evalRequest.js" type="text/javascript"></script>
 <script src="~/Scripts/shared/articleSingleEval.js" type="text/javascript"></script>

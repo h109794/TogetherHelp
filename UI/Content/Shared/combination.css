@@ -16,7 +16,7 @@
     padding: 10px;
 }
 
-.sidebar-keywords {
+.sidebar-border {
     border: 1px dashed lightgray;
     border-radius: 4px 5px;
 }
@@ -39,4 +39,19 @@
 
 .left-hr {
     border-left: 1px solid rgba(0,0,0,.1);
+}
+
+.border-right-radius {
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+}
+
+.article-nav-position {
+    position: sticky;
+    top: 4.5rem;
+}
+
+.wrap-indentation {
+    text-indent: -2.6rem;
+    margin-left: 5.2rem
 }

@@ -253,6 +253,7 @@
     <Content Include="Content\font-awesome-4.7.0\scss\_screen-reader.scss" />
     <Content Include="Content\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="Content\font-awesome-4.7.0\scss\_variables.scss" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -285,6 +286,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\shared\wangEditor.min.js" />
+    <Content Include="Views\Shared\Error.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -323,7 +325,6 @@
     <Content Include="Views\Password\Verify.cshtml" />
     <Content Include="Views\Password\Reset.cshtml" />
     <Content Include="Views\Shared\NotFound.html" />
-    <Content Include="Views\Shared\Error.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
