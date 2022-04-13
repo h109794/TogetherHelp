@@ -1,7 +1,7 @@
 ﻿@model SRV.ViewModel.ArticleModel
 @{
     Layout = "~/Views/Shared/Layout/_ContentLayout.cshtml";
-    ViewBag.Title = Model.Title + " - 一起帮";
+    ViewBag.Title = Model.Title;
 
     string agreeIconClass = Model.AgreeUserIds.Contains(ViewBag.CurrentUserId) ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up";
     string disagreeIconClass = Model.DisagreeUserIds.Contains(ViewBag.CurrentUserId) ? "fa fa-thumbs-down" : "fa fa-thumbs-o-down";

@@ -13,7 +13,7 @@ namespace UI.Filters
             if (filterContext.Controller.ViewData[Key.HasLogin] is null)
             {
                 // 退出登录验证时不添加Cookie
-                if (filterContext.HttpContext.Request.QueryString.ToString() != "logoff")
+                if (!filterContext.HttpContext.Request.QueryString.ToString().Contains("logoff"))
                 {
                     filterContext.HttpContext.Response.Cookies.Add(new HttpCookie(Key.TargetPageURL, filterContext.HttpContext.Request.Url.ToString()));
                 }

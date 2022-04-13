@@ -3,14 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    <link href="~/images/logo.ico" rel="shortcut icon" />
+    <title>@ViewBag.Title - 乐清土特产</title>
+    <link href="~/Images/logo.png" rel="shortcut icon" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     @Styles.Render("~/Content/Shared/user-defined")
     <style>
         a {
             color: #337ab7;
+        }
+
+        button:focus {
+            outline: none;
         }
 
         #navbarScrollingDropdown {
@@ -25,96 +29,90 @@
 </head>
 <body>
     <header>
-        <nav class="navbar bg-light navbar-expand-sm fixed-top">
-            <div class="container h-2-5r">
+        <nav class="navbar navbar-expand-md bg-light fixed-top p-1">
+            <div class="container ">
                 <div>
-                    <a href="/"><img src="~/images/logo-big.jpg" alt="一起帮Logo" /></a>
-                    <span class="fs-18 clr-777 font-weight-bolder">一起帮</span>
-                    <span class="clr-777">· 网络互助平台</span>
+                    <a href="/"><img src="~/Images/logo.png" alt="一起帮Logo" /></a>
+                    <span class="fs-18 clr-777 font-weight-bolder">乐清土特产</span>
+                    <span class="clr-777">· 交易发布平台</span>
                 </div>
 
-                <ul class="navbar-nav fs-14">
-                    <li class="nav-item dropdown">
-                        <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-question-circle" aria-hidden="true"></i> 求助
-                        </a>
-                        <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-list" aria-hidden="true"></i> 列表</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown ml-4">
-                        <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-eye" aria-hidden="true"></i> 督促
-                        </a>
-                        <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-list" aria-hidden="true"></i> 我的目标</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-list" aria-hidden="true"></i> 我的督促</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown ml-4">
-                        <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-file-text-o" aria-hidden="true"></i> 文章
-                        </a>
-                        <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
-                            <li><a class="dropdown-item" href="~/article/page/1"><i class="fa fa-list" aria-hidden="true"></i> 列表</a></li>
-                            @if (ViewData[Global.Key.HasLogin] != null)
-                            {
-                                <li><a class="dropdown-item" href="~/article/publish"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 发布</a></li>
-                            }
-                        </ul>
-                    </li>
-
-                    @if (ViewData[Global.Key.HasLogin] != null)
-                    {
+                <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+                <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav fs-14" style="nav-right:auto">
                         <li class="nav-item dropdown ml-4">
-                            <a class="dropdown-toggle clr-337ab7" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-user-circle" aria-hidden="true"></i>
-                                @*防止因用户删除Cookie导致的异常*@
-                                @if (ViewData[Global.Key.Nickname] != null)
+                            <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i> 求助
+                            </a>
+                            <ul class="dropdown-menu fs-14">
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-list" aria-hidden="true"></i> 列表</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown ml-4">
+                            <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i> 文章
+                            </a>
+                            <ul class="dropdown-menu fs-14">
+                                <li><a class="dropdown-item" href="~/article/page/1"><i class="fa fa-list" aria-hidden="true"></i> 列表</a></li>
+                                @if (ViewData[Global.Key.HasLogin] != null)
                                 {
-                                    @HttpUtility.UrlDecode(ViewData[Global.Key.Nickname].ToString())
+                                    <li><a class="dropdown-item" href="~/article/publish"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 发布</a></li>
                                 }
-                            </a>
-                            <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" href="~/personaldata"><i class="fa fa-camera" aria-hidden="true"></i> 个人资料</a></li>
-                                <li><a class="dropdown-item" href="~/password/change"><i class="fa fa-key" aria-hidden="true"></i><span class="ml-6px">修改密码</span></a></li>
-                                <li><a class="dropdown-item" href="~/email"><i class="fa fa-envelope" aria-hidden="true"></i><span class="ml-6px">绑定邮箱</span></a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="~/login/logoff"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
                             </ul>
                         </li>
 
-                        <li class="nav-item dropdown ml-4">
-                            <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-tachometer" aria-hidden="true"></i> 后台
-                            </a>
-                            <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-link" aria-hidden="true"></i> 联系方式</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-link" aria-hidden="true"></i> 侧边栏</a></li>
-                            </ul>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item dropdown ml-4">
-                            <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-user-secret" aria-hidden="true"></i> 未登录
-                            </a>
-                            <ul class="dropdown-menu fs-14" aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><span class="ml-6px">登录</span></a></li>
-                                <li><a class="dropdown-item" href="/register"><i class="fa fa-registered" aria-hidden="true"></i> 注册</a></li>
-                                <li><a class="dropdown-item" href="/password/verify"><i class="fa fa-lock fa fs-17 ml-2px" aria-hidden="true"></i><span class="ml-6px">忘记密码</span></a></li>
-                            </ul>
-                        </li>
-                    }
-                </ul>
+                        @if (ViewData[Global.Key.HasLogin] != null)
+                        {
+                            <li class="nav-item dropdown ml-4">
+                                <a class="dropdown-toggle clr-337ab7" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    @*防止因用户删除Cookie导致的异常*@
+                                    @if (ViewData[Global.Key.Nickname] != null)
+                                    {
+                                        @HttpUtility.UrlDecode(ViewData[Global.Key.Nickname].ToString())
+                                    }
+                                </a>
+                                <ul class="dropdown-menu fs-14">
+                                    <li><a class="dropdown-item" href="~/personaldata"><i class="fa fa-camera" aria-hidden="true"></i> 个人资料</a></li>
+                                    <li><a class="dropdown-item" href="~/password/change"><i class="fa fa-key" aria-hidden="true"></i><span class="ml-6px">修改密码</span></a></li>
+                                    <li><a class="dropdown-item" href="~/email"><i class="fa fa-envelope" aria-hidden="true"></i><span class="ml-6px">绑定邮箱</span></a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="~/login/logoff"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown ml-4">
+                                <a class="navbarScrollingDropdown" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-tachometer" aria-hidden="true"></i> 后台
+                                </a>
+                                <ul class="dropdown-menu fs-14">
+                                    <li><a class="dropdown-item" href="#"><i class="fa fa-link" aria-hidden="true"></i> 发布通知</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item dropdown ml-4">
+                                <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-user-secret" aria-hidden="true"></i> 未登录
+                                </a>
+                                <ul class="dropdown-menu fs-14">
+                                    <li><a class="dropdown-item" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i><span class="ml-6px">登录</span></a></li>
+                                    <li><a class="dropdown-item" href="/register"><i class="fa fa-registered" aria-hidden="true"></i> 注册</a></li>
+                                    <li><a class="dropdown-item" href="/password/verify"><i class="fa fa-lock fa fs-17 ml-2px" aria-hidden="true"></i><span class="ml-6px">忘记密码</span></a></li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
         </nav>
 
         <div class="container fs-14 notification-bar">
-            <i class="fa fa-calendar align-middle" aria-hidden="true"> 未实现的消息通知。</i>
+            <i class="fa fa-comment-o" aria-hidden="true"> 感谢乐清土特产代购有限公司的大力支持。</i>
             <a href="#" class="float-right">
                 <i class="fa fa-hand-o-right align-middle" aria-hidden="true"> 全部消息</i>
             </a>
@@ -131,9 +129,7 @@
             <a href="#">关于我们</a> |
             <a href="#">常见问题</a> |
             <a href="#">意见建议</a> |
-            <a href="#">历史通知</a> |
-            <a href="#" class="clr-3c763d">友情捐赠</a> |
-            <a href="#">诚邀合伙人</a>
+            <a href="#">历史通知</a>
         </div>
         <div class="text-right">
             <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">ICP备案查询</a>

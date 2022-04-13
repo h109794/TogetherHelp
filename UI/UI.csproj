@@ -192,9 +192,9 @@
     <Content Include="Content\Shared\height.css" />
     <Content Include="Content\Shared\margin.css" />
     <Content Include="Content\Shared\combination.css" />
-    <Content Include="Images\not-found.jpg" />
-    <Content Include="Images\logo-big.jpg" />
-    <Content Include="Images\logo.ico" />
+    <Content Include="Content\Shared\width.css" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\error.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -278,6 +278,7 @@
     <Content Include="Scripts\shared\evalRequest.js" />
     <Content Include="Scripts\shared\articleListEval.js" />
     <Content Include="Scripts\shared\keywordSelection.js" />
+    <Content Include="Scripts\shared\paginationSize.js" />
     <Content Include="Scripts\shared\personalDataGender.js" />
     <Content Include="Scripts\shared\textEditor.js" />
     <Content Include="Scripts\shared\wangEditor.js" />

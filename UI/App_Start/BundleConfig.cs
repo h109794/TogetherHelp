@@ -30,7 +30,8 @@ namespace UI
                       "~/Content/Shared/combination.css",
                       "~/Content/Shared/font-size.css",
                       "~/Content/Shared/height.css",
-                      "~/Content/Shared/margin.css"));
+                      "~/Content/Shared/margin.css",
+                      "~/Content/Shared/width.css"));
         }
     }
 }
