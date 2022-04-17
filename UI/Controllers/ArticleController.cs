@@ -20,12 +20,7 @@ namespace UI.Controllers
 
         public ActionResult Index(int? id)
         {
-            if (id < 1)
-            {
-                Response.StatusCode = 404;
-                Response.WriteFile("~/Views/Shared/NotFound.html");
-                return new EmptyResult();
-            }
+            if (id == 0) { return RedirectToRoute(new { id = 1 }); }
 
             const int articleSize = 5;
             int pageIndex = (id is null) ? 1 : (int)id;
@@ -58,7 +53,7 @@ namespace UI.Controllers
                 Response.WriteFile("~/Views/Shared/NotFound.html");
                 return new EmptyResult();
             }
-            
+
             ViewBag.CurrentUserId = (ViewData[Key.HasLogin] is null) ? 0 : CookieHelper.GetCurrentUserId();
             return View(article);
         }

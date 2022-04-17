@@ -8,12 +8,27 @@
     margin-top: 180px;
 }
 
+@media (max-width: 690px) {
+    .error-page-container {
+        align-items: center;
+        flex-direction: column-reverse;
+        margin-top: 30px;
+    }
+}
+
 .error-page-text {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-width: 384px;
+}
+
+@media (max-width: 690px) {
+    .error-page-text {
+        align-items: center;
+        min-width: auto;
+    }
 }
 
 .error-page-title {

@@ -1,0 +1,63 @@
+﻿html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/*header、footer采用固定高度，只占用必须的空间*/
+/*将flex-grow设置为1，该元素会占用全部可使用空间。其他元素该属性值为0，因此不会得到多余的空间*/
+/*flex-grow, flex-shrink, flex-basis*/
+header {
+    flex: 0 0 auto;
+}
+
+main {
+    flex: 1 0 auto;
+    padding: 2rem 1rem 2rem;
+}
+
+footer {
+    flex: 0 0 auto;
+    font-size: 14px;
+}
+
+a {
+    color: #337ab7;
+}
+
+    a:hover {
+        text-decoration: none;
+    }
+        /*手机端点击赞踩不变色*/
+        a:hover[name=agree] {
+            color: #2b542c;
+        }
+
+        a:hover[name=disagree] {
+            color: #777;
+        }
+
+        a:hover#agree {
+            color: #2b542c;
+        }
+
+        a:hover#disagree {
+            color: #777;
+        }
+
+button:focus {
+    outline: none;
+}
+
+#navbarScrollingDropdown {
+    color: #777
+}
+
+.field-validation-error {
+    color: #b94a48;
+    font-size: 14px;
+}

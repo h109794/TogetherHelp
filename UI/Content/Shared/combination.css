@@ -1,9 +1,4 @@
-﻿.main-size {
-    min-height: 34.3rem;
-    padding: 3rem 1rem 2rem;
-}
-
-.notification-bar {
+﻿.notification-bar {
     background-color: #eee;
     height: 1.5rem;
     margin-top: 3.5rem;

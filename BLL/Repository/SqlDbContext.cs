@@ -9,8 +9,9 @@ namespace BLL.Repository
         private const string connctionStr = @"Data Source=(localdb)\MSSQLLocalDB;
                                               Initial Catalog=togetherhelp_debug";
 #else   
-        private const string connctionStr = @"Server=iZfhgum0r8viw2Z\SQLEXPRESS;
-                                              Database=togetherhelp;Integrated Security=true";
+        private const string connctionStr = @"Server=172_16_0_6\SQLEXPRESS;
+                                              Database=yueqinglocalspecialty;
+                                              Integrated Security=true";
 #endif
         public SqlDbContext() : base(connctionStr) { }
 
