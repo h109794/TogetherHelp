@@ -1,5 +1,4 @@
 ﻿using Global;
-using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
@@ -10,14 +9,14 @@ using UI.Helper;
 
 namespace UI.Controllers
 {
-    [ModelValidationFilter]
     public class EmailController : Controller
     {
         private readonly IContactService contactService;
 
-        public EmailController() => contactService = new ContactService();
+        public EmailController(IContactService contactService) => this.contactService = contactService;
 
         [NeedLoginFilter]
+        [ModelValidationFilter]
         public ActionResult Index()
         {
             EmailModel email = contactService.GetEmail(CookieHelper.GetCurrentUserId());
@@ -26,6 +25,7 @@ namespace UI.Controllers
 
         [HttpPost]
         [NeedLoginFilter]
+        [ModelValidationFilter]
         public ActionResult Index(EmailModel email)
         {
             if (email.VerificationCode != Session[Key.Captcha]?.ToString())

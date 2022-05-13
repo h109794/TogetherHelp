@@ -12,19 +12,36 @@
 }
 
 .sidebar-border {
-    border: 1px dashed lightgray;
+    border: 1px solid lightgray;
     border-radius: 4px 5px;
 }
 
 .keyword {
     font-size: 12px;
     font-weight: bold;
-    border: 1px solid;
     border-radius: 20px;
-    background-color: gray;
     color: white;
+    background-color: gray;
     padding: 0px 7px;
+    display: inline-block;
     margin-right: 5px;
+}
+
+.sidebar-keyword {
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    padding: 3px 7px;
+    line-height: 1;
+    display: inline-block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+a:hover.sidebar-keyword {
+    color: white;
 }
 
 .reply {

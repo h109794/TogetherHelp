@@ -46,36 +46,39 @@
     </div>
 }
 
-<nav class="mt-5">
-    <ul class="pagination">
-        @if (!isFirstPage)
-        {
-            <li class="page-item">
-                <a class="page-link" href="~/article/page/@(ViewBag.PageIndex - 1)">
-                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                </a>
-            </li>
-        }
+@if (pageNumber > 1)
+{
+    <nav class="mt-5">
+        <ul class="pagination">
+            @if (!isFirstPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="~/article/page/@(ViewBag.PageIndex - 1)@ViewBag.URLParameter">
+                        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                    </a>
+                </li>
+            }
 
-        @for (int i = pageBeginIndex; i < pageNumber; i++)
-        {
-            currentPageClass = ((i + 1) == ViewBag.PageIndex) ? "active" : string.Empty;
-            <li class="page-item @currentPageClass"><a class="page-link" href="~/article/page/@(i + 1)">@(i + 1)</a></li>
-        }
+            @for (int i = pageBeginIndex; i < pageNumber; i++)
+            {
+                currentPageClass = ((i + 1) == ViewBag.PageIndex) ? "active" : string.Empty;
+                <li class="page-item @currentPageClass"><a class="page-link" href="~/article/page/@(i + 1)@ViewBag.URLParameter">@(i + 1)</a></li>
+            }
 
-        @if (!isLastPage)
-        {
-            <li class="page-item">
-                <a class="page-link" href="~/article/page/@(ViewBag.PageIndex + 1)">
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                </a>
-            </li>
-        }
-    </ul>
-</nav>
+            @if (!isLastPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="~/article/page/@(ViewBag.PageIndex + 1)@ViewBag.URLParameter">
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
 
 @section Keywords{
-    @Html.Partial("_SidebarKeywords")
+    @Html.Action("Index", "Keyword")
 }
 
 <script src="~/Scripts/shared/evalRequest.js" type="text/javascript"></script>

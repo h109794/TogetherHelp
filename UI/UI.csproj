@@ -34,7 +34,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -53,6 +53,9 @@
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=6.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Mvc5.6.0.0\lib\net472\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="DevTrends.MvcDonutCaching, Version=1.3.0.0, Culture=neutral, PublicKeyToken=73c58d802958a09f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcDonutCaching.1.3.0\lib\net40\DevTrends.MvcDonutCaching.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -160,6 +163,7 @@
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KeywordController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PasswordController.cs" />
     <Compile Include="Controllers\PersonalDataController.cs" />
@@ -254,8 +258,7 @@
     <Content Include="Content\font-awesome-4.7.0\scss\_screen-reader.scss" />
     <Content Include="Content\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="Content\font-awesome-4.7.0\scss\_variables.scss" />
-    <None Include="Properties\PublishProfiles\AliIISProfile.pubxml" />
-    <None Include="Properties\PublishProfiles\TencentIISProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\TencentCloud.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -282,6 +285,7 @@
     <Content Include="Scripts\shared\keywordSelection.js" />
     <Content Include="Scripts\shared\paginationSize.js" />
     <Content Include="Scripts\shared\personalDataGender.js" />
+    <Content Include="Scripts\shared\sidebarKeywords.js" />
     <Content Include="Scripts\shared\textEditor.js" />
     <Content Include="Scripts\shared\wangEditor.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
@@ -314,20 +318,20 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Shared\Layout\_UserRightLayout.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
-    <Content Include="Views\Shared\_SidebarKeywords.cshtml" />
     <Content Include="Views\Shared\Layout\_ContentLayout.cshtml" />
     <Content Include="Views\Article\Publish.cshtml" />
     <Content Include="Views\Shared\Layout\_InformationLayout.cshtml" />
     <Content Include="Views\Shared\_SelectKeywords.cshtml" />
     <Content Include="Views\Password\Change.cshtml" />
     <Content Include="Views\Article\Single.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\_Comments.cshtml" />
     <Content Include="Views\Shared\PublishComment.cshtml" />
     <Content Include="Views\PersonalData\Index.cshtml" />
     <Content Include="Views\Email\Index.cshtml" />
     <Content Include="Views\Password\Verify.cshtml" />
     <Content Include="Views\Password\Reset.cshtml" />
     <Content Include="Views\Shared\NotFound.html" />
+    <Content Include="Views\Shared\EditorTemplates\_Comments.cshtml" />
+    <Content Include="Views\Shared\_SidebarKeywords.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

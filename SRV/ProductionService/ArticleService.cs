@@ -14,9 +14,20 @@ namespace SRV.ProductionService
 
         public ArticleService() => articleRepository = new ArticleRepository(DbContext);
 
-        public List<ArticleModel> GetArticles(int pageIndex, int articleSize)
+        public List<ArticleModel> GetArticles(int pageIndex, int articleSize, out int articlesCount, int? keywordId)
         {
-            List<Article> articles = articleRepository.GetArticles(pageIndex, articleSize);
+            List<Article> articles;
+
+            if (keywordId is null)
+            {
+                articles = articleRepository.GetArticles(pageIndex, articleSize);
+                articlesCount = articleRepository.GetArticlesCount();
+            }
+            else
+            {
+                articles = articleRepository.GetArticlesByKeyword(pageIndex, articleSize, (int)keywordId);
+                articlesCount = articleRepository.GetArticlesCountByKeyword((int)keywordId);
+            }
             return Mapper.Map<List<ArticleModel>>(articles);
         }
 
@@ -32,11 +43,6 @@ namespace SRV.ProductionService
                 articleModel.NextArticle = Mapper.Map<ArticleModel>(articleRepository.GetPreviousArticle(article.Id));
             }
             return articleModel;
-        }
-
-        public int GetArticlesCount()
-        {
-            return articleRepository.GetArticlesCount();
         }
 
         public void Publish(ArticleModel article, int userId)

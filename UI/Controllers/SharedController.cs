@@ -1,5 +1,4 @@
 ﻿using Global;
-using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System.IO;
@@ -11,6 +10,17 @@ namespace UI.Controllers
 {
     public class SharedController : Controller
     {
+        private readonly ICommentService commentService;
+        private readonly IEvaluationService evaluationService;
+
+        public SharedController(
+            ICommentService commentService,
+            IEvaluationService evaluationService)
+        {
+            this.commentService = commentService;
+            this.evaluationService = evaluationService;
+        }
+
         public ActionResult GenerateCaptcha()
         {
             MemoryStream captchaStream = Utility.Captcha.GenerateCaptcha(out string code);
@@ -22,7 +32,6 @@ namespace UI.Controllers
         [NeedLoginFilter]
         public ActionResult PublishComment(int articleId)
         {
-            ICommentService commentService = new CommentService();
             CommentModel comment = commentService.Publish(articleId, CookieHelper.GetCurrentUserId(),
                                         Request.Form[Key.CommentContent], Request.Form[Key.ReplyUsername],
                                         Request.Form[Key.ReplyMainCommentId], Request.Form[Key.ReplyCommentId]);
@@ -33,8 +42,6 @@ namespace UI.Controllers
         [NeedLoginFilter]
         public ActionResult Evaluate()
         {
-            IEvaluationService evaluationService = new EvaluationService();
-
             int contentId = int.Parse(Request.Form[Key.ContentId]);
             bool isAgree = bool.Parse(Request.Form[Key.IsAgree]);
             bool isArticle = bool.Parse(Request.Form[Key.IsArticle]);

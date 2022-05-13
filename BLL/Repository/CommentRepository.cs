@@ -11,8 +11,8 @@ namespace BLL.Repository
         public override Comment Find(int id)
         {
             return sqlDbContext.Comments.Where(c => c.Id == id)
-                        .Include(c => c.Author.PersonalData).Include(c => c.Replys)
-                        .Include(c => c.Evaluations).SingleOrDefault();
+                    .Include(c => c.Author.PersonalData).Include(c => c.Replys)
+                    .Include(c => c.Evaluations).SingleOrDefault();
         }
     }
 }

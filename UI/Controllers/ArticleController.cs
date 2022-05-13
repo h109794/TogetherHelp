@@ -1,5 +1,4 @@
 ﻿using Global;
-using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
@@ -11,20 +10,18 @@ using UI.Helper;
 
 namespace UI.Controllers
 {
-    [ModelValidationFilter]
     public class ArticleController : Controller
     {
         private readonly IArticleService articleService;
+        const int articleSize = 5;
 
-        public ArticleController() => articleService = new ArticleService();
+        public ArticleController(IArticleService articleService) => this.articleService = articleService;
 
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? keywordId, int pageIndex = 1)
         {
-            if (id == 0) { return RedirectToRoute(new { id = 1 }); }
+            if (pageIndex == 0) { return RedirectToRoute(new { id = 1 }); }
 
-            const int articleSize = 5;
-            int pageIndex = (id is null) ? 1 : (int)id;
-            List<ArticleModel> articles = articleService.GetArticles(pageIndex, articleSize);
+            List<ArticleModel> articles = articleService.GetArticles(pageIndex, articleSize, out int articlesCount, keywordId);
 
             if (articles.Count == 0)
             {
@@ -34,9 +31,10 @@ namespace UI.Controllers
             }
 
             // 避免无法整除导致末尾页码丢失
-            int pageCount = (int)Math.Ceiling((double)articleService.GetArticlesCount() / articleSize);
+            int pageCount = (int)Math.Ceiling((double)articlesCount / articleSize);
             ViewBag.PageIndex = pageIndex;
             ViewBag.PageCount = pageCount;
+            ViewBag.URLParameter = keywordId is null ? null : $"?keywordId={keywordId}";
             ViewBag.CurrentUserId = (ViewData[Key.HasLogin] is null) ? 0 : CookieHelper.GetCurrentUserId();
 
             return View(articles);
@@ -59,6 +57,7 @@ namespace UI.Controllers
         }
 
         [NeedLoginFilter]
+        [ModelValidationFilter]
         public ActionResult Publish()
         {
             return View();
@@ -66,6 +65,7 @@ namespace UI.Controllers
 
         [HttpPost]
         [NeedLoginFilter]
+        [ModelValidationFilter]
         public ActionResult Publish(ArticleModel newArticle)
         {
             // 防止用户添加关键字后再删光导致Receiver内有','使文章正常发布(匹配只有','的情况)

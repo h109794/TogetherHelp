@@ -96,6 +96,7 @@ document.getElementById("comments").addEventListener("click", function (e) {
                         } else {
                             replyBoxDiv.parentElement.parentElement.parentElement.getElementsByClassName("mt-3 mr-0 mb-0 ml-3")[0].appendChild(newReplyComment);
                         }
+                        document.getElementById("comment-count").textContent++;
                         // 绑定回复按钮显隐事件
                         newReplyComment.addEventListener("mouseenter", function () {
                             this.querySelector(".fa.fa-reply.d-none").className = "fa fa-reply";

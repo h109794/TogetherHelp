@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Autofac;
+using Autofac.Integration.Mvc;
+using SRV.ProductionService;
+using System;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -14,8 +18,17 @@ namespace UI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // 注册IOC容器
+            var builder = new ContainerBuilder();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterAssemblyTypes(typeof(BaseService).Assembly).AsImplementedInterfaces();
+            // 设置Autofac为依赖解析器
+            var container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
+#if !DEBUG
         protected void Application_Error(object sender, EventArgs e)
         {
             Exception error = Server.GetLastError();
@@ -40,5 +53,6 @@ namespace UI
                 Server.ClearError();
             }
         }
+#endif
     }
 }

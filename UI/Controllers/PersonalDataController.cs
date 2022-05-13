@@ -1,5 +1,4 @@
 ﻿using Global;
-using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
@@ -15,7 +14,7 @@ namespace UI.Controllers
     {
         private readonly IPersonalDataService personalDataService;
 
-        public PersonalDataController() => personalDataService = new PersonalDataService();
+        public PersonalDataController(IPersonalDataService personalDataService) => this.personalDataService = personalDataService;
 
         public ActionResult Index()
         {

@@ -2,10 +2,10 @@
 var levelOneKeyword = document.getElementById("level-one-keyword");
 var levelTwoKeyword = document.getElementById("level-two-keyword");
 var levelTowOption = {
-    language: ["Java", "Python", "C#", "JavaScript", "PHP", "SQL", "C++", "C"],
-    tool: ["CAD", "eclipse", "Excel", "PhotoShop", "PowerPoint", "VisualStudio", "Word"],
-    system: ["Windows", "Android", "Unix", "Linux"],
-    consult: ["职场", "亲子", "婚姻家庭", "财务", "法律", "心理"],
+    language: ["C", "C++", "C#", "Java", "JavaScript", "PHP", "Python", "SQL", "Visual Basic"],
+    system: ["Android", "iOS", "Linux", "macOS", "Unix", "Windows"],
+    tool: ["CAD", "Eclipse", "Excel", "IntelliJ IDEA", "PhotoShop", "PowerPoint", "Visual Studio", "Word"],
+    frame: ["Angular", "Bootstrap", "React", "jQuery", "Node.js", "Vue"],
 };
 
 levelOneKeyword.addEventListener("change", selectLevelOneKeyword);
@@ -27,16 +27,16 @@ function selectLevelOneKeyword() {
             levelTwoKeyword.add(new Option(levelTowOption.language[i]));
         }
     } else if (this.selectedIndex === 2) {
-        for (let i = 0; i < levelTowOption.tool.length; i++) {
-            levelTwoKeyword.add(new Option(levelTowOption.tool[i]));
-        }
-    } else if (this.selectedIndex === 3) {
         for (let i = 0; i < levelTowOption.system.length; i++) {
             levelTwoKeyword.add(new Option(levelTowOption.system[i]));
         }
+    } else if (this.selectedIndex === 3) {
+        for (let i = 0; i < levelTowOption.tool.length; i++) {
+            levelTwoKeyword.add(new Option(levelTowOption.tool[i]));
+        }
     } else {
-        for (let i = 0; i < levelTowOption.consult.length; i++) {
-            levelTwoKeyword.add(new Option(levelTowOption.consult[i]));
+        for (let i = 0; i < levelTowOption.frame.length; i++) {
+            levelTwoKeyword.add(new Option(levelTowOption.frame[i]));
         }
     }
 
@@ -46,6 +46,7 @@ function selectLevelOneKeyword() {
         }
     }
 }
+
 function selectLevelTwoKeyword() {
     for (let i = 1; i < this.options.length; i++) {
         if (this.selectedIndex === this.options[i].index) {
@@ -53,12 +54,14 @@ function selectLevelTwoKeyword() {
         }
     }
 }
+
 function showUserDefinedKeyword() {
-    if (event.keyCode === 32) {
-        showKeyword(this.value.replace(' ', ''));
+    if (event.keyCode === 32 && this.value.trim() !== '') {
+        showKeyword(this.value.trim());
         this.value = '';
     }
 }
+
 function showKeyword(selectedKeyword) {
     var lable = document.createElement("span");
     var text = document.createTextNode(selectedKeyword + ' ');

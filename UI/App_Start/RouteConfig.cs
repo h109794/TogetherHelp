@@ -11,9 +11,9 @@ namespace UI
 
             routes.MapRoute(
                 name: "ArticleList",
-                url: "article/page/{id}",
-                defaults: new { controller = "Article", action = "Index", id = UrlParameter.Optional },
-                constraints: new { id = @"\d*" }
+                url: "article/page/{pageIndex}",
+                defaults: new { controller = "Article", action = "Index", pageIndex = UrlParameter.Optional },
+                constraints: new { pageIndex = @"\d*" }
             );
 
             routes.MapRoute(

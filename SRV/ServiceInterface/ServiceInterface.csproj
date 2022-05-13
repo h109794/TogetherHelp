@@ -45,6 +45,7 @@
     <Compile Include="ICommentService.cs" />
     <Compile Include="IContactService.cs" />
     <Compile Include="IEvaluationService.cs" />
+    <Compile Include="IKeywordService.cs" />
     <Compile Include="ILoginService.cs" />
     <Compile Include="IPasswordService.cs" />
     <Compile Include="IPersonalDataService.cs" />

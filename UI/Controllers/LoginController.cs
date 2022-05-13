@@ -1,5 +1,4 @@
 ﻿using Global;
-using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
@@ -9,9 +8,13 @@ using UI.Filters;
 
 namespace UI.Controllers
 {
-    [ModelValidationFilter]
     public class LoginController : Controller
     {
+        private readonly ILoginService loginService;
+
+        public LoginController(ILoginService loginService) => this.loginService = loginService;
+
+        [ModelValidationFilter]
         public ActionResult Index()
         {
             // 如果已经登录重定向到主页
@@ -27,9 +30,9 @@ namespace UI.Controllers
         }
 
         [HttpPost]
+        [ModelValidationFilter]
         public ActionResult Index(LoginModel model)
         {
-            ILoginService loginService = new LoginService();
             LoginModel loginModel = loginService.Authenticate(model.Username);
 
             if (loginModel is null)

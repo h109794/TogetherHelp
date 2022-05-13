@@ -1,5 +1,4 @@
 ﻿using Global;
-using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
@@ -12,6 +11,10 @@ namespace UI.Controllers
     [ModelValidationFilter]
     public class RegisterController : Controller
     {
+        private readonly IRegisterService registerService;
+
+        public RegisterController(IRegisterService registerService) => this.registerService = registerService;
+
         public ActionResult Index()
         {
             // 如果已经登录重定向到主页
@@ -25,8 +28,6 @@ namespace UI.Controllers
         [HttpPost]
         public ActionResult Index(RegisterModel model)
         {
-            IRegisterService registerService = new RegisterService();
-
             if (!registerService.ValidateInviterIsExists(model.Inviter, out string invitationCode))
             {
                 ModelState.AddModelError(nameof(model.Inviter), "* 邀请人不存在");

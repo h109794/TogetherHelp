@@ -1,5 +1,4 @@
 ﻿using Global;
-using SRV.ProductionService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System.Web.Mvc;
@@ -13,7 +12,7 @@ namespace UI.Controllers
     {
         private readonly IPasswordService passwordService;
 
-        public PasswordController() => passwordService = new PasswordService();
+        public PasswordController(IPasswordService passwordService) => this.passwordService = passwordService;
 
         [NeedLoginFilter]
         public ActionResult Change()
