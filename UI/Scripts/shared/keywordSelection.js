@@ -2,9 +2,9 @@
 var levelOneKeyword = document.getElementById("level-one-keyword");
 var levelTwoKeyword = document.getElementById("level-two-keyword");
 var levelTowOption = {
-    language: ["C", "C++", "C#", "Java", "JavaScript", "PHP", "Python", "SQL", "Visual Basic"],
+    language: ["C", "C++", "C#", "Java", "JavaScript", "PHP", "Python", "SQL", "VisualBasic"],
     system: ["Android", "iOS", "Linux", "macOS", "Unix", "Windows"],
-    tool: ["CAD", "Eclipse", "Excel", "IntelliJ IDEA", "PhotoShop", "PowerPoint", "Visual Studio", "Word"],
+    tool: ["CAD", "Eclipse", "Excel", "IntelliJIDEA", "PhotoShop", "PowerPoint", "VisualStudio", "Word"],
     frame: ["Angular", "Bootstrap", "React", "jQuery", "Node.js", "Vue"],
 };
 
@@ -68,7 +68,7 @@ function showKeyword(selectedKeyword) {
     var remove = document.createElement("i");
     var showKeywordBox = document.getElementById("show-keyword");
 
-    for (var i = 0; i < showKeywordBox.children.length; i++) {
+    for (let i = 0; i < showKeywordBox.children.length; i++) {
         if (text.nodeValue === showKeywordBox.children[i].innerText) {
             return;
         }
@@ -76,8 +76,6 @@ function showKeyword(selectedKeyword) {
     remove.setAttribute("class", "fa fa-times");
     remove.setAttribute("aria-hidden", "true");
     remove.addEventListener("click", function () {
-        // 移除传递数组中的关键字
-        keywordsReceiver.value = keywordsReceiver.value.replace(this.parentElement.textContent.replace(' ', ''), '');
         lable.remove();
     })
 
@@ -85,8 +83,12 @@ function showKeyword(selectedKeyword) {
     lable.appendChild(remove);
     lable.className = "keyword";
     document.getElementById("show-keyword").insertBefore(lable, showKeywordBox.firstElementChild);
+}
 
-    // 保存关键字返回给Action，要确保父页面保存文本的元素id是"KeywordsReceiver"
-    var keywordsReceiver = document.getElementById("KeywordsReceiver");
-    keywordsReceiver.value = keywordsReceiver.value + ',' + selectedKeyword;
+// 编辑文章时为已有关键字添加移除事件
+var keywords = document.getElementsByClassName("keyword");
+for (let i = 0; i < keywords.length; i++) {
+    keywords[i].lastElementChild.addEventListener("click", function () {
+        this.parentElement.remove();
+    })
 }

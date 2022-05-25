@@ -1,31 +1,44 @@
-﻿@model List<SRV.ViewModel.ArticleModel>
+﻿@model SRV.ViewModel.ArticleListModel
 @{
+    bool isIndexAction = ViewContext.RouteData.Values[Global.Key.Action].ToString().ToLower() == "index";
+    string pageTurnsURLAction = isIndexAction ? "page" : "my";
+
+    ViewBag.Title = isIndexAction ? "文章列表" : "我的文章";
     Layout = "~/Views/Shared/Layout/_ContentLayout.cshtml";
-    ViewBag.Title = "文章列表";
 
     string agreeIconClass;
     string disagreeIconClass;
 
     string currentPageClass;
-    bool isFirstPage = ViewBag.PageIndex == 1;
-    bool isLastPage = ViewBag.PageIndex == ViewBag.PageCount;
+    bool isFirstPage = Model.PageIndex == 1;
+    bool isLastPage = Model.PageIndex == Model.PageCount;
 
-    int pageBeginIndex = (ViewBag.PageIndex - 1) / 10 * 10;
-    int pageNumber = (pageBeginIndex + 10 > ViewBag.PageCount) ? ViewBag.PageCount : pageBeginIndex + 10;
+    int pageBeginIndex = (Model.PageIndex - 1) / 10 * 10;
+    int pageNumber = (pageBeginIndex + 10 > Model.PageCount) ? Model.PageCount : pageBeginIndex + 10;
 }
 
-@foreach (var article in Model)
+@foreach (var article in Model.Articles)
 {
     <div>
         @Html.Hidden("articleId", article.Id)
-        <div>
-            <small class="clr-777"><i class="fa fa-calendar" aria-hidden="true"></i> @(article.PublishTime)</small>
-            <span class="float-right fs-14">作者：<a href="#">@(article.AuthorName)</a></span>
+        <div class="fs-13 clr-777">
+            <span><i class="fa fa-calendar" aria-hidden="true"></i> @(article.PublishTime)</span>
+            @if (isIndexAction)
+            {
+                <span class="float-right">作者：<a href="#">@(article.AuthorName)</a></span>
+            }
+            else
+            {
+                <span class="float-right">
+                    <a href="#" name="delete-article" class="mr-3"><i class="fa fa-trash-o" aria-hidden="true"></i> 删除</a>
+                    <a href="/article/edit?articleId=@article.Id" name="edit-article" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
+                </span>
+            }
         </div>
-        <p class="mt-2 fs-18"><a href="~/article/@article.Id" target="_blank">@(article.Title)</a></p>
-        <p class="fs-14">@article.Abstract<a href="~/article/@article.Id" target="_blank">……</a></p>
-        <div class="mt-2">
-            <i class="fa fa-tags" aria-hidden="true"></i><b class="fs-14"> 关键字：</b>
+        <div class="my-3 fs-18"><a href="~/article/@article.Id" target="_blank">@(article.Title)</a></div>
+        <div class="my-3 fs-14">@Html.Raw(article.Abstract)<a href="~/article/@article.Id" target="_blank">……</a></div>
+        <div>
+            <i class="fa fa-tag"></i><b class="fs-14"> 关键字：</b>
             @foreach (var keyword in article.Keywords)
             {
                 <span class="keyword">@keyword.Text</span>
@@ -34,11 +47,11 @@
         <div class="text-right fs-14">
             <a href="~/article/@article.Id#comment-area" target="_blank"><i class="fa fa-comments-o" aria-hidden="true"></i> 评论：@(article.Comments.Count)</a>
             <a href="#" name="agree" class="ml-3 clr-2b542c">
-                @{agreeIconClass = article.AgreeUserIds.Contains(ViewBag.CurrentUserId) ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up";}
+                @{agreeIconClass = article.AgreeUserIds.Contains(Model.CurrentUserId) ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up";}
                 <i class="@agreeIconClass" aria-hidden="true"></i> 赞：<span class="evaluation-count">@(article.AgreeUserIds.Count)</span>
             </a>
             <a href="#" name="disagree" class="ml-3 clr-777">
-                @{disagreeIconClass = article.DisagreeUserIds.Contains(ViewBag.CurrentUserId) ? "fa fa-thumbs-down" : "fa fa-thumbs-o-down";}
+                @{disagreeIconClass = article.DisagreeUserIds.Contains(Model.CurrentUserId) ? "fa fa-thumbs-down" : "fa fa-thumbs-o-down";}
                 <i class="@disagreeIconClass" aria-hidden="true"></i> 踩：<span class="evaluation-count">@(article.DisagreeUserIds.Count)</span>
             </a>
         </div>
@@ -53,7 +66,7 @@
             @if (!isFirstPage)
             {
                 <li class="page-item">
-                    <a class="page-link" href="~/article/page/@(ViewBag.PageIndex - 1)@ViewBag.URLParameter">
+                    <a class="page-link" href="~/article/@pageTurnsURLAction/@(Model.PageIndex - 1)@Model.NavURLParam">
                         <i class="fa fa-angle-double-left" aria-hidden="true"></i>
                     </a>
                 </li>
@@ -61,20 +74,22 @@
 
             @for (int i = pageBeginIndex; i < pageNumber; i++)
             {
-                currentPageClass = ((i + 1) == ViewBag.PageIndex) ? "active" : string.Empty;
-                <li class="page-item @currentPageClass"><a class="page-link" href="~/article/page/@(i + 1)@ViewBag.URLParameter">@(i + 1)</a></li>
+                currentPageClass = ((i + 1) == Model.PageIndex) ? "active" : string.Empty;
+                <li class="page-item @currentPageClass"><a class="page-link" href="~/article/@pageTurnsURLAction/@(i + 1)@Model.NavURLParam">@(i + 1)</a></li>
             }
 
             @if (!isLastPage)
             {
                 <li class="page-item">
-                    <a class="page-link" href="~/article/page/@(ViewBag.PageIndex + 1)@ViewBag.URLParameter">
+                    <a class="page-link" href="~/article/@pageTurnsURLAction/@(Model.PageIndex + 1)@Model.NavURLParam">
                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                     </a>
                 </li>
             }
         </ul>
     </nav>
+
+    <script src="~/Scripts/shared/paginationSize.js" type="text/javascript"></script>
 }
 
 @section Keywords{
@@ -83,4 +98,4 @@
 
 <script src="~/Scripts/shared/evalRequest.js" type="text/javascript"></script>
 <script src="~/Scripts/shared/articleListEval.js" type="text/javascript"></script>
-<script src="~/Scripts/shared/paginationSize.js" type="text/javascript"></script>
+<script src="~/Scripts/shared/deleteArticle.js" type="text/javascript"></script>

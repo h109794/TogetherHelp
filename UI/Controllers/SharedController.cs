@@ -49,10 +49,5 @@ namespace UI.Controllers
 
             return Json(jsonValue);
         }
-
-        public ActionResult NotFound()
-        {
-            return View();
-        }
     }
 }

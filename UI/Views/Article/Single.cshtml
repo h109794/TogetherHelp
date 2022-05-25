@@ -1,14 +1,14 @@
 ﻿@model SRV.ViewModel.ArticleModel
 @{
-    Layout = "~/Views/Shared/Layout/_ContentLayout.cshtml";
     ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/Layout/_ContentLayout.cshtml";
 
     string agreeIconClass = Model.AgreeUserIds.Contains(ViewBag.CurrentUserId) ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up";
     string disagreeIconClass = Model.DisagreeUserIds.Contains(ViewBag.CurrentUserId) ? "fa fa-thumbs-down" : "fa fa-thumbs-o-down";
 }
 
 <div>
-    <h2><i class="fa fa-book" aria-hidden="true"></i> @Model.Title</h2>
+    <h2>@Model.Title</h2>
     <span class="fs-13">作者：<a href="#">@Model.AuthorName</a></span>
     <span class="float-right fs-13 clr-777"><i class="fa fa-calendar" aria-hidden="true"></i> @Model.PublishTime</span>
     <hr class="mt-0" />
@@ -19,7 +19,7 @@
 </div>
 
 <div class="fs-14 mt-2r">
-    <i class="fa fa-tags" aria-hidden="true"></i><b> 关键字：</b>
+    <i class="fa fa-tag" aria-hidden="true"></i><b> 关键字：</b>
     @foreach (var keyword in Model.Keywords)
     {
         <span class="keyword">@keyword.Text</span>

@@ -1,4 +1,13 @@
-﻿<div id="show-keyword"></div>
+﻿@model List<SRV.ViewModel.KeywordModel>
+<div id="show-keyword">
+    @if (Model != null)
+    {
+        foreach (var keyword in Model)
+        {
+            <span class="keyword">@keyword.Text <i class="fa fa-times" aria-hidden="true"></i></span>
+        }
+    }
+</div>
 <div class="input-group" id="keyword-box">
     <div class="input-group-prepend">
         <label class="input-group-text">一级</label>

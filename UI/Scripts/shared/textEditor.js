@@ -6,3 +6,6 @@ editor.config.onchange = function (html) {
     document.getElementById("Body").value = html;
 }
 editor.create();
+
+// 编辑文章时将内容加载到editor
+editor.txt.append(document.getElementById("Body").value);

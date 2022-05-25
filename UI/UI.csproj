@@ -274,7 +274,9 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\shared\articlePublish.js" />
     <Content Include="Scripts\shared\articleSingleEval.js" />
+    <Content Include="Scripts\shared\deleteArticle.js" />
     <Content Include="Scripts\shared\email.js" />
     <Content Include="Scripts\shared\captcha.js" />
     <Content Include="Scripts\shared\commentPublish.js" />
@@ -293,7 +295,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\shared\wangEditor.min.js" />
-    <Content Include="Views\Shared\Error.html" />
+    <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -329,7 +331,7 @@
     <Content Include="Views\Email\Index.cshtml" />
     <Content Include="Views\Password\Verify.cshtml" />
     <Content Include="Views\Password\Reset.cshtml" />
-    <Content Include="Views\Shared\NotFound.html" />
+    <None Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_Comments.cshtml" />
     <Content Include="Views\Shared\_SidebarKeywords.cshtml" />
   </ItemGroup>

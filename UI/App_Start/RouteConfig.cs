@@ -17,23 +17,23 @@ namespace UI
             );
 
             routes.MapRoute(
+               name: "MyArticles",
+               url: "article/my/{pageIndex}",
+               defaults: new { controller = "Article", action = "My", pageIndex = UrlParameter.Optional },
+               constraints: new { pageIndex = @"\d*" }
+           );
+
+            routes.MapRoute(
                 name: "ArticleSingle",
-                url: "article/{id}",
+                url: "article/{articleId}",
                 defaults: new { Controller = "Article", action = "Single" },
-                constraints: new { id = @"\d*" }
+                constraints: new { articleId = @"\d*" }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-
-            // 处理不存在的url
-            routes.MapRoute(
-                name: "NotFound",
-                url: "{*url}",
-                defaults: new { controller = "Shared", action = "Error" }
             );
         }
     }

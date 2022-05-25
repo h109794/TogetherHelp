@@ -20,5 +20,6 @@
         public const string ContentId = "contentId";
         public const string IsAgree = "isAgree";
         public const string IsArticle = "isArticle";
+        public const string Action = "action";
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
+using System;
+using System.Linq.Expressions;
 
 namespace BLL.Repository
 {
@@ -9,24 +11,31 @@ namespace BLL.Repository
     {
         public ArticleRepository(SqlDbContext sqlDbContext) : base(sqlDbContext) { }
 
-        public Article FindById(int id)
+        public Article FindAll(int id)
         {
-            return sqlDbContext.Articles.Where(a => a.Id == id).Include(a => a.Author.PersonalData).Include(a => a.Evaluations)
-                    .Include(a => a.Keywords).Include(a => a.Comments.Select(c => c.Author).Select(u => u.PersonalData))
+            return sqlDbContext.Articles.Where(a => a.Id == id)
+                    .Include(a => a.Author.PersonalData).Include(a => a.Keywords).Include(a => a.Evaluations)
+                    .Include(a => a.Comments.Select(c => c.Author).Select(u => u.PersonalData))
                     .Include(a => a.Comments.Select(c => c.ReplyUser).Select(u => u.PersonalData))
                     .Include(a => a.Comments.Select(c => c.Evaluations)).SingleOrDefault();
         }
 
+        public Article FindById(int id)
+        {
+            return sqlDbContext.Articles.Where(a => a.Id == id).Include(a => a.Keywords).Single();
+        }
+
         public List<Article> GetArticles(int pageIndex, int articleSize)
         {
-            return sqlDbContext.Articles.Include(a => a.Author.PersonalData)
-                    .Include(a => a.Keywords).Include(a => a.Comments).Include(a => a.Evaluations)
+            return sqlDbContext.Articles
+                    .Include(a => a.Author.PersonalData).Include(a => a.Keywords)
+                    .Include(a => a.Comments).Include(a => a.Evaluations)
                     .OrderByDescending(a => a.Id).Skip((pageIndex - 1) * articleSize).Take(articleSize).ToList();
         }
 
-        public List<Article> GetArticlesByKeyword(int pageIndex, int articleSize, int keywordId)
+        public List<Article> GetArticles(int pageIndex, int articleSize, Expression<Func<Article, bool>> predicate)
         {
-            return sqlDbContext.Articles.Where(a => a.Keywords.Select(k => k.Id).Contains(keywordId))
+            return sqlDbContext.Articles.Where(predicate)
                     .Include(a => a.Author.PersonalData).Include(a => a.Keywords)
                     .Include(a => a.Comments).Include(a => a.Evaluations)
                     .OrderByDescending(a => a.Id).Skip((pageIndex - 1) * articleSize).Take(articleSize).ToList();
@@ -52,9 +61,9 @@ namespace BLL.Repository
             return sqlDbContext.Articles.Count();
         }
 
-        public int GetArticlesCountByKeyword(int keywordId)
+        public int GetArticlesCount(Expression<Func<Article, bool>> predicate)
         {
-            return sqlDbContext.Articles.Where(a => a.Keywords.Select(k => k.Id).Contains(keywordId)).Count();
+            return sqlDbContext.Articles.Where(predicate).Count();
         }
     }
 }

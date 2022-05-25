@@ -42,14 +42,14 @@ namespace UI
                     if (httpCode == 400 || httpCode == 404)
                     {
                         Response.StatusCode = 404;
-                        Response.WriteFile("~/Views/Shared/NotFound.html");
+                        Response.WriteFile("~/Views/Shared/NotFound.cshtml");
                         Server.ClearError();
                         return;
                     }
                 }
                 // 根据需求进行日志记录，或者处理其他业务流程
                 Response.StatusCode = 500;
-                Response.WriteFile("~/Views/Shared/Error.html");
+                Response.WriteFile("~/Views/Shared/Error.cshtml");
                 Server.ClearError();
             }
         }
