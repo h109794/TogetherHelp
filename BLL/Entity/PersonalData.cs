@@ -6,6 +6,7 @@ namespace BLL.Entity
     [Table("personal_data")]
     public class PersonalData : BaseEntity
     {
+        public byte[] Profile { get; set; }
         public User User { get; set; }
         // true:man false:woman
         public bool? Gender { get; set; }

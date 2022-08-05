@@ -100,6 +100,10 @@
     <Compile Include="Migrations\202203290657042_ChangePersonalDataNicknameMaxLength.designer.cs">
       <DependentUpon>202203290657042_ChangePersonalDataNicknameMaxLength.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207250703581_AddPersonalDataProfile.cs" />
+    <Compile Include="Migrations\202207250703581_AddPersonalDataProfile.designer.cs">
+      <DependentUpon>202207250703581_AddPersonalDataProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="SqlDbContext.cs" />
@@ -149,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203290657042_ChangePersonalDataNicknameMaxLength.resx">
       <DependentUpon>202203290657042_ChangePersonalDataNicknameMaxLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207250703581_AddPersonalDataProfile.resx">
+      <DependentUpon>202207250703581_AddPersonalDataProfile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

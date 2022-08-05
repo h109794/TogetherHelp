@@ -107,7 +107,7 @@ namespace Global
             // 设置发件邮箱信息
             string smtpServer = "smtp.qq.com";
             string mailForm = "ylhework@foxmail.com";
-            string authorizationCode = "bbdltwdwbsanbdcf";
+            string authorizationCode = "cuayjgsnzqkfbcfj";
 
             // 设置发送邮件
             MailMessage mailMessage = new MailMessage(mailForm, mailTo)// 发件人和收件人

@@ -16,7 +16,6 @@
                 <div>
                     <a href="/"><img src="~/Images/logo.png" alt="Logo" /></a>
                     <span class="fs-18 clr-777 font-weight-bolder">乐清土特产</span>
-                    <span class="clr-777">· 交易发布平台</span>
                 </div>
 
                 <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false">
@@ -24,7 +23,7 @@
                 </button>
                 <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
                     <ul class="navbar-nav fs-14">
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown align-self-md-center">
                             <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-question-circle" aria-hidden="true"></i> 求助
                             </a>
@@ -33,7 +32,7 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item dropdown ml-md-4">
+                        <li class="nav-item dropdown ml-md-4 align-self-md-center">
                             <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-file-text-o" aria-hidden="true"></i> 文章
                             </a>
@@ -49,37 +48,25 @@
 
                         @if (ViewData[Global.Key.HasLogin] != null)
                         {
+                            string profileSrc = ViewData[Global.Key.HasProfile]?.ToString() == "True" ?
+                                        "/Shared/GetCurrentUserProfile" : "/Images/defaultProfile.png";
                             <li class="nav-item dropdown ml-md-4">
-                                <a class="dropdown-toggle clr-337ab7" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-user-circle" aria-hidden="true"></i>
-                                    @*防止因用户删除Cookie导致的异常*@
-                                    @if (ViewData[Global.Key.Nickname] != null)
-                                    {
-                                        @HttpUtility.UrlDecode(ViewData[Global.Key.Nickname].ToString())
-                                    }
+                                <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    <img id="nav-profile" class="nav-profile ml-3" src="@profileSrc" alt="Profile" />
                                 </a>
                                 <ul class="dropdown-menu fs-14">
                                     <li><a class="dropdown-item" href="~/personaldata"><i class="fa fa-camera" aria-hidden="true"></i> 个人资料</a></li>
-                                    <li><a class="dropdown-item" href="~/password/change"><i class="fa fa-key" aria-hidden="true"></i><span class="ml-6px">修改密码</span></a></li>
-                                    <li><a class="dropdown-item" href="~/email"><i class="fa fa-envelope" aria-hidden="true"></i><span class="ml-6px">绑定邮箱</span></a></li>
+                                    <li><a class="dropdown-item" href="~/password/change"><i class="fa fa-key" aria-hidden="true"></i><span class="ml-5px">修改密码</span></a></li>
+                                    <li><a class="dropdown-item" href="~/email"><i class="fa fa-envelope" aria-hidden="true"></i><span class="ml-5px">绑定邮箱</span></a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="~/login/logoff"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="nav-item dropdown ml-md-4">
-                                <a class="navbarScrollingDropdown" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-tachometer" aria-hidden="true"></i> 后台
-                                </a>
-                                <ul class="dropdown-menu fs-14">
-                                    <li><a class="dropdown-item" href="#"><i class="fa fa-link" aria-hidden="true"></i> 发布通知</a></li>
                                 </ul>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item dropdown ml-md-4">
-                                <a class="dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                <a href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-user-secret" aria-hidden="true"></i> 未登录
                                 </a>
                                 <ul class="dropdown-menu fs-14">
@@ -116,7 +103,7 @@
         </div>
         <div class="text-right text-md-center-rev">
             <a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" target="_blank">浙ICP备2021029904号-1</a>
-            <span class="ml-3">© @DateTime.Now.Year - SourceStack</span>
+            <span class="ml-3">© @DateTime.Now.Year - yqttc</span>
         </div>
     </footer>
 

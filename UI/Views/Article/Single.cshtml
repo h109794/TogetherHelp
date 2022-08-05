@@ -9,8 +9,10 @@
 
 <div>
     <h2>@Model.Title</h2>
-    <span class="fs-13">作者：<a href="#">@Model.AuthorName</a></span>
-    <span class="float-right fs-13 clr-777"><i class="fa fa-calendar" aria-hidden="true"></i> @Model.PublishTime</span>
+    <div class="fs-13 mt-3">
+        作者：<a href="#" class="clr-777">@Model.AuthorName</a>
+        <span class="float-right">@Model.PublishTime</span>
+    </div>
     <hr class="mt-0" />
 </div>
 
@@ -53,7 +55,7 @@
             }
             else
             {
-                <i class="fa fa-arrow-up" aria-hidden="true"> 第一篇：</i><span class="clr-6c757d">当前页是第一篇</span>
+                <i class="fa fa-arrow-up" aria-hidden="true"> 第一篇：</i><span class="clr-777">当前页是第一篇</span>
             }
         </div>
         <div class="wrap-indentation">
@@ -63,7 +65,7 @@
             }
             else
             {
-                <i class="fa fa-arrow-down" aria-hidden="true"> 最末篇：</i><span class="clr-6c757d">当前页是最末篇</span>
+                <i class="fa fa-arrow-down" aria-hidden="true"> 最末篇：</i><span class="clr-777">当前页是最末篇</span>
             }
         </div>
     </div>

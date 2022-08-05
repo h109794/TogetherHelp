@@ -46,9 +46,24 @@ namespace UI.Controllers
             }
 
             personalDataService.Save(CookieHelper.GetCurrentUserId(), personalData);
-            Response.Cookies[Key.Nickname].Value = HttpUtility.UrlEncode(personalData.Nickname);
-
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult UploadProfile(HttpPostedFileBase profile)
+        {
+            if (!profile.ContentType.Contains("image") || profile.ContentLength > 1024 * 1024 * 2)
+            {
+                return Json(false);
+            }
+
+            int userId = CookieHelper.GetCurrentUserId();
+            personalDataService.ChangeProfile(userId, profile);
+            HttpContext.Cache.Remove(Key.NavProfile + userId);
+            // 指示下次请求从数据库获取头像
+            Response.Cookies[Key.HasProfile].Value = "True";
+
+            return Json(true);
         }
     }
 }

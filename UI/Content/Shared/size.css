@@ -1,0 +1,24 @@
+﻿.personalData-profile {
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+}
+
+.nav-profile {
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+}
+
+.list-profile {
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.reply-comment-profile {
+    margin-left: 1rem;
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+}

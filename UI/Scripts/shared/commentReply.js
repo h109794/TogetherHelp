@@ -41,24 +41,27 @@ document.getElementById("comments").addEventListener("click", function (e) {
         var replyBoxDiv = replyBoxButton.parentElement.parentElement;
         replyBoxButton.textContent = " 取消回复";
         // 再次点击折叠回复框
-        if (replyBoxDiv.lastChild.className === "input-group input-group-sm mt-1 mb-3 pl-3") {
+        if (replyBoxDiv.lastChild.className === "input-group input-group-sm mt-1 mb-3") {
             replyBoxDiv.lastChild.remove();
             replyBoxButton.textContent = " 回复";
             return;
         }
+
+        var commentContentAera = replyBoxDiv.parentElement;
+        var replyCommentArea = replyBoxDiv.parentElement.parentElement.parentElement.parentElement;
+        var articleId = document.URL.slice(document.URL.lastIndexOf('/') + 1);
+        var replyUsername = commentContentAera.getElementsByTagName('a')[0].textContent;
+        var replyCommentId = commentContentAera.firstElementChild.value;
+        var replyMainCommentId = (commentContentAera.className !== "reply-comment") ?
+            replyCommentId : replyCommentArea.previousElementSibling.firstElementChild.value;
 
         // 生成回复框
         var replyBox = document.createElement("div");
         var replyInputBox = document.createElement("input");
         var replyButtonDiv = document.createElement("div");
         var replyButton = document.createElement("button");
-        var articleId = document.URL.slice(document.URL.lastIndexOf('/') + 1);
-        var replyUsername = replyBoxDiv.parentElement.getElementsByTagName('a')[0].textContent;
-        var replyCommentId = replyBoxDiv.parentElement.firstElementChild.value;
-        var replyMainCommentId = (replyBoxDiv.parentElement.className !== "reply-comment ml-3") ?
-            replyCommentId : replyBoxDiv.parentElement.parentElement.previousElementSibling.firstElementChild.value;
 
-        replyBox.className = "input-group input-group-sm mt-1 mb-3 pl-3";
+        replyBox.className = "input-group input-group-sm mt-1 mb-3";
         replyInputBox.className = "form-control";
         replyInputBox.placeholder = `回复 ${replyUsername}`;
         replyButtonDiv.className = "input-group-append";
@@ -91,10 +94,16 @@ document.getElementById("comments").addEventListener("click", function (e) {
                         replyBoxButton.className += " d-none";
                         // 把返回的HTML文档转换成Node节点
                         var newReplyComment = new DOMParser().parseFromString(xhr.responseText, 'text/html').body.childNodes[0];
-                        if (replyBoxDiv.parentElement.className === "main-comment") {
-                            replyBoxDiv.parentElement.parentElement.getElementsByClassName("mt-3 mr-0 mb-0 ml-3")[0].appendChild(newReplyComment);
+                        // 添加分割线
+                        var hr = document.createElement("hr");
+                        hr.className = "mt-0 ml-3";
+                        // 判断元素添加位置
+                        if (commentContentAera.className === "main-comment") {
+                            commentContentAera.nextElementSibling.appendChild(hr);
+                            commentContentAera.nextElementSibling.appendChild(newReplyComment);
                         } else {
-                            replyBoxDiv.parentElement.parentElement.parentElement.getElementsByClassName("mt-3 mr-0 mb-0 ml-3")[0].appendChild(newReplyComment);
+                            replyCommentArea.appendChild(hr);
+                            replyCommentArea.appendChild(newReplyComment);
                         }
                         document.getElementById("comment-count").textContent++;
                         // 绑定回复按钮显隐事件
@@ -103,7 +112,6 @@ document.getElementById("comments").addEventListener("click", function (e) {
                         });
                         newReplyComment.addEventListener("mouseleave", function () {
                             this.querySelector(".fa.fa-reply").className += " d-none";
-                            // 回复新发布的评论会有问题
                         });
                         // 绑定赞踩按钮评价事件
                         newReplyComment.querySelector("[name=agree]").addEventListener("click", evaluate);

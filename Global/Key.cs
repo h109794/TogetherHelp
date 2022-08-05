@@ -8,7 +8,8 @@
         public const string LoginInfo = "loginInfo";
         public const string Id = "id";
         public const string Pwd = "pwd";
-        public const string Nickname = "nickname";
+        public const string HasProfile = "hasProfile";
+        public const string NavProfile = "navProfile";
         public const string TargetPageURL = "TargetPageURL";
         public const string Captcha = "captcha";
         public const string UrlReferrer = "urlReferrer";

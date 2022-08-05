@@ -6,56 +6,61 @@
     ViewBag.Title = isIndexAction ? "文章列表" : "我的文章";
     Layout = "~/Views/Shared/Layout/_ContentLayout.cshtml";
 
+    string profileSrc;
     string agreeIconClass;
     string disagreeIconClass;
-
     string currentPageClass;
     bool isFirstPage = Model.PageIndex == 1;
     bool isLastPage = Model.PageIndex == Model.PageCount;
-
     int pageBeginIndex = (Model.PageIndex - 1) / 10 * 10;
     int pageNumber = (pageBeginIndex + 10 > Model.PageCount) ? Model.PageCount : pageBeginIndex + 10;
 }
 
 @foreach (var article in Model.Articles)
 {
-    <div>
-        @Html.Hidden("articleId", article.Id)
-        <div class="fs-13 clr-777">
-            <span><i class="fa fa-calendar" aria-hidden="true"></i> @(article.PublishTime)</span>
-            @if (isIndexAction)
-            {
-                <span class="float-right">作者：<a href="#">@(article.AuthorName)</a></span>
+    <div class="row">
+        <div class="col-md-1 d-md-show">
+            @{
+                profileSrc = article.UserProfile.Length == 0 ? "/Images/defaultProfile.png"
+                    : "data:image;base64," + Convert.ToBase64String(article.UserProfile);
             }
-            else
-            {
-                <span class="float-right">
-                    <a href="#" name="delete-article" class="mr-3"><i class="fa fa-trash-o" aria-hidden="true"></i> 删除</a>
-                    <a href="/article/edit?articleId=@article.Id" name="edit-article" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
-                </span>
-            }
+            <a href="#"><img class="list-profile" src="@profileSrc" alt="Author Profile" /></a>
         </div>
-        <div class="my-3 fs-18"><a href="~/article/@article.Id" target="_blank">@(article.Title)</a></div>
-        <div class="my-3 fs-14">@Html.Raw(article.Abstract)<a href="~/article/@article.Id" target="_blank">……</a></div>
-        <div>
-            <i class="fa fa-tag"></i><b class="fs-14"> 关键字：</b>
-            @foreach (var keyword in article.Keywords)
-            {
-                <span class="keyword">@keyword.Text</span>
-            }
+        <div class="col-md-11">
+            @Html.Hidden("articleId", article.Id)
+            <div class="fs-13">
+                <a class="fs-15 clr-black font-weight-bold" href="#">@(article.AuthorName)</a>
+                @if (!isIndexAction)
+                {
+                    <span class="float-right clr-777">
+                        <a href="#" name="delete-article" class="mr-3"><i class="fa fa-trash-o" aria-hidden="true"></i> 删除</a>
+                        <a href="/article/edit?articleId=@article.Id" name="edit-article" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</a>
+                    </span>
+                }
+                <div>@(article.PublishTime)</div>
+            </div>
+            <div class="my-3 fs-18"><a href="~/article/@article.Id" target="_blank">@(article.Title)</a></div>
+            <div class="my-3 fs-14">@Html.Raw(article.Abstract)<a href="~/article/@article.Id" target="_blank">……</a></div>
+            <div>
+                <i class="fa fa-tag"></i><b class="fs-14"> 关键字：</b>
+                @foreach (var keyword in article.Keywords)
+                {
+                    <span class="keyword">@keyword.Text</span>
+                }
+            </div>
+            <div class="text-right fs-14">
+                <a href="~/article/@article.Id#comment-area" target="_blank"><i class="fa fa-comments-o" aria-hidden="true"></i> 评论：@(article.Comments.Count)</a>
+                <a href="#" name="agree" class="ml-3 clr-2b542c">
+                    @{agreeIconClass = article.AgreeUserIds.Contains(Model.CurrentUserId) ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up";}
+                    <i class="@agreeIconClass" aria-hidden="true"></i> 赞：<span class="evaluation-count">@(article.AgreeUserIds.Count)</span>
+                </a>
+                <a href="#" name="disagree" class="ml-3 clr-777">
+                    @{disagreeIconClass = article.DisagreeUserIds.Contains(Model.CurrentUserId) ? "fa fa-thumbs-down" : "fa fa-thumbs-o-down";}
+                    <i class="@disagreeIconClass" aria-hidden="true"></i> 踩：<span class="evaluation-count">@(article.DisagreeUserIds.Count)</span>
+                </a>
+            </div>
+            <hr />
         </div>
-        <div class="text-right fs-14">
-            <a href="~/article/@article.Id#comment-area" target="_blank"><i class="fa fa-comments-o" aria-hidden="true"></i> 评论：@(article.Comments.Count)</a>
-            <a href="#" name="agree" class="ml-3 clr-2b542c">
-                @{agreeIconClass = article.AgreeUserIds.Contains(Model.CurrentUserId) ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up";}
-                <i class="@agreeIconClass" aria-hidden="true"></i> 赞：<span class="evaluation-count">@(article.AgreeUserIds.Count)</span>
-            </a>
-            <a href="#" name="disagree" class="ml-3 clr-777">
-                @{disagreeIconClass = article.DisagreeUserIds.Contains(Model.CurrentUserId) ? "fa fa-thumbs-down" : "fa fa-thumbs-o-down";}
-                <i class="@disagreeIconClass" aria-hidden="true"></i> 踩：<span class="evaluation-count">@(article.DisagreeUserIds.Count)</span>
-            </a>
-        </div>
-        <hr />
     </div>
 }
 

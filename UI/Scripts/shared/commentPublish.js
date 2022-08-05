@@ -21,17 +21,16 @@
     xhr.onreadystatechange = function () {
         if (xhr.readyState === xhr.DONE) {
             if (xhr.status === 200) {
-                var newComment = document.createElement("div");
-                newComment.className = "mb-3";
-                newComment.innerHTML = xhr.responseText;
+                // 把返回的HTML文档转换成Node节点
+                var newComment = new DOMParser().parseFromString(xhr.responseText, 'text/html').body.childNodes[0];
                 document.getElementById("comments").appendChild(newComment);
                 document.getElementById("comment-count").textContent++;
                 commentContent.value = '';
                 // 绑定回复按钮显隐事件
-                newComment.firstElementChild.addEventListener("mouseenter", function () {
+                newComment.getElementsByClassName("main-comment")[0].addEventListener("mouseenter", function () {
                     this.querySelector(".fa.fa-reply.d-none").className = "fa fa-reply";
                 });
-                newComment.firstElementChild.addEventListener("mouseleave", function () {
+                newComment.getElementsByClassName("main-comment")[0].addEventListener("mouseleave", function () {
                     this.querySelector(".fa.fa-reply").className += " d-none";
                 });
                 // 绑定赞踩按钮评价事件

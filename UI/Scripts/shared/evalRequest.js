@@ -3,7 +3,7 @@
     xhr.open("POST", "/Shared/Evaluate");
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send(`isAgree=${isAgree}&contentId=${contentId}&isArticle=${isArticle}`);
-    xhr.onreadystatechange = function myfunction() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === xhr.DONE) {
             if (xhr.status === 200) {
                 var response = JSON.parse(xhr.response);

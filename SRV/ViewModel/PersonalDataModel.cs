@@ -4,8 +4,9 @@ namespace SRV.ViewModel
 {
     public class PersonalDataModel
     {
+        public byte[] Profile { get; set; }
         public string Username { get; set; }
-        // true:man false:woman
+        // true:man, false:woman
         public bool? Gender { get; set; }
         [Required(ErrorMessage = "* 昵称不能为空")]
         [StringLength(16, MinimumLength = 2, ErrorMessage = "* 昵称长度限制为2-16个字符")]

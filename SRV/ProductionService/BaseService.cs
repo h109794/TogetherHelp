@@ -21,10 +21,10 @@ namespace SRV.ProductionService
                     .ForMember(dest => dest.Inviter, opt => opt.Ignore())
                     .ForMember(dest => dest.InvitationCode, opt => opt.Ignore())
                     .ReverseMap();
-                cfg.CreateMap<User, LoginModel>()
-                    .ForMember(dest => dest.Nickname, opt => opt.MapFrom(src => src.PersonalData.Nickname));
+                cfg.CreateMap<User, LoginModel>();
                 cfg.CreateMap<Article, ArticleModel>()
                     .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.PersonalData.Nickname))
+                    .ForMember(dest => dest.UserProfile, opt => opt.MapFrom(src => src.Author.PersonalData.Profile))
                     .ForMember(dest => dest.AgreeUserIds, opt => opt.MapFrom(src => src.Evaluations.Where(e => e.IsAgree == true).Select(e => e.UserId)))
                     .ForMember(dest => dest.DisagreeUserIds, opt => opt.MapFrom(src => src.Evaluations.Where(e => e.IsAgree == false).Select(e => e.UserId)))
                     .ReverseMap();
@@ -32,6 +32,7 @@ namespace SRV.ProductionService
                 cfg.CreateMap<Comment, CommentModel>()
                     .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Author.PersonalData.Nickname))
                     .ForMember(dest => dest.ReplyUsername, opt => opt.MapFrom(src => src.ReplyUser.PersonalData.Nickname))
+                    .ForMember(dest => dest.UserProfile, opt => opt.MapFrom(src => src.Author.PersonalData.Profile))
                     .ForMember(dest => dest.AgreeUserIds, opt => opt.MapFrom(src => src.Evaluations.Where(e => e.IsAgree == true).Select(e => e.UserId)))
                     .ForMember(dest => dest.DisagreeUserIds, opt => opt.MapFrom(src => src.Evaluations.Where(e => e.IsAgree == false).Select(e => e.UserId)))
                     .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.Body));

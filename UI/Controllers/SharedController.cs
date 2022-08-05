@@ -1,6 +1,7 @@
 ﻿using Global;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
+using System;
 using System.IO;
 using System.Web.Mvc;
 using UI.Filters;
@@ -12,13 +13,16 @@ namespace UI.Controllers
     {
         private readonly ICommentService commentService;
         private readonly IEvaluationService evaluationService;
+        private readonly IPersonalDataService personalDataService;
 
         public SharedController(
             ICommentService commentService,
-            IEvaluationService evaluationService)
+            IEvaluationService evaluationService,
+            IPersonalDataService personalDataService)
         {
             this.commentService = commentService;
             this.evaluationService = evaluationService;
+            this.personalDataService = personalDataService;
         }
 
         public ActionResult GenerateCaptcha()
@@ -27,6 +31,24 @@ namespace UI.Controllers
             Session.Add(Key.Captcha, code);
 
             return File(captchaStream, "image/jpge");
+        }
+
+        public ActionResult GetCurrentUserProfile()
+        {
+            int userId = CookieHelper.GetCurrentUserId();
+            string cacheKey = Key.NavProfile + userId;
+
+            if (HttpContext.Cache[cacheKey] is null)
+            {
+                HttpContext.Cache.Insert(
+                    cacheKey,
+                    personalDataService.Get(userId).Profile,
+                    null,
+                    DateTime.MaxValue,
+                    new TimeSpan(0, 15, 0));
+            }
+
+            return File((byte[])HttpContext.Cache[cacheKey], "image");
         }
 
         [NeedLoginFilter]

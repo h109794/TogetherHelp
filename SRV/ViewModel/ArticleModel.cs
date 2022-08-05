@@ -17,6 +17,7 @@ namespace SRV.ViewModel
         [MaxLength(256, ErrorMessage = "* 摘要长度不能超过256位")]
         public string Abstract { get; set; }
         public string AuthorName { get; set; }
+        public byte[] UserProfile { get; set; }
         public DateTime PublishTime { get; set; }
         public List<int> AgreeUserIds { get; set; }
         public List<int> DisagreeUserIds { get; set; }

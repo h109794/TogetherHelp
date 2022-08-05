@@ -53,12 +53,12 @@ namespace UI.Controllers
             }
 
             HttpCookie loginCookie = new HttpCookie(Key.LoginInfo);
-            HttpCookie usernameCookie = new HttpCookie(Key.Nickname, HttpUtility.UrlEncode(loginModel.Nickname));
+            HttpCookie profileCookie = new HttpCookie(Key.HasProfile, loginModel.HasProfile.ToString());
             loginCookie.Values.Add(Key.Id, loginModel.Id.ToString());
             loginCookie.Values.Add(Key.Pwd, loginModel.Password);
-            usernameCookie.Expires = loginCookie.Expires = model.RememberMe is true ? DateTime.Now.AddDays(14) : default;
+            profileCookie.Expires = loginCookie.Expires = model.RememberMe is true ? DateTime.Now.AddDays(14) : default;
             Response.Cookies.Add(loginCookie);
-            Response.Cookies.Add(usernameCookie);
+            Response.Cookies.Add(profileCookie);
 
             // 跳转到未登录时的目标访问页面
             if (Request.Cookies[Key.TargetPageURL] != null)
@@ -77,7 +77,7 @@ namespace UI.Controllers
         public ActionResult Logoff()
         {
             Response.Cookies[Key.LoginInfo].Expires = DateTime.Now.AddDays(-1);
-            Response.Cookies[Key.Nickname].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies[Key.HasProfile].Expires = DateTime.Now.AddDays(-1);
 
             return Redirect(Request.UrlReferrer.ToString() + "?logoff");
         }

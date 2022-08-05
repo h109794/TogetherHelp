@@ -6,6 +6,7 @@ namespace SRV.ViewModel
     public class CommentModel
     {
         public int Id { get; private set; }
+        public byte[] UserProfile { set; get; }
         public string Content { get; set; }
         public string Username { get; set; }
         public string ReplyUsername { get; set; }

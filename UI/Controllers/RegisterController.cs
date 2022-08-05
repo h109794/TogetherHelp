@@ -57,8 +57,6 @@ namespace UI.Controllers
             cookie.Values.Add(Key.Id, id.ToString());
             cookie.Values.Add(Key.Pwd, Utility.MD5Encrypt(model.Password));
             Response.Cookies.Add(cookie);
-            // 存放当前登录用户名
-            Response.Cookies.Add(new HttpCookie(Key.Nickname, model.Username));
 
             // 跳转到未登录时的目标访问页面
             if (Request.Cookies[Key.TargetPageURL] != null)

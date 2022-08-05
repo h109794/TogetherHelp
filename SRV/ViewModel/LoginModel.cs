@@ -5,7 +5,7 @@ namespace SRV.ViewModel
     public class LoginModel
     {
         public int Id { get; private set; }
-        public string Nickname { get; set; }
+        public bool HasProfile { get; set; }
         [Required(ErrorMessage = "* 用户名不能为空")]
         [MaxLength(32, ErrorMessage = "* 用户名长度不能超过32位")]
         public string Username { get; set; }

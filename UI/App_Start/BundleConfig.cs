@@ -26,13 +26,16 @@ namespace UI
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/Shared/user-defined").Include(
+                      "~/Content/Shared/border.css",
                       "~/Content/Shared/color.css",
                       "~/Content/Shared/combination.css",
+                      "~/Content/Shared/cursor.css",
                       "~/Content/Shared/font-size.css",
+                      "~/Content/Shared/global.css",
                       "~/Content/Shared/height.css",
                       "~/Content/Shared/margin.css",
-                      "~/Content/Shared/width.css",
-                      "~/Content/Shared/global.css"));
+                      "~/Content/Shared/size.css",
+                      "~/Content/Shared/width.css"));
         }
     }
 }

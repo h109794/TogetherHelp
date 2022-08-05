@@ -190,14 +190,18 @@
     <Content Include="Content\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Content\Shared\border.css" />
     <Content Include="Content\Shared\color.css" />
+    <Content Include="Content\Shared\cursor.css" />
     <Content Include="Content\Shared\error-page.css" />
     <Content Include="Content\Shared\font-size.css" />
     <Content Include="Content\Shared\global.css" />
     <Content Include="Content\Shared\height.css" />
     <Content Include="Content\Shared\margin.css" />
     <Content Include="Content\Shared\combination.css" />
+    <Content Include="Content\Shared\size.css" />
     <Content Include="Content\Shared\width.css" />
+    <Content Include="Images\defaultProfile.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\error.jpg" />
     <Content Include="favicon.ico" />
@@ -286,7 +290,7 @@
     <Content Include="Scripts\shared\articleListEval.js" />
     <Content Include="Scripts\shared\keywordSelection.js" />
     <Content Include="Scripts\shared\paginationSize.js" />
-    <Content Include="Scripts\shared\personalDataGender.js" />
+    <Content Include="Scripts\shared\personalData.js" />
     <Content Include="Scripts\shared\sidebarKeywords.js" />
     <Content Include="Scripts\shared\textEditor.js" />
     <Content Include="Scripts\shared\wangEditor.js" />

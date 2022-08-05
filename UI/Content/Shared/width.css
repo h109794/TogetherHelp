@@ -3,6 +3,10 @@
         display: none;
     }
 
+    .ml-md-3-rev {
+        margin-left: 1rem;
+    }
+
     .text-md-center-rev {
         text-align: center !important;
     }

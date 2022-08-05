@@ -2,18 +2,23 @@
 @{
     ViewBag.Title = "个人资料";
     Layout = "~/Views/Shared/Layout/_UserRightLayout.cshtml";
+
+    string profileSrc = Model.Profile.Length == 0 ? "/Images/defaultProfile.png"
+                        : $"data:image;base64,{Convert.ToBase64String(Model.Profile)}";
 }
 
 @section Header{
     <i class="fa fa-id-card-o" aria-hidden="true"></i> 个人资料
 }
 
-@using (Html.BeginForm())
-{
+<form id="upload-profile" action="/personaldata/uploadprofile" method="post" enctype="multipart/form-data">
     <div class="mb-4 text-center">
-        <input type="file" accept="image/png, image/jpeg" hidden />
-        <i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
+        <input name="Profile" type="file" accept="image/png, image/jpeg, image/gif" hidden />
+        <img id="profile-upload" class="cursor-pointer personalData-profile" src="@profileSrc" alt="Profile" />
     </div>
+</form>
+
+<form action="/personaldata" method="post">
     <div class="mb-3">
         <label><b>用户名：</b></label><span class="clr-777">@Model.Username</span>
     </div>
@@ -39,16 +44,16 @@
         @Html.ValidationMessageFor(m => m.Description)
     </div>
     <button type="submit" class="btn btn-outline-primary">保存</button>
-}
+</form>
 
 @section Description{
     <ul>
-        <li class="mb-3">头像仅接受jpeg/png格式，大小不超过256KB。</li>
-        <li class="mb-3">头像图片的建议宽度为300像素左右，过宽或过窄可能造成失真。</li>
+        <li class="mb-3">头像接受jpeg/png/gif等格式，不超过2M。</li>
+        <li class="mb-3">更换头像无需保存，立即生效。</li>
         <li class="mb-3">昵称长度为2-16个字符。</li>
-        <li class="mb-3">未设置昵将默认使用用户名。</li>
+        <li class="mb-3">未设置昵称将使用用户名。</li>
         <li>个人简介不超过256个字符。</li>
     </ul>
 }
 
-<script src="~/Scripts/shared/personalDataGender.js" type="text/javascript"></script>
+<script src="~/Scripts/shared/personalData.js" type="text/javascript"></script>

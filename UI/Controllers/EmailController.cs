@@ -2,7 +2,6 @@
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
-using System.Web;
 using System.Web.Mvc;
 using UI.Filters;
 using UI.Helper;
@@ -42,7 +41,7 @@ namespace UI.Controllers
         {
             string emailAddress = Request.Form[Key.EmailAddress];
             string emailEvent;
-            string userNickname;
+            string userNickname = contactService.GetEmailUserNickname(emailAddress);
 
             // 判断邮件发送场景
             if (Request.UrlReferrer.Segments[1].ToLower().Contains("email"))
@@ -51,7 +50,6 @@ namespace UI.Controllers
                 { return Json(new { email = "activation" }); }
 
                 emailEvent = "绑定邮箱";
-                userNickname = HttpUtility.UrlDecode(ViewData[Key.Nickname].ToString());
             }
             else if (Request.UrlReferrer.Segments[2].ToLower() == "verify")
             {
@@ -59,7 +57,6 @@ namespace UI.Controllers
                 { return Json(new { email = "none" }); }
 
                 emailEvent = "找回密码";
-                userNickname = contactService.GetEmailUserNickname(emailAddress);
             }
             else { throw new Exception("Unanticipated exception."); }
 
